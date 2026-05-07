@@ -6,6 +6,7 @@
   "description": "Reliable snow removal in Ottawa all winter long. Driveways, walkways, parking lots — we clear it all with 24/7 response during snow events. Seasonal contracts and per-visit pricing available.",
   "frDescription": "Déneigement fiable à Ottawa tout au long de l'hiver. Allées, trottoirs, stationnements — nous déblayons tout avec une réponse 24/7 lors des événements de neige. Contrats saisonniers et tarifs à la visite disponibles.",
   "icon": "lucide:snowflake",
+  "image": "/images/snow-removal.jpg",
   "features": [
     "24/7 storm response",
     "Driveways, walkways, parking lots",
