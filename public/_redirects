@@ -1,5 +1,2 @@
-# Keystatic SPA — must be first, before any invalid rules
-/keystatic/*  /keystatic/index.html  200
-
 # Redirect root to EN (permanent)
 /  /en  301
