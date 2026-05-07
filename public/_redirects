@@ -3,3 +3,6 @@
 
 # Redirect www to apex
 https://www.allstarcleaning.ca/*  https://allstarcleaning.ca/:splat  301
+
+# Keystatic SPA — serve index for all sub-routes so React Router handles them
+/keystatic/*  /keystatic/index.html  200

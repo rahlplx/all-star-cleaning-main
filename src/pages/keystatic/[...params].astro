@@ -1,0 +1,13 @@
+---
+import { makePage } from '@keystatic/astro/ui';
+import config from '../../keystatic.config';
+
+export function getStaticPaths() {
+  // Generate the root keystatic page; SPA handles sub-routes via _redirects rewrite
+  return [{ params: { params: undefined } }];
+}
+
+export const all = makePage(config);
+---
+
+{all}
