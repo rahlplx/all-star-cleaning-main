@@ -17,6 +17,16 @@ export default config({
       schema: {
 
         // ──────────────────────────────────────────
+        // SERVICE IMAGE (shown first for easy editing)
+        // ──────────────────────────────────────────
+        image: fields.image({
+          label: 'Service Photo',
+          description: 'Photo shown on the homepage cards and services listing page. Upload a new photo to replace it.',
+          directory: 'public/images',
+          publicPath: '/images/',
+        }),
+
+        // ──────────────────────────────────────────
         // IDENTIFIERS
         // ──────────────────────────────────────────
         slug: fields.slug({
@@ -30,16 +40,6 @@ export default config({
           label: 'Icon',
           description: 'Lucide icon name, e.g. lucide:sparkles',
           defaultValue: 'lucide:sparkles',
-        }),
-
-        // ──────────────────────────────────────────
-        // SERVICE IMAGE
-        // ──────────────────────────────────────────
-        image: fields.image({
-          label: 'Service Photo',
-          description: 'Photo shown on the homepage card and service detail page',
-          directory: 'public/images',
-          publicPath: '/images/',
         }),
 
         // ──────────────────────────────────────────
