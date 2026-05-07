@@ -1,4 +1,4 @@
-import { config, fields, singleton } from '@keystatic/core';
+import { config, fields, collection, singleton } from '@keystatic/core';
 
 export default config({
   storage: {
@@ -7,6 +7,101 @@ export default config({
   cloud: {
     project: 'team-red/all-star-cleaning',
   },
+
+  collections: {
+    services: collection({
+      label: 'Services',
+      path: 'src/content/services/*',
+      format: { data: 'json' },
+      slugField: 'slug',
+      schema: {
+
+        // ──────────────────────────────────────────
+        // IDENTIFIERS
+        // ──────────────────────────────────────────
+        slug: fields.slug({
+          name: { label: 'Slug (URL)', description: 'e.g. window-cleaning — do not change after publishing' },
+        }),
+        frSlug: fields.text({
+          label: 'French Slug (URL)',
+          description: 'e.g. nettoyage-vitres',
+        }),
+        icon: fields.text({
+          label: 'Icon',
+          description: 'Lucide icon name, e.g. lucide:sparkles',
+          defaultValue: 'lucide:sparkles',
+        }),
+
+        // ──────────────────────────────────────────
+        // NAMES
+        // ──────────────────────────────────────────
+        name: fields.text({ label: 'Service Name (English)' }),
+        frName: fields.text({ label: 'Service Name (French)' }),
+
+        // ──────────────────────────────────────────
+        // DESCRIPTIONS
+        // ──────────────────────────────────────────
+        description: fields.text({
+          label: 'Description (English)',
+          multiline: true,
+        }),
+        frDescription: fields.text({
+          label: 'Description (French)',
+          multiline: true,
+        }),
+
+        // ──────────────────────────────────────────
+        // FEATURES LIST
+        // ──────────────────────────────────────────
+        features: fields.array(
+          fields.text({ label: 'Feature' }),
+          {
+            label: 'Features (English)',
+            itemLabel: (props) => props.value || 'Feature',
+          }
+        ),
+        frFeatures: fields.array(
+          fields.text({ label: 'Feature' }),
+          {
+            label: 'Features (French)',
+            itemLabel: (props) => props.value || 'Feature',
+          }
+        ),
+
+        // ──────────────────────────────────────────
+        // SEO META
+        // ──────────────────────────────────────────
+        metaTitle: fields.text({ label: 'Meta Title (English)' }),
+        metaDescription: fields.text({ label: 'Meta Description (English)', multiline: true }),
+        frMetaTitle: fields.text({ label: 'Meta Title (French)' }),
+        frMetaDescription: fields.text({ label: 'Meta Description (French)', multiline: true }),
+
+        // ──────────────────────────────────────────
+        // CTA BUTTON TEXT
+        // ──────────────────────────────────────────
+        cta: fields.text({ label: 'CTA Button Text (English)', defaultValue: 'Get a Free Quote' }),
+        frCta: fields.text({ label: 'CTA Button Text (French)', defaultValue: 'Obtenez un Devis Gratuit' }),
+
+        // ──────────────────────────────────────────
+        // FAQS
+        // ──────────────────────────────────────────
+        faqs: fields.array(
+          fields.object({
+            question: fields.text({ label: 'Question (English)' }),
+            frQuestion: fields.text({ label: 'Question (French)' }),
+            answer: fields.text({ label: 'Answer (English)', multiline: true }),
+            frAnswer: fields.text({ label: 'Answer (French)', multiline: true }),
+          }),
+          {
+            label: 'FAQs',
+            itemLabel: (props) => props.fields.question.value || 'FAQ',
+          }
+        ),
+
+      },
+    }),
+  },
+
   singletons: {
     homepage: singleton({
       label: 'Homepage',
