@@ -89,7 +89,7 @@ function stripHtmlComments() {
 }
 
 export default defineConfig({
-  output: 'hybrid',
+  output: 'static',
   adapter: cloudflare(),
   site: 'https://allstarcleaning.ca',
 
