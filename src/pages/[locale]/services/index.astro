@@ -64,7 +64,7 @@ const cms = homepageData;
     {services.map((service, i) => {
       const delayClass = `delay-${Math.min(i + 1, 5)}`;
       const features = isFr ? service.frFeatures : service.features;
-      const imgSrc = service.image;
+      const imgSrc = service.image || `/images/${service.slug}.jpg`;
       const isFeatured = i === 0;
       return (
         <a

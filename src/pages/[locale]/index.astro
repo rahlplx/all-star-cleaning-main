@@ -175,7 +175,7 @@ const cms = homepageData;
       </div>
       <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {services.map((service, i) => {
-          const imgSrc = service.image || 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=800&q=80';
+          const imgSrc = service.image || `/images/${service.slug}.jpg`;
           const isFeatured = i === 0;
           return (
             <a
