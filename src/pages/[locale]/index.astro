@@ -25,13 +25,6 @@ const usps = [
   { icon: 'check-circle', title: t.usps.guarantee.title, description: t.usps.guarantee.description },
 ];
 
-const serviceImages: Record<string, string> = {
-  'window-cleaning': '/images/window-cleaning.jpg',
-  'gutter-cleaning': '/images/gutter-cleaning.jpg',
-  'pressure-washing': '/images/pressure-washing.jpg',
-  'siding-cleaning': '/images/siding-cleaning.jpg',
-  'snow-removal': '/images/snow-removal.jpg',
-};
 
 // CMS-managed content (editable via Keystatic at /keystatic)
 const cms = homepageData;
@@ -182,7 +175,7 @@ const cms = homepageData;
       </div>
       <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {services.map((service, i) => {
-          const imgSrc = serviceImages[service.slug] || 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=800&q=80';
+          const imgSrc = service.image || 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=800&q=80';
           const isFeatured = i === 0;
           return (
             <a

@@ -33,6 +33,16 @@ export default config({
         }),
 
         // ──────────────────────────────────────────
+        // SERVICE IMAGE
+        // ──────────────────────────────────────────
+        image: fields.image({
+          label: 'Service Photo',
+          description: 'Photo shown on the homepage card and service detail page',
+          directory: 'public/images',
+          publicPath: '/images/',
+        }),
+
+        // ──────────────────────────────────────────
         // NAMES
         // ──────────────────────────────────────────
         name: fields.text({ label: 'Service Name (English)' }),

@@ -8,6 +8,7 @@ export interface Service {
   description: string;
   frDescription: string;
   icon: string;
+  image?: string;
   features: string[];
   frFeatures: string[];
   metaTitle: string;

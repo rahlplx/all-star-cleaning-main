@@ -6,6 +6,7 @@
   "description": "Professional residential and commercial window cleaning in Ottawa. Streak-free results guaranteed with pure water-fed pole technology and hand-detailing for sparkling clean windows every time.",
   "frDescription": "Nettoyage professionnel de fenêtres résidentielles et commerciales à Ottawa. Résultats sans traces garantis avec technologie de perche à eau pure et finition à la main pour des fenêtres étincelantes à chaque fois.",
   "icon": "lucide:sparkles",
+  "image": "/images/window-cleaning.jpg",
   "features": [
     "Pure water-fed pole system up to 4 storeys",
     "Hand-detailed interior & exterior",
