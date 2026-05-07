@@ -3,6 +3,7 @@ import PageLayout from '@/layouts/PageLayout.astro';
 import { services } from '@/data/services';
 import { getBreadcrumbSchema } from '@/seo';
 import type { BreadcrumbItem } from '@/types';
+import homepageData from '@/content/homepage.json';
 
 export function getStaticPaths() {
   return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
@@ -28,13 +29,8 @@ const itemListSchema = {
   })),
 };
 
-const serviceImages: Record<string, string> = {
-  'window-cleaning': '/images/window-cleaning.jpg',
-  'gutter-cleaning': '/images/gutter-cleaning.jpg',
-  'pressure-washing': '/images/pressure-washing.jpg',
-  'siding-cleaning': '/images/siding-cleaning.jpg',
-  'snow-removal': '/images/snow-removal.jpg',
-};
+
+const cms = homepageData;
 ---
 
 <PageLayout
@@ -51,8 +47,8 @@ const serviceImages: Record<string, string> = {
   <div class="mb-8 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
     <div class="flex items-center gap-2 rounded-full bg-teal/10 px-4 py-2 border border-teal/20">
       <span class="text-gold-light text-sm">★★★★★</span>
-      <span class="text-sm font-bold text-navy">5/5</span>
-      <span class="text-xs text-muted-foreground">{isFr ? '16 avis Google' : '16 Google reviews'}</span>
+      <span class="text-sm font-bold text-navy">{cms.googleRating}</span>
+      <span class="text-xs text-muted-foreground">{isFr ? `${cms.googleReviewCount} avis Google` : `${cms.googleReviewCount} Google reviews`}</span>
     </div>
     <div class="flex items-center gap-2 rounded-full bg-teal/10 px-4 py-2 border border-teal/20">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-teal-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
@@ -68,7 +64,7 @@ const serviceImages: Record<string, string> = {
     {services.map((service, i) => {
       const delayClass = `delay-${Math.min(i + 1, 5)}`;
       const features = isFr ? service.frFeatures : service.features;
-      const imgSrc = serviceImages[service.slug];
+      const imgSrc = service.image;
       const isFeatured = i === 0;
       return (
         <a
@@ -149,9 +145,9 @@ const serviceImages: Record<string, string> = {
       <a href={`/${locale}/contact`} class="touch-target inline-flex items-center rounded-full bg-gold px-8 py-3 text-lg font-semibold uppercase tracking-wider text-navy shadow-lg transition-all hover:bg-gold-light hover:shadow-xl">
         {isFr ? 'Obtenez un Devis Gratuit' : 'Get a Free Quote'}
       </a>
-      <a href="tel:+16133143300" class="touch-target inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-8 py-3 text-lg font-semibold uppercase tracking-wider text-text-on-dark transition-all hover:border-white/60 hover:bg-white/10">
+      <a href={`tel:${cms.phoneLink}`} class="touch-target inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-8 py-3 text-lg font-semibold uppercase tracking-wider text-text-on-dark transition-all hover:border-white/60 hover:bg-white/10">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        (613) 314-3300
+        {cms.phone}
       </a>
     </div>
   </div>
