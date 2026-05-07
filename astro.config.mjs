@@ -3,7 +3,6 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import markdoc from '@astrojs/markdoc';
-import keystatic from '@keystatic/astro';
 
 /**
  * Tech-Stack Obfuscation Vite Plugin
@@ -105,7 +104,6 @@ export default defineConfig({
   integrations: [
     react(),
     markdoc(),
-    keystatic(),
     sitemap({
       i18n: {
         defaultLocale: 'en',
