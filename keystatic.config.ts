@@ -2,8 +2,10 @@ import { config, fields, singleton } from '@keystatic/core';
 
 export default config({
   storage: {
-    kind: 'github',
-    repo: 'Hrittik-Chatterjee/all-star-cleaning-main',
+    kind: 'cloud',
+  },
+  cloud: {
+    project: 'team-red/all-star-cleaning',
   },
   singletons: {
     homepage: singleton({
