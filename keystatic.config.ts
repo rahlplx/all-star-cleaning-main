@@ -9,6 +9,43 @@ export default config({
   },
 
   collections: {
+    reviews: collection({
+      label: 'Customer Reviews',
+      path: 'src/content/reviews/*',
+      format: { data: 'json' },
+      slugField: 'author',
+      schema: {
+        author: fields.slug({
+          name: { label: 'Customer Name', description: 'e.g. Sarah Mitchell' },
+        }),
+        rating: fields.integer({
+          label: 'Star Rating (1–5)',
+          validation: { min: 1, max: 5 },
+          defaultValue: 5,
+        }),
+        service: fields.text({
+          label: 'Service (English)',
+          description: 'e.g. Gutter Cleaning',
+        }),
+        frService: fields.text({
+          label: 'Service (French)',
+          description: 'e.g. Nettoyage de Gouttières',
+        }),
+        date: fields.text({
+          label: 'Review Date',
+          description: 'Format: YYYY-MM-DD, e.g. 2026-02-15',
+        }),
+        textEn: fields.text({
+          label: 'Review Text (English)',
+          multiline: true,
+        }),
+        textFr: fields.text({
+          label: 'Review Text (French)',
+          multiline: true,
+        }),
+      },
+    }),
+
     services: collection({
       label: 'Services',
       path: 'src/content/services/*',

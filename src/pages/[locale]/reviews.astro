@@ -4,6 +4,8 @@ import { useTranslations } from '@/i18n/translations';
 import { getReviewSchema, getBreadcrumbSchema } from '@/seo';
 import type { ReviewData } from '@/seo';
 import type { BreadcrumbItem } from '@/types';
+import homepageData from '@/content/homepage.json';
+import siteSettings from '@/content/settings.json';
 
 export function getStaticPaths() {
   return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
@@ -12,6 +14,18 @@ const { locale } = Astro.params as { locale: 'en' | 'fr' };
 const t = useTranslations(locale);
 const isFr = locale === 'fr';
 const altLocale = isFr ? 'en' : 'fr';
+const home = homepageData;
+const s = siteSettings;
+
+// Load all reviews from CMS content files
+const reviewFiles = import.meta.glob<{ default: Record<string, unknown> }>('/src/content/reviews/*.json', { eager: true });
+const allReviews = Object.values(reviewFiles).map((m) => m.default as {
+  author: string; rating: number; service: string; frService: string;
+  date: string; textEn: string; textFr: string;
+});
+
+// Sort newest first
+allReviews.sort((a, b) => b.date.localeCompare(a.date));
 
 const breadcrumbs: BreadcrumbItem[] = [
   { label: 'Home', frLabel: 'Accueil', href: `/${locale}` },
@@ -21,84 +35,18 @@ const breadcrumbs: BreadcrumbItem[] = [
 const aggregateRatingSchema = {
   "@type": "AggregateRating",
   "itemReviewed": { "@type": "LocalBusiness", "name": "All Star Cleaning Ottawa" },
-  "ratingValue": "5",
+  "ratingValue": home.googleRating.split('/')[0] || "5",
   "bestRating": "5",
-  "ratingCount": "16",
+  "ratingCount": String(home.googleReviewCount),
 };
 
-const reviewData: ReviewData[] = isFr ? [
-  {
-    author: 'Marie Tremblay',
-    rating: 5,
-    text: "Service exceptionnel ! Ils ont nettoyé nos gouttières et fenêtres en une seule visite. L'équipe était ponctuelle, professionnelle et a tout laissé impeccable. Nous les engageons chaque saison maintenant.",
-    service: 'Nettoyage de Gouttières',
-    date: '2026-02-15',
-  },
-  {
-    author: 'Jean-Pierre Beaulieu',
-    rating: 5,
-    text: "Le lavage sous pression a redonné vie à notre entrée : on dirait qu'elle est neuve ! Résultats impressionnants et prix très raisonnable. Je recommande fortement All Star Cleaning.",
-    service: 'Lavage sous Pression',
-    date: '2026-01-20',
-  },
-  {
-    author: 'Sophie Lafontaine',
-    rating: 5,
-    text: "Nos fenêtres n'ont jamais été aussi propres. L'équipe a utilisé le système à eau pure et le résultat est éblouissant, même au soleil. Aucune trace, aucun dommage. Service cinq étoiles !",
-    service: 'Nettoyage de Vitres',
-    date: '2025-12-10',
-  },
-  {
-    author: 'Marc Dupuis',
-    rating: 4,
-    text: "Excellent service de déneigement cet hiver. Réponse rapide lors des tempêtes et always à l'heure. Le seul petit bémol est qu'ils sont parfois difficiles à joindre les jours de forte demande, mais la qualité est au rendez-vous.",
-    service: 'Déneigement',
-    date: '2025-11-05',
-  },
-  {
-    author: 'Isabelle Roux',
-    rating: 5,
-    text: "Nous avons fait nettoyer le revêtement de notre maison : quelle transformation ! La technique de lavage doux a éliminé toutes les taches de moisissure sans abîmer le vinyle. Résultat spectaculaire.",
-    service: 'Nettoyage de Revêtement',
-    date: '2025-10-18',
-  },
-] : [
-  {
-    author: 'Sarah Mitchell',
-    rating: 5,
-    text: "Outstanding service! They cleaned our gutters and windows in a single visit. The crew was on time, professional, and left everything spotless. We've booked them for every season now.",
-    service: 'Gutter Cleaning',
-    date: '2026-02-15',
-  },
-  {
-    author: 'David Chen',
-    rating: 5,
-    text: "The pressure washing brought our driveway back to life: it looks brand new! Impressive results and very reasonable pricing. I highly recommend All Star Cleaning.",
-    service: 'Pressure Washing',
-    date: '2026-01-20',
-  },
-  {
-    author: 'Emily Watson',
-    rating: 5,
-    text: "Our windows have never been this clean. The team used a pure water-fed pole system and the result is dazzling, even in direct sunlight. No streaks, no damage. Five-star service!",
-    service: 'Window Cleaning',
-    date: '2025-12-10',
-  },
-  {
-    author: 'Robert Patel',
-    rating: 4,
-    text: "Great snow removal service this winter. Fast response during storms and always on time. The only minor issue is they can be hard to reach on peak demand days, but the quality is always excellent.",
-    service: 'Snow Removal',
-    date: '2025-11-05',
-  },
-  {
-    author: 'Jennifer Adams',
-    rating: 5,
-    text: "We had our siding cleaned and what a transformation! The soft-wash technique removed all the mold stains without damaging the vinyl. Spectacular results: our home looks years newer.",
-    service: 'Siding Cleaning',
-    date: '2025-10-18',
-  },
-];
+const reviewData: ReviewData[] = allReviews.map((r) => ({
+  author: r.author,
+  rating: r.rating,
+  text: isFr ? r.textFr : r.textEn,
+  service: isFr ? r.frService : r.service,
+  date: r.date,
+}));
 
 const reviewSchemas = getReviewSchema(reviewData, locale);
 const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs, locale);
@@ -119,17 +67,16 @@ const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs, locale);
       <div class="slide-up rounded-xl bg-teal-text px-6 py-4 text-text-on-dark">
         <div class="flex flex-col items-center gap-2 sm:flex-row sm:justify-between">
           <div class="flex items-center gap-3">
-            <!-- 5 gold stars in the summary -->
             <div class="flex gap-0.5" aria-label="5 out of 5 stars">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gold-light" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gold-light" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gold-light" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gold-light" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gold-light" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              {Array.from({ length: 5 }).map(() => (
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gold-light" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              ))}
             </div>
-            <span class="text-lg font-semibold">{isFr ? '5/5, note parfaite' : '5/5 perfect rating'}</span>
+            <span class="text-lg font-semibold">{isFr ? `${home.googleRating}, note parfaite` : `${home.googleRating} perfect rating`}</span>
           </div>
-            <span class="text-sm text-text-on-dark-muted">{isFr ? 'Basé sur 16 avis Google' : 'From 16 Google reviews'}</span>
+          <span class="text-sm text-text-on-dark-muted">
+            {isFr ? `Basé sur ${home.googleReviewCount} avis Google` : `From ${home.googleReviewCount} Google reviews`}
+          </span>
         </div>
       </div>
 
@@ -141,7 +88,6 @@ const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs, locale);
           const delayClass = `delay-${Math.min(i + 1, 5)}`;
           return (
             <div class={`fade-in ${delayClass} hover-lift rounded-xl border border-border bg-card p-6`}>
-              <!-- Star rating -->
               <div class="flex gap-0.5" aria-label={`${review.rating} out of 5 stars`}>
                 {Array.from({ length: 5 }).map((_, starIdx) => (
                   <svg
@@ -155,9 +101,7 @@ const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs, locale);
                   </svg>
                 ))}
               </div>
-              <!-- Review text — left-aligned for readability -->
               <p class="mt-4 text-base text-muted-foreground leading-relaxed">{review.text}</p>
-              <!-- Reviewer info -->
               <div class="mt-4 border-t border-border pt-4">
                 <p class="text-sm font-semibold text-navy">{review.author}</p>
                 <p class="text-xs text-muted-foreground">{review.service} · {review.date}</p>
@@ -167,10 +111,10 @@ const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs, locale);
         })}
       </div>
 
-      <!-- Google Reviews link — primary filled button -->
+      <!-- Google Reviews link -->
       <div class="mt-12 text-center">
         <a
-          href="https://g.page/allstarcleaningottawa"
+          href={s.googleUrl}
           target="_blank"
           rel="noopener noreferrer"
           class="inline-flex items-center gap-2 rounded-lg bg-teal-text px-8 py-3.5 text-lg font-semibold text-text-on-dark transition-all hover:bg-teal-dark hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-text touch-target external-link"
@@ -180,7 +124,8 @@ const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs, locale);
           {isFr ? 'Voir nos avis Google' : 'See our Google Reviews'}
         </a>
       </div>
-      <!-- CTA after reviews -->
+
+      <!-- CTA -->
       <div class="mt-10 rounded-xl bg-navy px-6 py-8 text-center text-text-on-dark sm:px-10">
         <h2 class="font-heading text-2xl font-bold">{isFr ? 'Prêt à obtenir un devis?' : 'Ready to Get a Quote?'}</h2>
         <p class="mt-2 text-text-on-dark-muted">{isFr ? "Rejoignez nos clients satisfaits. Devis gratuit, sans engagement." : 'Join our satisfied customers. Free quotes, no obligation.'}</p>
@@ -188,9 +133,9 @@ const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs, locale);
           <a href={`/${locale}/contact`} class="touch-target inline-flex items-center rounded-full bg-gold px-8 py-3 text-lg font-semibold uppercase tracking-wider text-navy shadow-lg transition-all hover:bg-gold-light hover:shadow-xl">
             {isFr ? 'Obtenez un Devis Gratuit' : 'Get a Free Quote'}
           </a>
-          <a href="tel:+16133143300" class="touch-target inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-8 py-3 text-lg font-semibold uppercase tracking-wider text-text-on-dark transition-all hover:border-white/60 hover:bg-white/10">
+          <a href={`tel:${s.phoneLink}`} class="touch-target inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-8 py-3 text-lg font-semibold uppercase tracking-wider text-text-on-dark transition-all hover:border-white/60 hover:bg-white/10">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            (613) 314-3300
+            {s.phone}
           </a>
         </div>
       </div>
