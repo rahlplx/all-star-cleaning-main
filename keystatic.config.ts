@@ -167,20 +167,6 @@ export default config({
         }),
 
         // ──────────────────────────────────────────
-        // STATS
-        // ──────────────────────────────────────────
-        sinceYear: fields.text({
-          label: 'In Business Since (year)',
-          description: 'e.g. 2005',
-          defaultValue: '2005',
-        }),
-        yearsInBusiness: fields.text({
-          label: 'Years in Business (stat display)',
-          description: 'e.g. 20+',
-          defaultValue: '20+',
-        }),
-
-        // ──────────────────────────────────────────
         // STORY PARAGRAPHS
         // ──────────────────────────────────────────
         storyParagraph1En: fields.text({
