@@ -3,50 +3,67 @@ import { useTranslations } from '@/i18n/translations';
 interface Props { locale: 'en' | 'fr'; }
 const { locale } = Astro.props;
 const t = useTranslations(locale);
+
+// Pre-calculate paths to avoid regex issues in template
+const currentPath = Astro.url.pathname;
+const enPath = currentPath.replace(/^\/[a-z]{2}/, '/en');
+const frPath = currentPath.replace(/^\/[a-z]{2}/, '/fr');
 ---
 <div class="brand-gradient text-text-on-dark fade-in" role="complementary" aria-label="Contact information">
-  <div class="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-2 sm:py-2.5">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-1.5 sm:py-2">
     <!-- Left: Hours + Address (desktop) / Hours only (mobile) -->
-    <div class="flex items-center gap-2 sm:gap-4 text-xs sm:text-sm opacity-90 min-w-0">
+    <div class="flex items-center gap-3 sm:gap-6 text-[11px] sm:text-xs opacity-90 min-w-0">
       <div class="flex items-center gap-1.5">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        <span class="truncate">Mon–Sun: 9AM–7PM</span>
+        <span class="truncate font-medium">Mon–Sun: 9AM–7PM</span>
       </div>
       <!-- Address (desktop only) -->
-      <span class="opacity-30 hidden lg:inline" aria-hidden="true">|</span>
-      <div class="hidden lg:flex items-center gap-1.5">
+      <div class="hidden lg:flex items-center gap-1.5 border-l border-white/20 pl-6">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span class="truncate">800 Hunt Club Rd, Ottawa</span>
+        <span class="truncate font-medium">800 Hunt Club Rd, Ottawa</span>
       </div>
     </div>
 
     <!-- Right: Contact links -->
-    <div class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm">
+    <div class="flex items-center gap-4 sm:gap-6 text-[11px] sm:text-xs">
       <!-- Phone -->
-      <a href={`tel:${t.contact.phoneLink}`} class="touch-target inline-flex items-center gap-1.5 font-semibold text-white transition-colors duration-200 hover:text-white/80 focus-visible:ring-2 focus-visible:ring-royal-blue focus-visible:ring-offset-2 focus-visible:ring-offset-navy whitespace-nowrap">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <a href={`tel:${t.contact.phoneLink}`} class="group inline-flex items-center gap-1.5 font-bold text-white transition-all duration-200 hover:text-white/80 focus-visible:ring-2 focus-visible:ring-white whitespace-nowrap">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 flex-shrink-0 transition-transform group-hover:rotate-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         <span class="hidden sm:inline">{t.contact.phone}</span>
-        <span class="sm:hidden">Call</span>
+        <span class="sm:hidden">Call Now</span>
       </a>
 
-      <!-- Separator (desktop only) -->
-      <span class="opacity-30 hidden sm:inline" aria-hidden="true">|</span>
-
       <!-- Email (desktop only) -->
-      <a href={`mailto:${t.contact.email}`} class="touch-target hidden font-medium text-white transition-colors duration-200 hover:text-white/80 focus-visible:ring-2 focus-visible:ring-royal-blue focus-visible:ring-offset-2 focus-visible:ring-offset-navy sm:inline-flex items-center gap-1.5 whitespace-nowrap">
+      <a href={`mailto:${t.contact.email}`} class="hidden font-medium text-white transition-all duration-200 hover:text-white/80 focus-visible:ring-2 focus-visible:ring-white lg:inline-flex items-center gap-1.5 whitespace-nowrap border-l border-white/20 pl-6">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
         {t.contact.email}
       </a>
 
-      <!-- Separator (desktop only) -->
-      <span class="opacity-30 hidden sm:inline" aria-hidden="true">|</span>
-
-      <!-- Language switcher -->
-      {locale === 'en' ? (
-        <a href={Astro.url.pathname.replace(/^\/en/, '/fr')} class="touch-target font-medium text-white transition-colors duration-200 hover:text-white/80 focus-visible:ring-2 focus-visible:ring-royal-blue focus-visible:ring-offset-2 focus-visible:ring-offset-navy whitespace-nowrap" lang="fr" hreflang="fr">FR</a>
-      ) : (
-        <a href={Astro.url.pathname.replace(/^\/fr/, '/en')} class="touch-target font-medium text-white transition-colors duration-200 hover:text-white/80 focus-visible:ring-2 focus-visible:ring-royal-blue focus-visible:ring-offset-2 focus-visible:ring-offset-navy whitespace-nowrap" lang="en" hreflang="en">EN</a>
-      )}
+      <!-- Language switcher: Classic Toggle -->
+      <div class="flex items-center border-l border-white/20 pl-4 sm:pl-6">
+        <div class="flex items-center gap-1.5 rounded-full bg-black/20 p-1 border border-white/10">
+          <a 
+            href={enPath} 
+            class:list={[
+              "rounded-full px-2 py-0.5 text-[10px] font-bold uppercase transition-all duration-200",
+              locale === 'en' ? "bg-white text-royal-blue shadow-sm" : "text-white/60 hover:text-white"
+            ]}
+            aria-current={locale === 'en' ? 'page' : undefined}
+          >
+            EN
+          </a>
+          <a 
+            href={frPath} 
+            class:list={[
+              "rounded-full px-2 py-0.5 text-[10px] font-bold uppercase transition-all duration-200",
+              locale === 'fr' ? "bg-white text-royal-blue shadow-sm" : "text-white/60 hover:text-white"
+            ]}
+            aria-current={locale === 'fr' ? 'page' : undefined}
+          >
+            FR
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
