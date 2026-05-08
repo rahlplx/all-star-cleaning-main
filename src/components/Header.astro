@@ -1,13 +1,15 @@
 ---
 import { useTranslations } from '@/i18n/translations';
 import { services } from '@/data/services';
+import siteSettings from '@/content/settings.json';
 interface Props { locale: 'en' | 'fr'; }
 const { locale } = Astro.props;
 const t = useTranslations(locale);
+const s = siteSettings;
 const currentPath = Astro.url.pathname;
 const navLinks = [
   { label: t.nav.home, href: `/${locale}` },
-  { label: t.nav.services, href: `/${locale}/services`, children: services.map((s) => ({ label: locale === 'fr' ? s.frName : s.name, href: `/${locale}/services/${s.slug}` })) },
+  { label: t.nav.services, href: `/${locale}/services`, children: services.map((svc) => ({ label: locale === 'fr' ? svc.frName : svc.name, href: `/${locale}/services/${svc.slug}` })) },
   { label: t.nav.about, href: `/${locale}/about` },
   { label: t.nav.reviews, href: `/${locale}/reviews` },
   { label: t.nav.contact, href: `/${locale}/contact` },
@@ -17,8 +19,8 @@ const navLinks = [
   <div class="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-3">
     <!-- Logo -->
     <a href={`/${locale}`} class="touch-target flex items-center gap-2.5 text-navy no-underline focus-visible:ring-2 focus-visible:ring-teal-text">
-      <img src="/images/logo.png" alt="All Star Cleaning" width="40" height="40" class="h-9 w-9 sm:h-10 sm:w-10" />
-      <span class="font-heading text-xl font-bold tracking-tight leading-none">All<span class="text-teal-text">Star</span> <span class="text-xs font-medium uppercase tracking-widest text-muted-foreground">Cleaning</span></span>
+      <img src={s.headerLogo || '/images/logo.png'} alt={s.businessName} width="40" height="40" class="h-9 w-9 sm:h-10 sm:w-10" />
+      <span class="font-heading text-xl font-bold tracking-tight leading-none">{s.businessName.replace(' Cleaning', '')}<span class="text-teal-text"> Cleaning</span></span>
     </a>
 
     <!-- Desktop Nav -->
@@ -47,7 +49,7 @@ const navLinks = [
     <div class="flex items-center gap-2 sm:gap-3">
       <a href={`/${locale}/contact`} class="hidden rounded-full bg-gold px-5 py-2 text-sm font-bold uppercase tracking-wider text-navy shadow-lg transition-all duration-200 hover:bg-gold-light hover:shadow-xl focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 lg:inline-flex">{t.nav.getQuote}</a>
       <!-- Phone icon for mobile (quick call) -->
-      <a href={`tel:${t.contact.phoneLink}`} class="touch-target inline-flex items-center justify-center rounded-full border border-teal/30 p-2.5 text-teal-text transition-colors hover:bg-teal/5 lg:hidden min-h-[44px] min-w-[44px]" aria-label="Call us">
+      <a href={`tel:${s.phoneLink}`} class="touch-target inline-flex items-center justify-center rounded-full border border-teal/30 p-2.5 text-teal-text transition-colors hover:bg-teal/5 lg:hidden min-h-[44px] min-w-[44px]" aria-label="Call us">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       </a>
       <button id="mobile-menu-toggle" class="touch-target inline-flex items-center justify-center rounded-md p-2.5 text-navy transition-colors duration-200 hover:bg-off-white-dark focus-visible:ring-2 focus-visible:ring-teal-text lg:hidden min-h-[44px] min-w-[44px]" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">

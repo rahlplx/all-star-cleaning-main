@@ -221,5 +221,104 @@ export default config({
 
       },
     }),
+
+    siteSettings: singleton({
+      label: 'Site Settings (Header & Footer)',
+      path: 'src/content/settings',
+      format: { data: 'json' },
+      schema: {
+
+        // ──────────────────────────────────────────
+        // LOGOS
+        // ──────────────────────────────────────────
+        headerLogo: fields.image({
+          label: 'Header Logo',
+          description: 'Logo shown in the top navigation bar (dark background-compatible)',
+          directory: 'public/images',
+          publicPath: '/images/',
+        }),
+        footerLogo: fields.image({
+          label: 'Footer Logo',
+          description: 'Logo shown in the footer (light/white version for dark background)',
+          directory: 'public/images',
+          publicPath: '/images/',
+        }),
+
+        // ──────────────────────────────────────────
+        // BRAND
+        // ──────────────────────────────────────────
+        businessName: fields.text({
+          label: 'Business Name',
+          defaultValue: 'All Star Cleaning',
+        }),
+        taglineEn: fields.text({
+          label: 'Tagline (English)',
+          defaultValue: "Ottawa's Trusted Exterior Cleaning",
+        }),
+        taglineFr: fields.text({
+          label: 'Tagline (French)',
+          defaultValue: 'Nettoyage Extérieur de Confiance à Ottawa',
+        }),
+
+        // ──────────────────────────────────────────
+        // CONTACT INFO
+        // ──────────────────────────────────────────
+        phone: fields.text({
+          label: 'Phone Number (displayed)',
+          description: 'e.g. (613) 314-3300',
+          defaultValue: '(613) 314-3300',
+        }),
+        phoneLink: fields.text({
+          label: 'Phone Number (for tel: link, no spaces)',
+          description: 'e.g. +16133143300',
+          defaultValue: '+16133143300',
+        }),
+        email: fields.text({
+          label: 'Email Address',
+          defaultValue: 'hello@allstarcleaning.ca',
+        }),
+        addressEn: fields.text({
+          label: 'Address (English)',
+          defaultValue: '800 Hunt Club Rd, Ottawa, ON K1V 1C3',
+        }),
+        addressFr: fields.text({
+          label: 'Address (French)',
+          defaultValue: '800, chemin Hunt Club, Ottawa, ON K1V 1C3',
+        }),
+
+        // ──────────────────────────────────────────
+        // BUSINESS HOURS
+        // ──────────────────────────────────────────
+        hoursEn: fields.text({
+          label: 'Business Hours (English)',
+          defaultValue: 'Monday to Sunday: 9AM – 7PM',
+        }),
+        hoursFr: fields.text({
+          label: 'Business Hours (French)',
+          defaultValue: 'Lundi au dimanche : 9h – 19h',
+        }),
+
+        // ──────────────────────────────────────────
+        // SOCIAL MEDIA LINKS
+        // ──────────────────────────────────────────
+        facebookUrl: fields.text({
+          label: 'Facebook URL',
+          defaultValue: 'https://facebook.com/allstarcleaningottawa',
+        }),
+        instagramUrl: fields.text({
+          label: 'Instagram URL',
+          defaultValue: 'https://www.instagram.com/allstarcleaning.ca',
+        }),
+        tiktokUrl: fields.text({
+          label: 'TikTok URL',
+          defaultValue: 'https://www.tiktok.com/@allstarcleaning.ca',
+        }),
+        googleUrl: fields.text({
+          label: 'Google Business URL',
+          defaultValue: 'https://g.page/allstarcleaningottawa',
+        }),
+
+      },
+    }),
   },
 });
