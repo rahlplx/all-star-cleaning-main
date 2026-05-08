@@ -113,6 +113,89 @@ export default config({
   },
 
   singletons: {
+    about: singleton({
+      label: 'About Page',
+      path: 'src/content/about',
+      format: { data: 'json' },
+      schema: {
+
+        // ──────────────────────────────────────────
+        // TEAM PHOTO (shown first)
+        // ──────────────────────────────────────────
+        teamImage: fields.image({
+          label: 'Team Photo',
+          description: 'Photo of the team shown on the About page',
+          directory: 'public/images',
+          publicPath: '/images/',
+        }),
+
+        // ──────────────────────────────────────────
+        // STATS
+        // ──────────────────────────────────────────
+        sinceYear: fields.text({
+          label: 'In Business Since (year)',
+          description: 'e.g. 2005',
+          defaultValue: '2005',
+        }),
+        yearsInBusiness: fields.text({
+          label: 'Years in Business (stat display)',
+          description: 'e.g. 20+',
+          defaultValue: '20+',
+        }),
+
+        // ──────────────────────────────────────────
+        // STORY PARAGRAPHS
+        // ──────────────────────────────────────────
+        storyParagraph1En: fields.text({
+          label: 'Story Paragraph 1 (English)',
+          multiline: true,
+        }),
+        storyParagraph1Fr: fields.text({
+          label: 'Story Paragraph 1 (French)',
+          multiline: true,
+        }),
+        blockquoteEn: fields.text({
+          label: 'Guarantee Blockquote (English)',
+          multiline: true,
+        }),
+        blockquoteFr: fields.text({
+          label: 'Guarantee Blockquote (French)',
+          multiline: true,
+        }),
+        storyParagraph2En: fields.text({
+          label: 'Story Paragraph 2 (English)',
+          multiline: true,
+        }),
+        storyParagraph2Fr: fields.text({
+          label: 'Story Paragraph 2 (French)',
+          multiline: true,
+        }),
+        storyParagraph3En: fields.text({
+          label: 'Story Paragraph 3 (English)',
+          multiline: true,
+        }),
+        storyParagraph3Fr: fields.text({
+          label: 'Story Paragraph 3 (French)',
+          multiline: true,
+        }),
+
+        // ──────────────────────────────────────────
+        // VALUES LIST
+        // ──────────────────────────────────────────
+        values: fields.array(
+          fields.object({
+            en: fields.text({ label: 'Value (English)' }),
+            fr: fields.text({ label: 'Value (French)' }),
+          }),
+          {
+            label: 'Our Values',
+            itemLabel: (props) => props.fields.en.value || 'Value',
+          }
+        ),
+
+      },
+    }),
+
     homepage: singleton({
       label: 'Homepage',
       path: 'src/content/homepage',
