@@ -26,11 +26,11 @@ const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs, locale);
 ---
 <PageLayout
   title={isFr ? 'À Propos | All Star Cleaning Ottawa' : 'About | All Star Cleaning Ottawa'}
-  description={isFr ? "Découvrez All Star Cleaning: des décennies d'expertise en nettoyage extérieur à Ottawa." : "Learn about All Star Cleaning: decades of exterior cleaning expertise in Ottawa."}
+  description={isFr ? "Découvrez All Star Cleaning: votre partenaire de confiance pour le nettoyage extérieur à Ottawa." : "Learn about All Star Cleaning: your trusted partner for exterior cleaning in Ottawa."}
   locale={locale}
   breadcrumbs={breadcrumbs}
   heroTitle={isFr ? 'À Propos' : 'About All Star Cleaning'}
-  heroSubtitle={isFr ? "Des décennies d'expertise locale en nettoyage extérieur à Ottawa" : 'Decades of local expertise in exterior cleaning across Ottawa'}
+  heroSubtitle={isFr ? "Votre partenaire de confiance pour le nettoyage extérieur à Ottawa" : 'Your trusted partner for exterior cleaning across Ottawa'}
   schema={[founderSchema, breadcrumbSchema]}
   alternateUrls={[{ locale: altLocale, url: `https://allstarcleaning.ca/${altLocale}/about/` }]}
 >
@@ -51,12 +51,6 @@ const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs, locale);
               <span class="text-sm font-semibold text-navy">{isFr ? 'Assuré & Cautionné' : 'Insured & Bonded'}</span>
             </div>
           </div>
-
-          <!-- Trust signal -->
-          <p class="fade-in delay-1 mt-4 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gold-dark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            {isFr ? `Au service d'Ottawa depuis ${cms.sinceYear}` : `Serving Ottawa since ${cms.sinceYear}`}
-          </p>
 
           <div class="measure mt-8 space-y-6 text-muted-foreground leading-relaxed">
             <p class="fade-in delay-1">{isFr ? cms.storyParagraph1Fr : cms.storyParagraph1En}</p>
@@ -94,11 +88,7 @@ const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs, locale);
             />
           </div>
 
-          <div class="fade-in delay-2 grid grid-cols-2 gap-4">
-            <div class="rounded-xl border border-border bg-card p-5 text-center">
-              <span class="text-4xl font-bold text-navy">{cms.yearsInBusiness}</span>
-              <p class="mt-1 text-sm text-muted-foreground">{isFr ? 'Années' : 'Years'}</p>
-            </div>
+          <div class="fade-in delay-2">
             <div class="rounded-xl border border-border bg-card p-5 text-center">
               <span class="text-4xl font-bold text-navy">{home.googleRating}</span>
               <p class="mt-1 text-sm text-muted-foreground">{isFr ? 'Note Google' : 'Google Rating'}</p>
