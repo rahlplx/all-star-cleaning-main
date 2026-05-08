@@ -22,6 +22,9 @@ Thumbs.db
 # Astro
 .astro/
 
+# Wrangler
+.wrangler/
+
 # logs
 *.log
 npm-debug.log*
