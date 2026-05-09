@@ -18,10 +18,9 @@ const year = new Date().getFullYear();
             alt="" 
             width="120" 
             height="120" 
-            class="h-16 w-auto object-contain brightness-0 invert transition-transform duration-300 group-hover:scale-105" 
+            class="h-14 w-auto sm:h-20 lg:h-24 object-contain brightness-0 invert transition-transform duration-300 group-hover:scale-105" 
             aria-hidden="true" 
           />
-          <span class="font-heading text-2xl font-bold leading-tight tracking-tight">{s.businessName}</span>
         </a>
         <p class="mt-4 text-sm leading-relaxed text-text-on-dark-muted">{locale === 'fr' ? s.taglineFr : s.taglineEn}</p>
         <div class="mt-8 flex gap-3">
@@ -74,6 +73,7 @@ const year = new Date().getFullYear();
       <div class="flex gap-4">
         <a href={`/${locale}/privacy`} class="text-white/80 transition-colors duration-200 hover:text-white focus-visible:ring-2 focus-visible:ring-white">{t.footer.privacy}</a>
         <a href={`/${locale}/terms`} class="text-white/80 transition-colors duration-200 hover:text-white focus-visible:ring-2 focus-visible:ring-white">{t.footer.terms}</a>
+        <a href="/sitemap-index.xml" class="text-white/80 transition-colors duration-200 hover:text-white focus-visible:ring-2 focus-visible:ring-white">{t.footer.sitemap}</a>
       </div>
     </div>
   </div>
