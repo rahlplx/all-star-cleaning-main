@@ -111,14 +111,14 @@ const cms = homepageData;
   <!-- ============================================================ -->
   <!-- USP SECTION — Image + feature cards split layout -->
   <!-- ============================================================ -->
-  <section aria-label={isFr ? 'Pourquoi nous choisir' : 'Why choose us'} class="py-16 md:py-20 lg:py-24 bg-card">
+  <section aria-label={isFr ? 'Pourquoi nous choisir' : 'Why choose us'} class="relative z-0 py-16 md:py-20 lg:py-24 bg-card">
     <div class="mx-auto max-w-7xl px-4">
       <!-- Decorative blue accent line -->
       <div class="mb-10 h-px w-full bg-royal-blue/20 md:mb-12"></div>
 
       <div class="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
         <!-- Left column: Image of team at work -->
-        <div class="fade-in relative order-2 lg:order-1">
+        <div class="fade-in relative z-0 order-2 lg:order-1">
           <div class="overflow-hidden rounded-2xl shadow-lg">
             <img
               src={cms.teamImage}
