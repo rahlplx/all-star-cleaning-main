@@ -15,7 +15,7 @@ const navLinks = [
   { label: t.nav.contact, href: `/${locale}/contact` },
 ];
 ---
-<header class="slide-up sticky top-0 z-sticky border-b border-border bg-card/95 backdrop-blur-sm">
+<header id="main-header" class="sticky top-0 z-50 border-b border-border bg-card/95 backdrop-blur-sm transition-all duration-300">
   <div class="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-3">
     <!-- Logo -->
     <a href={`/${locale}`} class="touch-target flex items-center gap-2.5 text-navy no-underline focus-visible:ring-2 focus-visible:ring-royal-blue">
@@ -207,3 +207,40 @@ const navLinks = [
     });
   });
 </script>
+<script>
+  // Sticky header animation on scroll
+  const header = document.getElementById('main-header');
+  let isSticky = false;
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const threshold = 100;
+
+    if (scrollY > threshold && !isSticky) {
+      isSticky = true;
+      header?.classList.add('is-sticky');
+    } else if (scrollY <= threshold && isSticky) {
+      isSticky = false;
+      header?.classList.remove('is-sticky');
+    }
+  }, { passive: true });
+</script>
+
+<style>
+  header.is-sticky {
+    animation: headerSlideDown 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    box-shadow: var(--shadow-md);
+    background-color: var(--color-card);
+  }
+
+  @keyframes headerSlideDown {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+</style>
