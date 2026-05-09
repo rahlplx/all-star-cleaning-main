@@ -23,7 +23,7 @@ const altLocale = isFr ? 'en' : 'fr';
 
 const breadcrumbs: BreadcrumbItem[] = [
   { label: 'Home', frLabel: 'Accueil', href: `/${locale}` },
-  { label: 'Areas', frLabel: 'Régions', href: `/${locale}/area/${location.slug}` },
+  { label: 'Areas', frLabel: 'Régions', href: `/${locale}/area` },
   { label: location.name, frLabel: location.frName, href: `/${locale}/area/${location.slug}` },
 ];
 
@@ -69,7 +69,7 @@ const heroSubtitle = isFr
           src={`https://www.google.com/maps?q=${location.coordinates.lat},${location.coordinates.lng}&z=13&output=embed`}
           width="100%"
           height="300"
-          style="border:0;"
+          class="border-0"
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"

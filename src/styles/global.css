@@ -21,10 +21,10 @@
   --color-navy-light: #1c2f47; --color-navy-light: oklch(25.5% 0.035 255);
   --color-navy-dark: #0a111b; --color-navy-dark: oklch(12.0% 0.025 255);
 
-  /* Accent: Keeping a refined Gold for ratings, but reduced elsewhere */
-  --color-gold: #d4a017; --color-gold: oklch(75.5% 0.167 75);
-  --color-gold-light: #e0b82e; --color-gold-light: oklch(82.0% 0.165 80);
-  --color-gold-dark: #b08010; --color-gold-dark: oklch(62.0% 0.155 65);
+  /* Accent: Gold reserved for ratings and rare emphasis — #f59e0b per DESIGN.md */
+  --color-gold: #f59e0b; --color-gold: oklch(75% 0.15 85);
+  --color-gold-light: #fbbf24; --color-gold-light: oklch(80% 0.14 85);
+  --color-gold-dark: #d97706; --color-gold-dark: oklch(65% 0.16 85);
 
   /* Semantic colors */
   --color-green: #1a9a4a; --color-green: oklch(63.0% 0.190 145);
@@ -37,7 +37,9 @@
   --color-background: var(--color-off-white);
   --color-foreground: var(--color-navy);
   --color-primary: var(--color-royal-blue);
-  --color-primary-foreground: #ffffff;
+  --color-primary-foreground: var(--color-text-on-dark);
+  --color-destructive-foreground: var(--color-text-on-dark);
+  --color-input: var(--color-border);
   --color-secondary: var(--color-navy);
   --color-secondary-foreground: #f6f6f9; --color-secondary-foreground: oklch(98.5% 0.004 255);
   --color-accent: var(--color-gold);
@@ -47,7 +49,7 @@
   --color-border: #d8d8de; --color-border: oklch(92.0% 0.008 255);              /* Tinted toward brand, not pure gray */
   --color-ring: var(--color-royal-blue);                 /* Royal blue for focus rings */
   --color-destructive: #b91c1c; --color-destructive: oklch(55.0% 0.200 25);
-  --color-card: #ededf1; --color-card: oklch(94.5% 0.007 255);                /* Distinct from page bg */
+  --color-card: #ffffff; --color-card: oklch(100% 0 0);                       /* Card surfaces — white to contrast off-white bg */
   --color-card-foreground: var(--color-navy);
 
   /* Text on dark backgrounds — replaces Tailwind text-white with tinted white */
