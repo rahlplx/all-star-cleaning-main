@@ -278,8 +278,8 @@ export default config({
         // ──────────────────────────────────────────
         statsRatingEn: fields.text({ label: 'Stats: Rating label (English)', defaultValue: 'verified Google reviews' }),
         statsRatingFr: fields.text({ label: 'Stats: Rating label (French)', defaultValue: 'avis Google vérifiés' }),
-        statsSatisfactionEn: fields.text({ label: 'Stats: Satisfaction label (English)', defaultValue: 'Satisfaction guaranteed' }),
-        statsSatisfactionFr: fields.text({ label: 'Stats: Satisfaction label (French)', defaultValue: 'Satisfaction garantie' }),
+        statsEstimatesEn: fields.text({ label: 'Stats: Estimates label (English)', defaultValue: 'Free Estimates' }),
+        statsEstimatesFr: fields.text({ label: 'Stats: Estimates label (French)', defaultValue: 'Estimations Gratuites' }),
         statsDaysEn: fields.text({ label: 'Stats: Days label (English)', defaultValue: 'Open every day of the week' }),
         statsDaysFr: fields.text({ label: 'Stats: Days label (French)', defaultValue: 'Ouvert chaque semaine' }),
 
