@@ -215,6 +215,7 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
         {services.map((service, i) => {
           const imgSrc = service.image || `/images/${service.slug}.jpg`;
           const isFeatured = i === 0;
+          const features = isFr ? service.frFeatures : service.features;
           return (
             <a
               href={`/${locale}/services/${service.slug}`}
@@ -260,6 +261,16 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
                 <p class="line-clamp-2 text-sm leading-relaxed text-white/80">
                   {isFr ? service.frDescription : service.description}
                 </p>
+                {features?.length > 0 && (
+                  <ul class="space-y-1">
+                    {features.slice(0, isFeatured ? 3 : 2).map((feature: string) => (
+                      <li class="flex items-center gap-2 text-xs text-white/75">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 shrink-0 text-white/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
                 {/* Frosted glass CTA */}
                 <div class="mt-1 flex w-fit items-center gap-2 rounded-xl border border-white/30 bg-white/15 py-1.5 pl-3 pr-1.5 backdrop-blur-md transition-all duration-300 group-hover:bg-white/25">
