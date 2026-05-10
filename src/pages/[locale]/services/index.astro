@@ -4,6 +4,7 @@ import { services } from '@/data/services';
 import { getBreadcrumbSchema } from '@/seo';
 import type { BreadcrumbItem } from '@/types';
 import homepageData from '@/content/homepage.json';
+import siteSettings from '@/content/settings.json';
 
 export function getStaticPaths() {
   return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
@@ -45,11 +46,17 @@ const cms = homepageData;
 >
   <!-- Trust Badge Bar -->
   <div class="mb-8 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-    <div class="flex items-center gap-2 rounded-full bg-royal-blue/10 px-4 py-2 border border-royal-blue/20">
+    <a 
+      href={siteSettings.googleUrl} 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      class="flex items-center gap-2 rounded-full bg-royal-blue/10 px-4 py-2 border border-royal-blue/20 transition-all hover:bg-royal-blue/20 hover:scale-105 active:scale-95"
+      aria-label={isFr ? 'Voir nos avis Google (ouvre une nouvelle fenêtre)' : 'See our Google Reviews (opens in new window)'}
+    >
       <span class="text-royal-blue text-sm">★★★★★</span>
       <span class="text-sm font-bold text-navy">{cms.googleRating}</span>
       <span class="text-xs text-muted-foreground">{isFr ? `${cms.googleReviewCount} avis Google` : `${cms.googleReviewCount} Google reviews`}</span>
-    </div>
+    </a>
     <div class="flex items-center gap-2 rounded-full bg-royal-blue/10 px-4 py-2 border border-royal-blue/20">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-royal-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
       <span class="text-sm font-semibold text-navy">{isFr ? 'Assuré & Cautionné' : 'Insured & Bonded'}</span>

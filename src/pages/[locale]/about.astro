@@ -5,6 +5,7 @@ import { getFounderSchema, getBreadcrumbSchema } from '@/seo';
 import type { BreadcrumbItem } from '@/types';
 import aboutData from '@/content/about.json';
 import homepageData from '@/content/homepage.json';
+import siteSettings from '@/content/settings.json';
 
 export function getStaticPaths() {
   return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
@@ -41,12 +42,18 @@ const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs, locale);
         <div class="order-2 lg:order-1">
           <!-- Review Badge -->
           <div class="flex flex-wrap items-center gap-3">
-            <div class="flex items-center gap-2 rounded-full bg-royal-blue/10 px-4 py-2 border border-royal-blue/20">
+            <a 
+              href={siteSettings.googleUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="flex items-center gap-2 rounded-full bg-royal-blue/10 px-4 py-2 border border-royal-blue/20 transition-all hover:bg-royal-blue/20 hover:scale-105 active:scale-95"
+              aria-label={isFr ? 'Voir nos avis Google (ouvre une nouvelle fenêtre)' : 'See our Google Reviews (opens in new window)'}
+            >
               <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c3.11 0 5.72-1.03 7.63-2.77l-3.57-2.77c-1.01.68-2.31 1.09-4.06 1.09-3.13 0-5.78-2.11-6.73-4.96H2.62v2.87C4.52 20.38 8.04 23 12 23z" fill="#34A853"/><path d="M5.27 13.59c-.24-.71-.38-1.47-.38-2.27 0-.79.14-1.55.38-2.26V6.19H2.62C1.81 7.82 1.35 9.66 1.35 11.62c0 1.96.46 3.8 1.27 5.43l2.65-2.07z" fill="#FBBC05"/><path d="M12 4.39c1.7 0 3.22.58 4.42 1.73l3.31-3.31C17.71 1.05 15.09 0 12 0 8.04 0 4.52 2.62 2.62 6.19l3.3 2.57C6.88 6.5 9.53 4.39 12 4.39z" fill="#EA4335"/></svg>
               <span class="text-royal-blue text-sm" aria-label="5 out of 5 stars">★★★★★</span>
               <span class="text-sm font-bold text-navy">{home.googleRating}</span>
               <span class="text-xs text-muted-foreground">{isFr ? `${home.googleReviewCount} avis Google` : `${home.googleReviewCount} Google reviews`}</span>
-            </div>
+            </a>
             <div class="flex items-center gap-2 rounded-full bg-royal-blue/10 px-4 py-2 border border-royal-blue/20">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-royal-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
               <span class="text-sm font-semibold text-navy">{isFr ? 'Assuré & Cautionné' : 'Insured & Bonded'}</span>
@@ -93,10 +100,16 @@ const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs, locale);
           </div>
 
           <div class="fade-in delay-2">
-            <div class="rounded-xl border border-border bg-card p-5 text-center">
+            <a 
+              href={siteSettings.googleUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="block rounded-xl border border-border bg-card p-5 text-center transition-all hover:bg-royal-blue/5 hover:scale-105 active:scale-95"
+              aria-label={isFr ? 'Voir nos avis Google (ouvre une nouvelle fenêtre)' : 'See our Google Reviews (opens in new window)'}
+            >
               <span class="text-4xl font-bold text-navy">{home.googleRating}</span>
               <p class="mt-1 text-sm text-muted-foreground">{isFr ? 'Note Google' : 'Google Rating'}</p>
-            </div>
+            </a>
           </div>
 
           <div class="fade-in delay-2 rounded-xl bg-royal-blue p-6 text-white shadow-lg">
