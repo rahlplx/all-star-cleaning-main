@@ -31,7 +31,7 @@ const allSchemas = schema ? [localBusinessSchema, ...(Array.isArray(schema) ? sc
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-midnight-indigo focus:px-4 focus:py-2 focus:text-text-on-dark focus:shadow-lg">{locale === 'fr' ? 'Aller au contenu principal' : 'Skip to main content'}</a>
     <TopBar locale={locale} />
     <Header locale={locale} />
-    <main id="main-content" class="flex-1 pb-16 md:pb-0"><slot /></main>
+    <main id="main-content" class="flex-1"><slot /></main>
     <Footer locale={locale} />
     <StickyBottomCTA locale={locale} />
   <!-- impeccable-live-start -->
