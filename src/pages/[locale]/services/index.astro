@@ -61,29 +61,29 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
   schema={[breadcrumbSchema, itemListSchema]}
 >
   <!-- Trust Badge Bar -->
-  <div class="mb-8 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+  <div class="mb-8 flex flex-wrap items-center justify-center gap-4 px-4 md:px-6 sm:gap-6">
     <a 
       href={siteSettings.googleUrl} 
       target="_blank" 
       rel="noopener noreferrer" 
-      class="flex items-center gap-2 rounded-full bg-royal-blue/10 px-4 py-2 border border-royal-blue/20 transition-all hover:bg-royal-blue/20 hover:scale-105 active:scale-95"
+      class="flex items-center gap-2 rounded-full bg-midnight-indigo/10 px-4 py-2 border border-midnight-indigo/20 transition-all hover:bg-midnight-indigo/20 hover:scale-105 active:scale-95"
       aria-label={isFr ? 'Voir nos avis Google (ouvre une nouvelle fenêtre)' : 'See our Google Reviews (opens in new window)'}
     >
-      <span class="text-royal-blue text-sm">★★★★★</span>
+      <span class="text-midnight-indigo text-sm">★★★★★</span>
       <span class="text-sm font-bold text-navy">{cms.googleRating}</span>
       <span class="text-xs text-muted-foreground">{isFr ? `${cms.googleReviewCount} avis Google` : `${cms.googleReviewCount} Google reviews`}</span>
     </a>
-    <div class="flex items-center gap-2 rounded-full bg-royal-blue/10 px-4 py-2 border border-royal-blue/20">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-royal-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+    <div class="flex items-center gap-2 rounded-full bg-midnight-indigo/10 px-4 py-2 border border-midnight-indigo/20">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-midnight-indigo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
       <span class="text-sm font-semibold text-navy">{isFr ? 'Assuré & Cautionné' : 'Insured & Bonded'}</span>
     </div>
-    <div class="flex items-center gap-2 rounded-full bg-royal-blue/10 px-4 py-2 border border-royal-blue/20">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-royal-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    <div class="flex items-center gap-2 rounded-full bg-midnight-indigo/10 px-4 py-2 border border-midnight-indigo/20">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-midnight-indigo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
       <span class="text-sm font-semibold text-navy">{isFr ? 'Satisfaction garantie à 100%' : '100% Satisfaction Guaranteed'}</span>
     </div>
   </div>
 
-  <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+  <div class="grid gap-6 px-4 md:px-6 md:grid-cols-2 lg:grid-cols-3">
     {services.map((service, i) => {
       const delayClass = `delay-${Math.min(i + 1, 5)}`;
       const features = isFr ? service.frFeatures : service.features;
@@ -112,34 +112,34 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
             loading={i < 2 ? 'eager' : 'lazy'}
           />
 
-          {/* Gradient — strong at bottom for content legibility */}
-          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+          {/* Gradient — branded indigo wash for maximum text safety */}
+          <div class="absolute inset-0 bg-gradient-to-t from-midnight-indigo-dark/98 via-midnight-indigo-dark/80 to-transparent" />
 
           {/* All content overlaid at bottom */}
           <div class="absolute bottom-0 left-0 right-0 flex flex-col gap-2 p-4 md:p-5">
-            <span class:list={['w-fit rounded-md px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm', badge?.color ?? 'bg-royal-blue/35']}>
+            <span class:list={['w-fit rounded-md px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-text-on-dark backdrop-blur-sm', badge?.color ?? 'bg-midnight-indigo/35']}>
               {badge ? (isFr ? badge.fr : badge.en) : ''}
             </span>
-            <h2 class:list={['font-heading font-bold text-white drop-shadow', isFeatured ? 'text-2xl lg:text-3xl' : 'text-xl']}>
+            <h2 class:list={['font-heading font-bold text-text-on-dark drop-shadow', isFeatured ? 'text-2xl lg:text-3xl' : 'text-xl']}>
               {isFr ? service.frName : service.name}
             </h2>
-            <p class="line-clamp-2 text-sm leading-relaxed text-white/80">
+            <p class="line-clamp-2 text-sm leading-relaxed text-text-on-dark-muted">
               {isFr ? service.frDescription : service.description}
             </p>
             {features.length > 0 && (
               <ul class="space-y-1">
                 {features.slice(0, isFeatured ? 3 : 2).map((feature) => (
-                  <li class="flex items-center gap-2 text-xs text-white/75">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 shrink-0 text-white/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  <li class="flex items-center gap-2 text-xs text-text-on-dark-muted">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 shrink-0 text-text-on-dark/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
                     <span>{feature}</span>
                   </li>
                 ))}
               </ul>
             )}
             <div class="mt-1 flex w-fit items-center gap-2 rounded-xl border border-white/30 bg-white/15 py-1.5 pl-3 pr-1.5 backdrop-blur-md transition-all duration-300 group-hover:bg-white/25">
-              <span class="text-xs font-semibold text-white">{isFr ? 'En savoir plus' : 'Learn more'}</span>
+              <span class="text-xs font-semibold text-text-on-dark">{isFr ? 'En savoir plus' : 'Learn more'}</span>
               <div class="flex h-5 w-5 shrink-0 items-center justify-center rounded-lg border border-white/30 transition-transform duration-300 group-hover:translate-x-0.5">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-text-on-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
               </div>
             </div>
           </div>
@@ -149,11 +149,11 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
   </div>
 
   <!-- Bottom CTA Section -->
-  <div class="mt-12 rounded-xl bg-royal-blue px-6 py-8 text-center text-white sm:px-10">
+  <div class="mt-12 rounded-xl bg-midnight-indigo px-6 py-8 text-center text-white sm:px-10">
     <h2 class="font-heading text-2xl font-bold">{isFr ? 'Prêt à commencer?' : 'Ready to Get Started?'}</h2>
     <p class="mt-2 text-text-on-dark-muted">{isFr ? 'Contactez-nous pour un devis gratuit. Nous sommes ouverts 7 jours par semaine!' : 'Contact us for a free quote. We\'re open 7 days a week!'}</p>
     <div class="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-      <a href={`/${locale}/contact`} class="touch-target inline-flex items-center rounded-full bg-white px-8 py-3 text-lg font-semibold uppercase tracking-wider text-royal-blue shadow-lg transition-all hover:bg-white/90 hover:shadow-xl">
+      <a href={`/${locale}/contact`} class="touch-target inline-flex items-center rounded-full bg-white px-8 py-3 text-lg font-semibold uppercase tracking-wider text-midnight-indigo shadow-lg transition-all hover:bg-white/90 hover:shadow-xl">
         {isFr ? 'Obtenez un Devis Gratuit' : 'Get a Free Quote'}
       </a>
       <a href={`tel:${cms.phoneLink}`} class="touch-target inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-8 py-3 text-lg font-semibold uppercase tracking-wider text-text-on-dark transition-all hover:border-white/60 hover:bg-white/10">
