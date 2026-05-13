@@ -35,8 +35,10 @@ download/
 worklog.md
 
 skills-lock.json
+CLAUDE.md
 
-# audit / capture scripts
+# Impeccable live session data
+.impeccable/
 capture-*.mjs
 capture-*.py
 serve-and-capture*.mjs
