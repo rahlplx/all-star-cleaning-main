@@ -33,7 +33,7 @@ const legalPages = [
 >
   <section class="py-16 sm:py-20">
     <div class="mx-auto max-w-4xl px-4">
-      <h1 class="slide-up font-heading heading-section font-bold text-royal-blue">{isFr ? 'Plan du Site' : 'Sitemap'}</h1>
+      <h1 class="slide-up font-heading heading-section font-bold text-midnight-indigo">{isFr ? 'Plan du Site' : 'Sitemap'}</h1>
       
       <div class="mt-12 grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
         <!-- Main Pages -->
@@ -42,7 +42,7 @@ const legalPages = [
           <ul class="space-y-2">
             {mainPages.map((page) => (
               <li>
-                <a href={page.href} class="text-muted-foreground hover:text-royal-blue transition-colors">
+                <a href={page.href} class="text-muted-foreground hover:text-midnight-indigo transition-colors">
                   {page.label}
                 </a>
               </li>
@@ -56,7 +56,7 @@ const legalPages = [
           <ul class="space-y-2">
             {services.map((service) => (
               <li>
-                <a href={`/${locale}/services/${service.slug}`} class="text-muted-foreground hover:text-royal-blue transition-colors">
+                <a href={`/${locale}/services/${service.slug}`} class="text-muted-foreground hover:text-midnight-indigo transition-colors">
                   {isFr ? service.frName : service.name}
                 </a>
               </li>
@@ -70,13 +70,13 @@ const legalPages = [
           <ul class="space-y-2">
             {legalPages.map((page) => (
               <li>
-                <a href={page.href} class="text-muted-foreground hover:text-royal-blue transition-colors">
+                <a href={page.href} class="text-muted-foreground hover:text-midnight-indigo transition-colors">
                   {page.label}
                 </a>
               </li>
             ))}
             <li>
-              <a href="/sitemap-index.xml" class="text-muted-foreground hover:text-royal-blue transition-colors">
+              <a href="/sitemap-index.xml" class="text-muted-foreground hover:text-midnight-indigo transition-colors">
                 XML Sitemap Index
               </a>
             </li>

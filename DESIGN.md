@@ -6,9 +6,9 @@ Midnight Indigo (`oklch(28% 0.08 265)`) carries the authoritative brand voice ac
 ## Palette
 
 ### Primary: Midnight Indigo
-- `--color-royal-blue`: `oklch(28% 0.08 265)` — Primary brand color, headings, CTAs
-- `--color-royal-blue-light`: `oklch(38% 0.07 265)` — Hover states, accents
-- `--color-royal-blue-dark`: `oklch(20% 0.06 265)` — Deep emphasis, button hovers
+- `--color-midnight-indigo`: `oklch(28% 0.08 265)` — Primary brand color, headings, CTAs
+- `--color-midnight-indigo-light`: `oklch(38% 0.07 265)` — Hover states, accents
+- `--color-midnight-indigo-dark`: `oklch(20% 0.06 265)` — Deep emphasis, button hovers
 
 ### Anchor: Navy
 - `--color-navy`: `oklch(17.5% 0.030 265)` — Hero backgrounds, authoritative elements
@@ -75,7 +75,7 @@ Flat by default. Shadows only on state change (hover, sticky).
 ## Components
 
 ### CTA Buttons
-- Primary: `rounded-full bg-royal-blue text-white shadow-lg hover:bg-royal-blue-dark`
+- Primary: `rounded-full bg-midnight-indigo text-white shadow-lg hover:bg-midnight-indigo-dark`
 - Secondary: `rounded-full border-2 border-white/30 text-white hover:border-white/60`
 - Touch targets: minimum 44x44px (48px on coarse pointers)
 
