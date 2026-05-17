@@ -7,6 +7,7 @@ const locales = ['en', 'fr'];
 const astroI18nMiddleware = middleware({
   redirectToDefaultLocale: true,
   prefixDefaultLocale: true,
+  fallbackType: 'redirect',
 });
 
 export const onRequest = defineMiddleware(async (context, next) => {
@@ -15,9 +16,13 @@ export const onRequest = defineMiddleware(async (context, next) => {
   // Let Keystatic admin UI and its API routes pass through freely.
   // These must NOT be intercepted by the i18n router.
   if (pathname.startsWith('/keystatic') || pathname.startsWith('/api/keystatic')) {
-    return next();
+    const response = await next();
+    return response;
   }
 
   // For everything else, run Astro's standard i18n routing
-  return astroI18nMiddleware(context, next);
+  const response = await astroI18nMiddleware(context, next);
+  if (response) return response;
+  
+  return next();
 });

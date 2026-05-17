@@ -1,0 +1,3 @@
+[mcp_servers.playwright]
+args = ["@playwright/mcp@latest"]
+command = "C:/Users/hritt/AppData/Roaming/fnm/aliases/default/npx.cmd"

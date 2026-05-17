@@ -42,8 +42,30 @@ const fr = {
   },
 } as const;
 
-export type TranslationKey = typeof en;
-export const translations = { en, fr } as const;
-export function useTranslations(locale: 'en' | 'fr'): TranslationKey {
+export interface Translation {
+  site: { name: string; tagline: string };
+  nav: { home: string; services: string; about: string; reviews: string; contact: string; getQuote: string; phone: string };
+  services: { windowCleaning: string; gutterCleaning: string; pressureWashing: string; sidingCleaning: string; snowRemoval: string };
+  footer: { serviceArea: string; contactUs: string; followUs: string; hours: string; weekdayHours: string; weekendHours: string; closed: string; copyright: string; privacy: string; terms: string; sitemap: string };
+  cta: { freeQuote: string; callNow: string; bookOnline: string };
+  locations: { servingArea: string; findService: string };
+  meta: { defaultTitle: string; defaultDescription: string };
+  usps: {
+    expertise: { title: string; description: string };
+    equipment: { title: string; description: string };
+    guarantee: { title: string; description: string };
+  };
+  contact: {
+    phone: string;
+    phoneLink: string;
+    email: string;
+    address: string;
+    hours: string;
+  };
+}
+
+export const translations: Record<'en' | 'fr', Translation> = { en, fr };
+
+export function useTranslations(locale: 'en' | 'fr'): Translation {
   return translations[locale];
 }
