@@ -1,4 +1,6 @@
-# CLAUDE.md — All Star Cleaning
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
 
@@ -94,6 +96,43 @@ PUBLIC_KEYSTATIC_GITHUB_APP_SLUG
 WEB3FORMS_ACCESS_KEY   # Contact form submissions
 PUBLIC_SITE_URL        # Canonical URL (https://www.allstarcleaning.ca)
 ```
+
+## Layouts
+
+Two layouts, always nested — choose the inner one:
+
+- **`BaseLayout.astro`** — head + topbar + header + footer + sticky CTA. Pass a `schemas` array (JSON-LD objects from `src/seo/`) and it injects them via `JsonLd.astro`. Use directly only for non-content pages (redirects, etc.).
+- **`PageLayout.astro`** — wraps `BaseLayout`, adds an optional branded hero (title/subtitle) and optional breadcrumb nav. Use for all content pages.
+
+Pass schemas up through `PageLayout` → `BaseLayout` via the `schemas` prop; never inject JSON-LD manually.
+
+## Bilingual Pattern
+
+Every user-facing string has an English and French variant. In `src/types.ts`, bilingual fields follow the `fr*` convention: `name`/`frName`, `slug`/`frSlug`, `features`/`frFeatures`, `faqs`/`frFaqs`, etc. The same pattern applies in service JSON files and location data.
+
+For common UI strings (nav labels, footer text, CTAs), use the translations hook:
+
+```ts
+import { useTranslations } from '@/i18n/translations';
+const t = useTranslations(locale); // locale is 'en' | 'fr'
+t('nav.services')                  // returns English or French string
+```
+
+Page-specific bilingual text is handled inline with an `isFr` boolean: `const isFr = locale === 'fr'`.
+
+## Programmatic Pages (440 location×service combos)
+
+`src/pages/[locale]/area/[locationSlug]/[serviceSlug].astro` is the core engine. Its `getStaticPaths()` cross-joins all locales × locations × services. Each page:
+
+1. Computes breadcrumbs from locale/location/service slugs
+2. Builds a `schemas` array: `getLocationServiceSchema()` + `getBreadcrumbSchema()` + optional `getFAQSchema()`
+3. Renders via `PageLayout` with hero title templated as "{Service} in {Location}"
+
+When adding a new service or location, no changes are needed here — `getStaticPaths()` picks them up automatically.
+
+## i18n Middleware
+
+`src/middleware.ts` exempts `/keystatic/*` and `/api/keystatic/*` from i18n routing, then delegates to Astro's built-in middleware with `redirectToDefaultLocale: true` and `prefixDefaultLocale: true`. Result: `/` → `/en/`, unknown locales redirect to the default. If adding new routes that should bypass i18n (e.g., API endpoints), add them to the exemption check in middleware.
 
 ## Conventions
 
