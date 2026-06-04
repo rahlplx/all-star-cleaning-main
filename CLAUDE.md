@@ -11,7 +11,7 @@ Marketing website for All Star Cleaning, an Ottawa exterior cleaning service. Co
 - **CMS**: Keystatic (headless, cloud-backed JSON)
 - **Styling**: Tailwind CSS v4 + custom design tokens
 - **i18n**: English + French, manual routing via `[locale]` param
-- **Pages**: ~600+ (440 programmatic = 44 locations × 5 services × 2 locales)
+- **Pages**: ~1000+ (880 programmatic = 44 locations × 5 services × 2 locales × 2 route patterns)
 - **Services**: Window cleaning, gutter cleaning, pressure washing, siding cleaning, snow removal
 
 ## Commands
@@ -50,7 +50,8 @@ npm run typecheck  # Type check via astro check
 /[locale]/services/[serviceSlug]            → 5 services × 2 locales = 10 pages
 /[locale]/area/
 /[locale]/area/[locationSlug]/              → 44 locations × 2 locales = 88 pages
-/[locale]/area/[locationSlug]/[serviceSlug] → 440 programmatic pages
+/[locale]/area/[locationSlug]/[serviceSlug]         → 440 programmatic pages
+/[locale]/services/[serviceSlug]/[locationSlug]     → 440 inverse programmatic pages
 /[locale]/privacy
 /[locale]/terms
 /keystatic/*                                → CMS admin UI
@@ -120,9 +121,13 @@ t('nav.services')                  // returns English or French string
 
 Page-specific bilingual text is handled inline with an `isFr` boolean: `const isFr = locale === 'fr'`.
 
-## Programmatic Pages (440 location×service combos)
+## Programmatic Pages (880 location×service combos)
 
-`src/pages/[locale]/area/[locationSlug]/[serviceSlug].astro` is the core engine. Its `getStaticPaths()` cross-joins all locales × locations × services. Each page:
+Two inverse route patterns exist for the same content, serving different SEO entry points:
+- `/[locale]/area/[locationSlug]/[serviceSlug]` — location-first
+- `/[locale]/services/[serviceSlug]/[locationSlug]` — service-first
+
+Both use the same data (`services` × `locations` × locales). The area-first page (`src/pages/[locale]/area/[locationSlug]/[serviceSlug].astro`) is the canonical pattern. Its `getStaticPaths()` cross-joins all locales × locations × services. Each page:
 
 1. Computes breadcrumbs from locale/location/service slugs
 2. Builds a `schemas` array: `getLocationServiceSchema()` + `getBreadcrumbSchema()` + optional `getFAQSchema()`

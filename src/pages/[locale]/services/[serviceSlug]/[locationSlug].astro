@@ -83,8 +83,8 @@ const altSlug = service.slug;  // Both locales use EN slugs in URLs
       <div class="mb-8 rounded-xl bg-gradient-to-br from-midnight-indigo/10 to-teal-500/10 p-6 md:p-8">
         <p class="text-lg font-semibold text-midnight-indigo">
           {isFr
-            ? `Professional ${service.name.toLowerCase()} in ${location.name}`
-            : `Service professionnel de ${service.name.toLowerCase()} à ${location.name}`}
+            ? `Service professionnel de ${service.frName.toLowerCase()} à ${location.frName}`
+            : `Professional ${service.name.toLowerCase()} in ${location.name}`}
         </p>
         <p class="mt-2 measure text-muted-foreground leading-relaxed">
           {isFr
