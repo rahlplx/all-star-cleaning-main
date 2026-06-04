@@ -6,73 +6,196 @@
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
 
-  /* === COLOR STRATEGY: Royal Blue & White === */
-  /* Blue carries 30-60% of hero/CTA surfaces. Navy anchors. White keeps it clean. */
-  /* Neutrals tinted toward blue (hue 255) with chroma 0.005-0.015 */
+  /* === COLOR STRATEGY: Enterprise Cleaning Palette === */
+  /* Primary: Star Blue (hue 225) — trust, water, professionalism */
+  /* Secondary: Fresh Teal (hue 175) — clean, modern, eco */
+  /* Accent: Star Gold (hue 48) — premium, excellence, ratings */
+  /* Neutral: Cool Gray (hue 225) — crisp, clean, blue-tinted */
 
-  /* Brand: Midnight Indigo (Refined) */
-  --color-midnight-indigo: oklch(28% 0.08 265);
-  --color-midnight-indigo-light: oklch(38% 0.07 265);
-  --color-midnight-indigo-dark: oklch(20% 0.06 265);
-  --color-midnight-indigo-surface: oklch(97.5% 0.015 265);
+  /* Brand: Star Blue (10-step scale) */
+  --color-blue-50: oklch(97% 0.01 225);
+  --color-blue-100: oklch(94% 0.02 225);
+  --color-blue-200: oklch(89% 0.04 225);
+  --color-blue-300: oklch(82% 0.07 225);
+  --color-blue-400: oklch(74% 0.10 225);
+  --color-blue-500: oklch(65% 0.13 225);
+  --color-blue-600: oklch(55% 0.15 225);
+  --color-blue-700: oklch(45% 0.14 225);
+  --color-blue-800: oklch(35% 0.12 225);
+  --color-blue-900: oklch(25% 0.10 225);
+  --color-blue-950: oklch(18% 0.08 225);
 
-  /* Anchor: Navy — warm-tinted indigo, never pure black */
-  --color-navy: oklch(17.5% 0.030 265);
-  --color-navy-light: oklch(25.5% 0.035 265);
-  --color-navy-dark: oklch(12.0% 0.025 265);
+  /* Legacy aliases */
+  --color-midnight-indigo: var(--color-blue-800);
+  --color-midnight-indigo-light: var(--color-blue-700);
+  --color-midnight-indigo-dark: var(--color-blue-900);
+  --color-midnight-indigo-surface: var(--color-blue-50);
 
-  /* Accent: Gold reserved for ratings and rare emphasis */
-  --color-gold: oklch(75% 0.15 85);
-  --color-gold-light: oklch(80% 0.14 85);
-  --color-gold-dark: oklch(65% 0.16 85);
+  /* Brand: Fresh Teal (10-step scale) */
+  --color-teal-50: oklch(97% 0.01 175);
+  --color-teal-100: oklch(94% 0.02 175);
+  --color-teal-200: oklch(89% 0.04 175);
+  --color-teal-300: oklch(82% 0.06 175);
+  --color-teal-400: oklch(74% 0.09 175);
+  --color-teal-500: oklch(65% 0.11 175);
+  --color-teal-600: oklch(55% 0.12 175);
+  --color-teal-700: oklch(45% 0.11 175);
+  --color-teal-800: oklch(35% 0.09 175);
+  --color-teal-900: oklch(25% 0.07 175);
+  --color-teal-950: oklch(18% 0.05 175);
 
-  /* Semantic colors */
-  --color-green: #1a9a4a; --color-green: oklch(63.0% 0.190 145);
-  --color-green-light: #3dba6a; --color-green-light: oklch(78.0% 0.180 150);
-  --color-green-dark: #157a3a; --color-green-dark: oklch(52.0% 0.175 140);
-  --color-green-surface: #f0fdf4; --color-green-surface: oklch(98% 0.015 145);
+  /* Accent: Star Gold (10-step scale) */
+  --color-gold-50: oklch(97% 0.02 48);
+  --color-gold-100: oklch(94% 0.04 48);
+  --color-gold-200: oklch(89% 0.07 48);
+  --color-gold-300: oklch(82% 0.10 48);
+  --color-gold-400: oklch(75% 0.13 48);
+  --color-gold-500: oklch(68% 0.15 48);
+  --color-gold-600: oklch(60% 0.16 48);
+  --color-gold-700: oklch(52% 0.15 48);
+  --color-gold-800: oklch(44% 0.13 48);
+  --color-gold-900: oklch(36% 0.11 48);
+  --color-gold-950: oklch(28% 0.09 48);
 
-  --color-sky: #0ea5e9; --color-sky: oklch(70% 0.16 235);
-  --color-sky-light: #38bdf8; --color-sky-light: oklch(78% 0.14 235);
-  --color-sky-dark: #0284c7; --color-sky-dark: oklch(60% 0.18 235);
-  --color-sky-surface: #f0f9ff; --color-sky-surface: oklch(98% 0.015 235);
+  /* Legacy aliases */
+  --color-gold: var(--color-gold-500);
+  --color-gold-light: var(--color-gold-400);
+  --color-gold-dark: var(--color-gold-600);
 
-  --color-amber: #f59e0b; --color-amber: oklch(78% 0.17 75);
-  --color-amber-light: #fbbf24; --color-amber-light: oklch(84% 0.16 75);
-  --color-amber-dark: #d97706; --color-amber-dark: oklch(68% 0.18 75);
-  --color-amber-surface: #fffbeb; --color-amber-surface: oklch(98.5% 0.015 75);
+  /* Neutral: Cool Gray (10-step scale, hue 225) */
+  --color-gray-50: oklch(98.5% 0.003 225);
+  --color-gray-100: oklch(96.5% 0.005 225);
+  --color-gray-200: oklch(93% 0.007 225);
+  --color-gray-300: oklch(89% 0.009 225);
+  --color-gray-400: oklch(82% 0.010 225);
+  --color-gray-500: oklch(70% 0.012 225);
+  --color-gray-600: oklch(55% 0.015 225);
+  --color-gray-700: oklch(42% 0.018 225);
+  --color-gray-800: oklch(30% 0.020 225);
+  --color-gray-900: oklch(20% 0.022 225);
+  --color-gray-950: oklch(13% 0.025 225);
 
-  /* Neutrals — indigo-tinted (hue 265), hex fallbacks + OKLCH */
-  --color-off-white: oklch(98.0% 0.005 265);       /* Page background */
-  --color-off-white-dark: oklch(93.5% 0.006 265);
-  --color-background: var(--color-off-white);
-  --color-foreground: var(--color-navy);
-  --color-primary: var(--color-midnight-indigo);
+  /* Legacy aliases */
+  --color-navy: var(--color-gray-900);
+  --color-navy-light: var(--color-gray-800);
+  --color-navy-dark: var(--color-gray-950);
+  --color-off-white: var(--color-gray-50);
+  --color-off-white-dark: var(--color-gray-100);
+
+  /* Semantic: Success (Clean Green, hue 150) */
+  --color-green-50: oklch(97% 0.02 150);
+  --color-green-100: oklch(94% 0.04 150);
+  --color-green-200: oklch(89% 0.07 150);
+  --color-green-300: oklch(82% 0.10 150);
+  --color-green-400: oklch(74% 0.14 150);
+  --color-green-500: oklch(65% 0.17 150);
+  --color-green-600: oklch(55% 0.18 150);
+  --color-green-700: oklch(45% 0.16 150);
+  --color-green-800: oklch(35% 0.14 150);
+  --color-green-900: oklch(25% 0.12 150);
+  --color-green-950: oklch(18% 0.10 150);
+
+  /* Legacy aliases */
+  --color-green: var(--color-green-500);
+  --color-green-light: var(--color-green-400);
+  --color-green-dark: var(--color-green-600);
+  --color-green-surface: var(--color-green-50);
+
+  /* Semantic: Info (Sky Blue, hue 210) */
+  --color-sky-50: oklch(97% 0.01 210);
+  --color-sky-100: oklch(94% 0.02 210);
+  --color-sky-200: oklch(89% 0.04 210);
+  --color-sky-300: oklch(82% 0.06 210);
+  --color-sky-400: oklch(74% 0.09 210);
+  --color-sky-500: oklch(65% 0.11 210);
+  --color-sky-600: oklch(55% 0.12 210);
+  --color-sky-700: oklch(45% 0.11 210);
+  --color-sky-800: oklch(35% 0.09 210);
+  --color-sky-900: oklch(25% 0.07 210);
+  --color-sky-950: oklch(18% 0.05 210);
+
+  /* Legacy aliases */
+  --color-sky: var(--color-sky-500);
+  --color-sky-light: var(--color-sky-400);
+  --color-sky-dark: var(--color-sky-600);
+  --color-sky-surface: var(--color-sky-50);
+
+  /* Semantic: Warning (Amber, hue 75) */
+  --color-amber-50: oklch(97% 0.02 75);
+  --color-amber-100: oklch(94% 0.04 75);
+  --color-amber-200: oklch(89% 0.07 75);
+  --color-amber-300: oklch(82% 0.10 75);
+  --color-amber-400: oklch(74% 0.13 75);
+  --color-amber-500: oklch(65% 0.16 75);
+  --color-amber-600: oklch(55% 0.17 75);
+  --color-amber-700: oklch(45% 0.15 75);
+  --color-amber-800: oklch(35% 0.13 75);
+  --color-amber-900: oklch(25% 0.11 75);
+  --color-amber-950: oklch(18% 0.09 75);
+
+  /* Legacy aliases */
+  --color-amber: var(--color-amber-500);
+  --color-amber-light: var(--color-amber-400);
+  --color-amber-dark: var(--color-amber-600);
+  --color-amber-surface: var(--color-amber-50);
+
+  /* Semantic: Error (Signal Red, hue 25) */
+  --color-red-50: oklch(97% 0.02 25);
+  --color-red-100: oklch(94% 0.04 25);
+  --color-red-200: oklch(89% 0.07 25);
+  --color-red-300: oklch(82% 0.10 25);
+  --color-red-400: oklch(74% 0.14 25);
+  --color-red-500: oklch(65% 0.18 25);
+  --color-red-600: oklch(55% 0.20 25);
+  --color-red-700: oklch(45% 0.18 25);
+  --color-red-800: oklch(35% 0.15 25);
+  --color-red-900: oklch(25% 0.13 25);
+  --color-red-950: oklch(18% 0.11 25);
+
+  /* Surface Hierarchy */
+  --color-surface-background: var(--color-gray-50);
+  --color-surface-card: oklch(100% 0 0);
+  --color-surface-elevated: oklch(100% 0 0);
+  --color-surface-overlay: oklch(20% 0.022 225 / 0.5);
+  --color-surface-inverse: var(--color-gray-900);
+
+  /* State Colors */
+  --color-state-hover: var(--color-blue-50);
+  --color-state-active: var(--color-blue-100);
+  --color-state-focus: var(--color-blue-500);
+  --color-state-disabled: var(--color-gray-200);
+  --color-state-disabled-text: var(--color-gray-400);
+
+  /* Data Visualization */
+  --color-chart-1: var(--color-blue-500);
+  --color-chart-2: var(--color-teal-500);
+  --color-chart-3: var(--color-gold-500);
+  --color-chart-4: var(--color-green-500);
+  --color-chart-5: var(--color-sky-500);
+  --color-chart-6: var(--color-red-500);
+
+  /* UI Semantic Tokens */
+  --color-background: var(--color-gray-50);
+  --color-foreground: var(--color-gray-900);
+  --color-primary: var(--color-blue-800);
   --color-primary-foreground: var(--color-text-on-dark);
+  --color-secondary: var(--color-teal-500);
+  --color-secondary-foreground: oklch(98.5% 0.004 225);
+  --color-accent: var(--color-gold-500);
+  --color-accent-foreground: var(--color-gray-900);
+  --color-muted: var(--color-gray-600);
+  --color-muted-foreground: var(--color-gray-500);
+  --color-border: var(--color-gray-200);
+  --color-ring: var(--color-blue-500);
+  --color-destructive: var(--color-red-500);
   --color-destructive-foreground: var(--color-text-on-dark);
-  --color-input: var(--color-border);
-  --color-secondary: var(--color-navy);
-  --color-secondary-foreground: oklch(98.5% 0.004 265);
-  --color-accent: var(--color-gold);
-  --color-accent-foreground: var(--color-navy);
-  --color-muted: oklch(35.0% 0.03 265);              /* Deeper secondary text for better authority */
-  --color-muted-foreground: oklch(42.0% 0.025 265);   /* WCAG AA: 5.22:1 on off-white */
-  --color-border: oklch(92.0% 0.008 265);              /* Tinted toward brand, not pure gray */
-  --color-ring: var(--color-midnight-indigo);                 /* Indigo focus rings */
-  --color-destructive: #b91c1c; --color-destructive: oklch(55.0% 0.200 25);
-  --color-card: #ffffff; --color-card: oklch(100% 0 0);                       /* Card surfaces — white to contrast off-white bg */
-  --color-card-foreground: var(--color-navy);
+  --color-input: var(--color-gray-200);
+  --color-card: oklch(100% 0 0);
+  --color-card-foreground: var(--color-gray-900);
 
-  /* === TYPOGRAPHY TEST: "White" Text on Dark === */
-  /* --color-text-on-dark: oklch(98.0% 0.003 265); [Original Stark White] */
-  
-  /* TEST 1: Refined White (Soft Parchment) - INACTIVE */
-  /* --color-text-on-dark: oklch(96.5% 0.008 265); */
-  /* --color-text-on-dark-muted: oklch(90.0% 0.01 265); */
-
-  /* TEST 2: Indigo-Wash (Subtle Brand Glow) - ACTIVE */
-  --color-text-on-dark: oklch(94.5% 0.025 265);
-  --color-text-on-dark-muted: oklch(88.0% 0.03 265);
+  /* Text on Dark Surfaces */
+  --color-text-on-dark: oklch(94.5% 0.025 225);
+  --color-text-on-dark-muted: oklch(88.0% 0.03 225);
 
   /* Safe areas */
   --safe-area-top: env(safe-area-inset-top);

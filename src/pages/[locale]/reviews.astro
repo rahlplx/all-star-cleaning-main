@@ -86,8 +86,6 @@ const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs, locale);
         </div>
       </a>
 
-      <h1 class="sr-only">{isFr ? 'Témoignages' : 'Customer Reviews'}</h1>
-
       <!-- Review cards -->
       <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {reviewData.map((review, i) => {
@@ -137,7 +135,7 @@ const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs, locale);
     <div class="absolute inset-0 z-0">
       <img
         src={home.ctaImage}
-        alt="Clean home exterior ready for service"
+        alt=""
         role="presentation"
         width="1344"
         height="768"

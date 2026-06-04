@@ -37,6 +37,9 @@ worklog.md
 skills-lock.json
 CLAUDE.md
 
+# Sisyphus agent working files
+.sisyphus/
+
 # Impeccable live session data
 .impeccable/
 capture-*.mjs
