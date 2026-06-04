@@ -23,6 +23,18 @@ npm run preview    # Preview production build locally
 npm run typecheck  # Type check via astro check
 ```
 
+## CodeGraph (AI code intelligence MCP)
+
+Codegraph builds a local SQLite symbol graph so AI agents can navigate code without scanning every file.
+
+**First-time setup** (once per machine):
+```bash
+npm install -g @colbymchenry/codegraph
+codegraph init -i    # builds .codegraph/codegraph.db — ~250ms for this repo
+```
+
+The MCP server is pre-configured in `.mcp.json`. Claude Code will automatically use tools like `codegraph_search`, `codegraph_callers`, `codegraph_callees`, and `codegraph_impact` once the binary is installed and the index is built.
+
 ## Key Files
 
 | File | Purpose |
