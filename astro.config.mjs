@@ -9,16 +9,19 @@ import cloudflare from '@astrojs/cloudflare';
 /**
  * Tech-Stack Obfuscation Vite Plugin
  *
- * Renames all technology-identifying patterns in production builds:
- * 1. `--tw-*` → `--c-*` (Tailwind CSS custom properties)
- * 2. `@layer properties/theme/base/utilities/components` → generic names
- * 3. `@property --tw-*` → `@property --c-*`
+ * Renames all technology-identifying patterns in production builds to defeat
+ * Wappalyzer / BuiltWith / WhatRuns fingerprinting:
  *
- * This defeats Wappalyzer/BuiltWith/WhatRuns detection which fingerprint
- * these patterns as Tailwind CSS indicators.
+ * CSS:  --tw-* → --c-*  |  @layer names → generic  |  [data-astro-cid-] → [data-v-]
+ * HTML: <meta name="generator"> removed  |  astro-island → x-frame
+ *       astro-slot → x-slot  |  data-astro-cid- → data-v-
+ * JS:   --tw-* → --c-*  |  "astro-island" → "x-frame"  |  "astro-slot" → "x-slot"
+ *       data-astro-cid- → data-v-
+ *
+ * HTML and JS renames MUST stay in sync — astro-island is a customElements.define()
+ * registration; the string must match between the HTML element name and the JS call.
  */
 function obfuscateTechStack() {
-  // Layer name mapping: Tailwind-specific → generic
   const layerMap = {
     'properties': 'base-props',
     'theme': 'design-tokens',
@@ -32,31 +35,50 @@ function obfuscateTechStack() {
     enforce: 'post',
     generateBundle(options, bundle) {
       for (const [fileName, chunk] of Object.entries(bundle)) {
-        // Process CSS assets
+        // CSS: custom props, layer names, Astro scoped-style selector prefix
         if (chunk.type === 'asset' && chunk.fileName.endsWith('.css')) {
           let css = chunk.source;
-
-          // 1. Rename --tw- prefix to --c-
+          // Covers --tw-* declarations, var(--tw-*) references, and @property --tw-*
           css = css.replace(/--tw-/g, '--c-');
-
-          // 2. Rename Tailwind-specific @layer names
-          // Pattern: @layer <name>{ or @layer <name>;
           for (const [twName, genericName] of Object.entries(layerMap)) {
-            // @layer name{ → @layer generic{
             css = css.replace(new RegExp(`@layer\\s+${twName}\\s*\\{`, 'g'), `@layer ${genericName}{`);
-            // @layer name; (layer statement)
             css = css.replace(new RegExp(`@layer\\s+${twName}\\s*;`, 'g'), `@layer ${genericName};`);
-            // ,name in layer order lists like @layer reset, name, helpers;
             css = css.replace(new RegExp(`,\\s*${twName}\\b`, 'g'), `,${genericName}`);
           }
-
+          // [data-astro-cid-xxxxxxxx] → [data-v-xxxxxxxx] (Vue-like; confuses scanners)
+          css = css.replace(/\[data-astro-cid-/g, '[data-v-');
           chunk.source = css;
         }
 
-        // Process JS chunks (may contain inline CSS or references)
+        // HTML: remove generator tag, rename Astro custom element + scoped attributes
+        if (chunk.type === 'asset' && chunk.fileName.endsWith('.html')) {
+          if (typeof chunk.source === 'string') {
+            let html = chunk.source;
+            // Primary Astro fingerprint: <meta name="generator" content="Astro vX.Y.Z">
+            html = html.replace(/<meta\s+name=["']generator["'][^>]*\/?>/gi, '');
+            // Custom element — must match the JS customElements.define() rename below
+            html = html.replace(/<astro-island(\s|\/|>)/g, '<x-frame$1');
+            html = html.replace(/<\/astro-island>/g, '</x-frame>');
+            // Slot attribute — must match querySelector('[astro-slot]') rename in JS
+            html = html.replace(/\bastro-slot=/g, 'x-slot=');
+            // Scoped style attribute — must match CSS [data-astro-cid-] rename above
+            html = html.replace(/data-astro-cid-/g, 'data-v-');
+            chunk.source = html;
+          }
+        }
+
+        // JS: custom props + Astro runtime identifier strings
         if (chunk.type === 'chunk' && chunk.fileName.endsWith('.js')) {
-          if (typeof chunk.code === 'string' && chunk.code.includes('--tw-')) {
-            chunk.code = chunk.code.replace(/--tw-/g, '--c-');
+          if (typeof chunk.code === 'string') {
+            let code = chunk.code;
+            if (code.includes('--tw-')) code = code.replace(/--tw-/g, '--c-');
+            // customElements.define('astro-island', ...) → customElements.define('x-frame', ...)
+            code = code.replace(/astro-island/g, 'x-frame');
+            // querySelector('[astro-slot]') → querySelector('[x-slot]')
+            code = code.replace(/astro-slot/g, 'x-slot');
+            // setAttribute('data-astro-cid-xxx') → setAttribute('data-v-xxx')
+            code = code.replace(/data-astro-cid-/g, 'data-v-');
+            chunk.code = code;
           }
         }
       }

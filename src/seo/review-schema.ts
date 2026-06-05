@@ -23,15 +23,9 @@ export function getReviewSchema(reviews: ReviewData[], locale: 'en' | 'fr') {
     reviewBody: review.text,
     itemReviewed: {
       '@type': 'LocalBusiness',
+      // @id links this Review to the canonical LocalBusiness node in the knowledge graph
+      '@id': 'https://allstarcleaning.ca/#business',
       name: 'All Star Cleaning Ottawa',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: '800 Hunt Club Rd',
-        addressLocality: 'Ottawa',
-        addressRegion: 'ON',
-        postalCode: 'K1V 1C3',
-        addressCountry: 'CA',
-      },
     },
   }));
 }

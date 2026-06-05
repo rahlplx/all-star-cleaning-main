@@ -7,6 +7,8 @@ export function getHowToSchema(locale: 'en' | 'fr') {
     description: locale === 'fr'
       ? 'Obtenez un extérieur impeccable en trois étapes simples avec All Star Cleaning à Ottawa.'
       : 'Get a spotless exterior in three simple steps with All Star Cleaning in Ottawa.',
+    totalTime: 'PT5M',
+    estimatedCost: { '@type': 'MonetaryAmount', currency: 'CAD', value: '0' },
     step: [
       {
         '@type': 'HowToStep',

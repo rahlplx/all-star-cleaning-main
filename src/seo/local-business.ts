@@ -9,16 +9,32 @@ export function getLocalBusinessSchema({ locale, url }: LocalBusinessSchemaOptio
   return {
     '@context': 'https://schema.org',
     '@type': 'HomeAndConstructionBusiness',
+    '@id': 'https://allstarcleaning.ca/#business',
     name: 'All Star Cleaning',
+    legalName: 'All Star Cleaning Ottawa',
     alternateName: locale === 'fr' ? 'Nettoyage All Star' : 'All Star Cleaning Ottawa',
     url,
-    logo: 'https://allstarcleaning.ca/images/og-default.jpg',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://allstarcleaning.ca/images/og-default.jpg',
+      width: 1200,
+      height: 630,
+    },
     image: 'https://allstarcleaning.ca/images/og-default.jpg',
     description: locale === 'fr'
       ? "Service de nettoyage extérieur de confiance à Ottawa. Vitres, gouttières, lavage sous pression, revêtement et déneigement. Devis gratuits."
       : "Ottawa's trusted exterior cleaning service. Window, gutter, pressure washing, siding & snow removal. Free quotes.",
+    foundingDate: '2020',
+    knowsLanguage: ['en-CA', 'fr-CA'],
     telephone: '+1-613-314-3300',
     email: 'hello@allstarcleaning.ca',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+1-613-314-3300',
+      contactType: 'customer service',
+      areaServed: 'CA-ON',
+      availableLanguage: ['English', 'French'],
+    },
     address: {
       '@type': 'PostalAddress',
       streetAddress: '800 Hunt Club Rd',
