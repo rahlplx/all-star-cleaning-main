@@ -23,9 +23,25 @@ npm run preview    # Preview production build locally
 npm run typecheck  # Type check via astro check
 ```
 
-## CodeGraph (AI code intelligence MCP)
+## MCP Servers (`.mcp.json`)
 
-Codegraph builds a local SQLite symbol graph so AI agents can navigate code without scanning every file.
+Three servers are pre-configured. Claude Code connects automatically when the project is open.
+
+### Astro Docs (`astro-docs`)
+Searches the official Astro documentation. Tool: `search_astro_docs(query)`.
+
+Use it whenever you need to verify Astro API behaviour, check breaking changes, or look up config options:
+```
+search_astro_docs("getStaticPaths params i18n manual routing")
+search_astro_docs("Content Layer API JSON loader type safety")
+search_astro_docs("Cloudflare adapter static output prerender")
+search_astro_docs("View Transitions persist scroll position")
+```
+
+Good queries: specific API names, error message text, feature names. The tool returns excerpts from the live docs — always prefer this over training-data guesses for Astro-specific APIs.
+
+### CodeGraph (`codegraph`)
+Builds a local SQLite symbol graph for fast code navigation without full file scans. Tools: `codegraph_search`, `codegraph_callers`, `codegraph_callees`, `codegraph_impact`.
 
 **First-time setup** (once per machine):
 ```bash
@@ -33,7 +49,8 @@ npm install -g @colbymchenry/codegraph
 codegraph init -i    # builds .codegraph/codegraph.db — ~250ms for this repo
 ```
 
-The MCP server is pre-configured in `.mcp.json`. Claude Code will automatically use tools like `codegraph_search`, `codegraph_callers`, `codegraph_callees`, and `codegraph_impact` once the binary is installed and the index is built.
+### Cloudflare (`cloudflare`)
+Access to Cloudflare platform APIs (Workers, Pages, KV, etc.) — useful for deployment config questions.
 
 ## Key Files
 
