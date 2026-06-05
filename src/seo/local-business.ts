@@ -12,7 +12,7 @@ export function getLocalBusinessSchema({ locale, url }: LocalBusinessSchemaOptio
     name: 'All Star Cleaning',
     alternateName: locale === 'fr' ? 'Nettoyage All Star' : 'All Star Cleaning Ottawa',
     url,
-    logo: 'https://allstarcleaning.ca/logo.svg',
+    logo: 'https://allstarcleaning.ca/images/og-default.jpg',
     image: 'https://allstarcleaning.ca/images/og-default.jpg',
     description: locale === 'fr'
       ? "Service de nettoyage extérieur de confiance à Ottawa. Vitres, gouttières, lavage sous pression, revêtement et déneigement. Devis gratuits."
