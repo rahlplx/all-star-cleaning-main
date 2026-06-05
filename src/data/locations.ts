@@ -1,5 +1,7 @@
 import type { Location } from '@/types';
 
+// `neighbours` values are EN slugs (e.g. 'kanata'), NOT hydrated Location objects.
+// They match the `slug` field — never `frSlug`. Resolve via `locations.find(l => l.slug === n)`.
 export const locations: Location[] = [
   { slug: 'arnprior', name: 'Arnprior', frName: 'Arnprior', area: 'West', postalCode: 'K7S', coordinates: { lat: 45.4333, lng: -76.3500 }, neighbours: ['renfrew', 'mississippi-mills', 'dunrobin'] },
   { slug: 'ashton', name: 'Ashton', frName: 'Ashton', area: 'South-East', postalCode: 'K0A', coordinates: { lat: 45.2833, lng: -75.6167 }, neighbours: ['carleton-place', 'kemptville', 'osgoode'] },

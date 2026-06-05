@@ -15,6 +15,9 @@ interface Props {
   schema?: Record<string, unknown> | Record<string, unknown>[];
 }
 const { title, description, locale, canonicalUrl, ogImage, alternateUrls, noindex, schema } = Astro.props;
+// CANONICAL_DOMAIN — must stay in sync with `site` in astro.config.mjs.
+// This value drives canonical URLs and all JSON-LD schema output.
+// astro.config.mjs `site` drives sitemap generation. Both must be non-www.
 const siteUrl = 'https://allstarcleaning.ca';
 const pageUrl = canonicalUrl || `${siteUrl}${Astro.url.pathname}`;
 const localBusinessSchema = getLocalBusinessSchema({ locale, url: `${siteUrl}/${locale}/` });

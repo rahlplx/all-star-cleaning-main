@@ -1,3 +1,6 @@
 ---
+// Hard redirect to /en/ — no Accept-Language negotiation by design.
+// Users can switch to /fr/ via the language toggle. Adding auto-detect here
+// breaks Cloudflare cache (Vary: Accept-Language) and confuses Googlebot.
 return Astro.redirect('/en/');
 ---

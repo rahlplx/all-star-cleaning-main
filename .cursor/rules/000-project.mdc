@@ -44,3 +44,15 @@ Always use one of these — never inject `<head>` or JSON-LD manually:
 ## Build Obfuscation
 
 Production build renames `--tw-*` → `--c-*`, Tailwind layer names → generic names, `/_astro/` → `/static/`. HTML comments are stripped. No source maps. Do not reference internal Tailwind vars.
+
+## AI Traps — Do Not Break These
+
+| Trap | Rule |
+|------|------|
+| **Domain** | Always `https://allstarcleaning.ca` — no `www.`. Two hardcoded places: `astro.config.mjs` `site:` + `BaseLayout.astro` `siteUrl`. Must match. |
+| **`neighbours`** | Values in `src/data/locations.ts` `neighbours` arrays are EN slug strings, not `Location` objects. |
+| **URL slugs** | Both `/en/` and `/fr/` routes use English `slug`, never `frSlug`. |
+| **`as unknown as Service`** | Intentional double cast in `services.ts`. Keystatic JSON ≠ strict TS interface. Do not remove. |
+| **Root redirect** | `src/pages/index.astro` → `/en/` always. No Accept-Language detection. |
+| **`_routes.json` ↔ middleware** | Both must list the same Keystatic bypass paths. |
+| **`schema` prop** | Layouts take `schema` (singular). `schemas` is silently ignored. |

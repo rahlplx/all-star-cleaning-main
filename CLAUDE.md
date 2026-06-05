@@ -124,7 +124,7 @@ PUBLIC_KEYSTATIC_GITHUB_APP_SLUG
 **`.env.local`** — Local overrides:
 ```
 WEB3FORMS_ACCESS_KEY        # Contact form submissions
-PUBLIC_SITE_URL             # Canonical URL (https://www.allstarcleaning.ca)
+PUBLIC_SITE_URL             # Canonical URL (https://allstarcleaning.ca) — non-www
 PUBLIC_CF_ANALYTICS_TOKEN   # Cloudflare Web Analytics beacon token (optional — analytics disabled if unset)
 ```
 
@@ -132,7 +132,7 @@ PUBLIC_CF_ANALYTICS_TOKEN   # Cloudflare Web Analytics beacon token (optional �
 
 Two layouts, always nested — choose the inner one:
 
-- **`BaseLayout.astro`** — head + topbar + header + footer + sticky CTA. Pass a `schemas` array (JSON-LD objects from `src/seo/`) and it injects them via `JsonLd.astro`. Use directly only for non-content pages (redirects, etc.).
+- **`BaseLayout.astro`** — head + topbar + header + footer + sticky CTA. Pass a `schema` prop (JSON-LD object or array from `src/seo/`) and it injects them via `JsonLd.astro`. Use directly only for non-content pages (redirects, etc.).
 - **`PageLayout.astro`** — wraps `BaseLayout`, adds an optional branded hero (title/subtitle) and optional breadcrumb nav. Use for all content pages.
 
 Pass schemas up through `PageLayout` → `BaseLayout` via the `schema` prop; never inject JSON-LD manually.
@@ -168,6 +168,20 @@ When adding a new service or location, no changes are needed here — `getStatic
 ## i18n Middleware
 
 `src/middleware.ts` exempts `/keystatic/*` and `/api/keystatic/*` from i18n routing, then delegates to Astro's built-in middleware with `redirectToDefaultLocale: true` and `prefixDefaultLocale: true`. Result: `/` → `/en/`, unknown locales redirect to the default. If adding new routes that should bypass i18n (e.g., API endpoints), add them to the exemption check in middleware.
+
+## AI Traps — Read Before Editing
+
+These patterns cause silent breakage if changed without understanding the full picture:
+
+| Trap | Detail |
+|------|--------|
+| **Domain: non-www only** | `https://allstarcleaning.ca` — no `www.`. Hardcoded in two independent places: `astro.config.mjs` (`site:`) for sitemap, `src/layouts/BaseLayout.astro` (`siteUrl`) for canonicals + JSON-LD. Both must match. |
+| **`neighbours` are slug strings** | In `src/data/locations.ts`, `neighbours` holds EN slug strings (e.g. `'kanata'`), not `Location` objects. Resolve via `locations.find(l => l.slug === n)`. |
+| **URL slugs are always EN** | Both `/en/` and `/fr/` routes use the English `slug` value, never `frSlug`. French is translated text, not translated URL segments. |
+| **`as unknown as Service`** | Double cast in `src/data/services.ts` is intentional — Keystatic JSON doesn't satisfy the strict `Service` TS interface. Do not "fix" it. |
+| **`/` always → `/en/`** | `src/pages/index.astro` hard-redirects to `/en/`. Do not add Accept-Language detection — it breaks Cloudflare CDN caching. |
+| **`_routes.json` ↔ middleware** | `public/_routes.json` and `src/middleware.ts` must stay in sync for Keystatic routes (`/keystatic/*`, `/api/keystatic/*`). Add any new bypasses to both. |
+| **`schema` prop (singular)** | `BaseLayout.astro` and `PageLayout.astro` accept `schema` (singular). Passing `schemas` silently passes nothing. |
 
 ## Conventions
 

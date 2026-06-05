@@ -9,6 +9,7 @@ export function formatPhone(phone: string): string {
   return phone.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
 }
 
+// `path` must start with `/` but NOT with `/{locale}/` — e.g. `/about`, not `/en/about`.
 export function hreflangUrl(path: string, locale: 'en' | 'fr'): string {
   return `/${locale}${path}`;
 }

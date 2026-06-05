@@ -85,11 +85,25 @@ PUBLIC_KEYSTATIC_GITHUB_APP_SLUG
 **`.env.local`** (local overrides):
 ```
 WEB3FORMS_ACCESS_KEY        # Contact form submissions
-PUBLIC_SITE_URL             # Canonical URL (https://www.allstarcleaning.ca)
+PUBLIC_SITE_URL             # Canonical URL (https://allstarcleaning.ca) — non-www
 PUBLIC_CF_ANALYTICS_TOKEN   # Cloudflare Web Analytics (optional)
 ```
 
 Neither file is committed — create locally.
+
+## AI Traps — Read Before Editing
+
+These are the patterns most likely to cause silent breakage if changed by an AI agent:
+
+| Trap | Detail |
+|------|--------|
+| **Domain: non-www only** | `https://allstarcleaning.ca` — no `www.`. Hardcoded in two independent places: `astro.config.mjs` (`site:`) for sitemap and `src/layouts/BaseLayout.astro` (`siteUrl`) for canonical URLs + JSON-LD. Both must match. |
+| **`neighbours` are slug strings** | In `src/data/locations.ts`, `neighbours` contains EN slug strings (e.g. `'kanata'`), not `Location` objects. Resolve via `locations.find(l => l.slug === n)`. Never use `frSlug` in URL paths. |
+| **URL slugs are always EN** | Both `/en/` and `/fr/` routes use the English `slug` value, never `frSlug`. French content is translated text, not translated URLs. |
+| **`as unknown as Service`** | Double cast in `src/data/services.ts` is intentional — Keystatic JSON doesn't satisfy the strict `Service` interface at compile time. Do not "fix" it. |
+| **`/` always → `/en/`** | `src/pages/index.astro` hard-redirects to `/en/` with no Accept-Language negotiation. Do not add browser language detection — it breaks CDN caching. |
+| **`_routes.json` ↔ middleware** | `public/_routes.json` and `src/middleware.ts` must agree on which paths bypass i18n. Currently: `/keystatic/*` and `/api/keystatic/*`. Add new bypass paths to both files. |
+| **`schema` prop (singular)** | `BaseLayout.astro` and `PageLayout.astro` accept a `schema` prop (singular), not `schemas`. Passing `schemas` silently passes nothing. |
 
 ## Gotchas
 

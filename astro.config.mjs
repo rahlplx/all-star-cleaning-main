@@ -94,6 +94,9 @@ export default defineConfig({
     prerenderEnvironment: 'node',
     imageService: 'passthrough',
   }),
+  // CANONICAL_DOMAIN — must stay in sync with `siteUrl` in src/layouts/BaseLayout.astro.
+  // Both values are used independently: this one for Astro sitemap generation,
+  // BaseLayout's for canonical URLs and all JSON-LD schema output.
   site: 'https://allstarcleaning.ca',
 
   // === TECH-STACK OBFUSCATION ===
