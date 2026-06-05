@@ -49,6 +49,8 @@ const heroSubtitle = isFr
   alternateUrls={[{ locale: altLocale, url: `https://allstarcleaning.ca/${altLocale}/area/${location.slug}/` }]}
   schema={[breadcrumbSchema]}
 >
+  <section class="py-16 md:py-20 lg:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
   <div class="grid gap-8 lg:grid-cols-3">
     <div class="lg:col-span-2">
       <!-- Area Context -->
@@ -81,7 +83,7 @@ const heroSubtitle = isFr
       <h2 class="font-heading text-2xl font-bold text-midnight-indigo">
         {isFr ? 'Nos Services à' : 'Our Services in'} {isFr ? location.frName : location.name}
       </h2>
-      <div class="mt-4 grid gap-4 sm:grid-cols-2">
+      <div class="mt-4 grid gap-6 sm:grid-cols-2">
         {services.map((service, i) => (
           <a
             href={`/${locale}/area/${location.slug}/${service.slug}`}
@@ -144,4 +146,7 @@ const heroSubtitle = isFr
       </div>
     </div>
   </div>
+  </div>
+  </div>
+  </section>
 </PageLayout>

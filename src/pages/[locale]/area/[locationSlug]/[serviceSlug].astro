@@ -59,6 +59,8 @@ const mapQuery = encodeURIComponent(`${location.name}, Ottawa, ON, Canada`);
   alternateUrls={[{ locale: altLocale, url: `https://allstarcleaning.ca/${altLocale}/area/${location.slug}/${altSlug}/` }]}
   schema={allSchemas}
 >
+  <section class="py-16 md:py-20 lg:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
   <div class="grid gap-8 lg:grid-cols-3">
     <div class="lg:col-span-2">
       <!-- Review Badge -->
@@ -146,7 +148,7 @@ const mapQuery = encodeURIComponent(`${location.name}, Ottawa, ON, Canada`);
         <h2 class="font-heading text-2xl font-bold text-midnight-indigo">
           {isFr ? `Autres services à ${location.frName}` : `Other services in ${location.name}`}
         </h2>
-        <div class="mt-4 grid gap-4 sm:grid-cols-2">
+        <div class="mt-4 grid gap-6 sm:grid-cols-2">
           {services.filter((s) => s.slug !== service.slug).map((otherService, i) => (
             <a href={`/${locale}/area/${location.slug}/${otherService.slug}`} class={`group rounded-lg border border-border bg-card p-4 transition-all hover:border-midnight-indigo/30 hover:shadow-md hover-lift ${i === 0 ? 'sm:col-span-2 border-midnight-indigo/20 bg-midnight-indigo/5' : ''}`}>
               <h3 class="font-medium text-navy group-hover:text-midnight-indigo">{isFr ? otherService.frName : otherService.name}</h3>
@@ -182,4 +184,7 @@ const mapQuery = encodeURIComponent(`${location.name}, Ottawa, ON, Canada`);
       </div>
     </div>
   </div>
+  </div>
+  </div>
+  </section>
 </PageLayout>

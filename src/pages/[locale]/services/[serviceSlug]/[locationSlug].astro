@@ -62,6 +62,8 @@ const altSlug = service.slug;  // Both locales use EN slugs in URLs
   alternateUrls={[{ locale: altLocale, url: `https://allstarcleaning.ca/${altLocale}/services/${service.slug}/${location.slug}/` }]}
   schema={allSchemas}
 >
+  <section class="py-16 md:py-20 lg:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
   <div class="grid gap-8 lg:grid-cols-3">
     <div class="lg:col-span-2">
       <!-- Review Badge -->
@@ -145,7 +147,7 @@ const altSlug = service.slug;  // Both locales use EN slugs in URLs
         <h2 class="font-heading text-2xl font-bold text-midnight-indigo">
           {isFr ? `Autres services à ${location.frName}` : `Other services in ${location.name}`}
         </h2>
-        <div class="mt-4 grid gap-4 sm:grid-cols-2">
+        <div class="mt-4 grid gap-6 sm:grid-cols-2">
           {services
             .filter((s) => s.slug !== service.slug)
             .map((otherService) => (
@@ -264,4 +266,7 @@ const altSlug = service.slug;  // Both locales use EN slugs in URLs
       </div>
     </div>
   )}
+  </div>
+  </div>
+  </section>
 </PageLayout>

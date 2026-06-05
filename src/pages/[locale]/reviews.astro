@@ -53,8 +53,8 @@ const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs, locale);
   alternateUrls={[{ locale: altLocale, url: `https://allstarcleaning.ca/${altLocale}/reviews/` }]}
   schema={[...reviewSchemas, breadcrumbSchema]}
 >
-  <section class="py-8 sm:py-12">
-    <div class="mx-auto max-w-5xl px-4">
+  <section class="py-16 md:py-20 lg:py-28">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6">
       <!-- Trust summary bar -->
       <a 
         href={s.googleUrl} 
@@ -120,6 +120,7 @@ const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs, locale);
           {isFr ? 'Voir nos avis Google' : 'See our Google Reviews'}
         </a>
       </div>
+    </div>
   </section>
 
   <!-- CTA SECTION — Premium full-width version synced from homepage -->
@@ -138,7 +139,7 @@ const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs, locale);
       <div class="absolute inset-0 bg-midnight-indigo-dark/90"></div>
     </div>
     <!-- Content -->
-    <div class="relative z-10 mx-auto max-w-4xl px-4 md:px-6 text-center">
+    <div class="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 text-center">
       <h2 class="heading-subsection slide-up font-heading text-3xl font-bold !text-text-on-dark md:text-4xl">{isFr ? home.ctaHeadlineFr : home.ctaHeadlineEn}</h2>
       <p class="fade-in delay-2 mx-auto mt-4 max-w-2xl text-text-on-dark-muted">{isFr ? home.ctaSubtitleFr : home.ctaSubtitleEn}</p>
       <div class="fade-in delay-4 mt-8 flex flex-col items-center gap-4 md:flex-row md:justify-center">
