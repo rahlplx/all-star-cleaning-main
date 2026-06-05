@@ -5,7 +5,7 @@
       "command": "codegraph",
       "args": ["serve", "--mcp"]
     },
-    "astro-docs": {
+    "Astro Docs": {
       "url": "https://mcp.docs.astro.build/mcp",
       "transport": "http"
     },
