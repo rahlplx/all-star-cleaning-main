@@ -40,6 +40,9 @@ CLAUDE.md
 # Sisyphus agent working files
 .sisyphus/
 
+# CodeGraph local index
+.codegraph/
+
 # Impeccable live session data
 .impeccable/
 capture-*.mjs
