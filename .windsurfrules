@@ -22,7 +22,7 @@ Astro 6.3 + Cloudflare Pages marketing site. 1000+ static pages, bilingual EN/FR
 
 ## Extending the project
 
-- **New location**: append to `src/data/locations.ts` → 880 programmatic pages auto-generate
+- **New location**: append to `src/data/locations.ts` → 900 programmatic pages auto-generate
 - **New service**: create `src/content/services/{slug}.json`, add to `src/data/services.ts`
 - **New page**: wrap in `PageLayout.astro`, pass `schema` array from `src/seo/` generators
 

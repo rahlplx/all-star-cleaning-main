@@ -18,5 +18,5 @@ No pure black/white for large areas. No gradient text. No side-stripe borders. N
 
 ## Adding content
 
-- **Location**: Append to `src/data/locations.ts` → 880 pages auto-generate
+- **Location**: Append to `src/data/locations.ts` → 900 programmatic pages auto-generate
 - **Service**: Create `src/content/services/{slug}.json` + add to `src/data/services.ts`

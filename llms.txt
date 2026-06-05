@@ -1,6 +1,6 @@
 # All Star Cleaning
 
-> Bilingual (EN/FR) Astro 6.3 marketing website for an Ottawa exterior cleaning service. 1000+ static pages (880 programmatic: 44 locations × 5 services × 2 locales × 2 route patterns). Deployed to Cloudflare Pages as fully static output.
+> Bilingual (EN/FR) Astro 6.3 marketing website for an Ottawa exterior cleaning service. 1000+ static pages (900 programmatic: 45 locations × 5 services × 2 locales × 2 route patterns). Deployed to Cloudflare Pages as fully static output.
 
 ## AI Agent Docs
 
@@ -17,7 +17,7 @@
 
 ## Data & Content
 
-- [src/data/locations.ts](src/data/locations.ts): 44 Ottawa locations with coordinates, area, postal codes, neighbours — append here to add a location
+- [src/data/locations.ts](src/data/locations.ts): 45 Ottawa locations with coordinates, area, postal codes, neighbours — append here to add a location
 - [src/data/services.ts](src/data/services.ts): 5-service array + `getServiceBySlug()` — add import + entry here to add a service
 - [src/content/services/](src/content/services/): JSON files for each service (managed via Keystatic CMS at `/keystatic`)
 - [src/content/homepage.json](src/content/homepage.json): Homepage CMS content (hero, stats, CTAs)
@@ -36,7 +36,7 @@
 
 ## SEO
 
-- [src/seo/index.ts](src/seo/index.ts): Schema.org generators — `getLocationServiceSchema`, `getBreadcrumbSchema`, `getFAQSchema`, `getServiceSchema`, `getLocalBusinessSchema`, `getHowToSchema`, `getReviewSchema`, `getFounderSchema`. Never hand-write JSON-LD.
+- [src/seo/index.ts](src/seo/index.ts): Schema.org generators — `getLocalBusinessSchema`, `getWebSiteSchema`, `getServiceSchema`, `getFAQSchema`, `getBreadcrumbSchema`, `getLocationServiceSchema`, `getHowToSchema`, `getReviewSchema`, `getFounderSchema`. Never hand-write JSON-LD.
 
 ## Styles
 

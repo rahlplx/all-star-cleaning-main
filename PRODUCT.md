@@ -10,7 +10,7 @@
 - Decision-makers comparing 2-3 local services before calling for a quote
 
 ## Product Purpose
-Convert visitors into phone calls and quote requests for residential and commercial exterior cleaning services (window, gutter, pressure washing, siding, snow removal) across 44 Ottawa-area locations.
+Convert visitors into phone calls and quote requests for residential and commercial exterior cleaning services (window, gutter, pressure washing, siding, snow removal) across 45 Ottawa-area locations.
 
 ## Brand Voice
 Three words: **reliable, local, trustworthy**. Not corporate or slick. Warm confidence from someone who shows up on time, knows Ottawa winters, and guarantees the work. Approachable expertise.
@@ -36,6 +36,6 @@ Three words: **reliable, local, trustworthy**. Not corporate or slick. Warm conf
 ## Key Surfaces
 - Homepage: first impression, must establish trust and drive quote requests
 - Service detail pages: feature-rich, SEO-optimized, with sticky CTA
-- Location+service combo pages: 440 programmatic SEO pages, must feel unique despite template reuse
+- Location+service combo pages: 450 programmatic SEO pages (per route pattern), must feel unique despite template reuse
 - Contact page: conversion endpoint, form + phone prominent
 - Reviews page: social proof (currently placeholder, needs warmth)

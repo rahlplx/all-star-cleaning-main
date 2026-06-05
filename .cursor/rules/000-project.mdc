@@ -5,7 +5,7 @@ alwaysApply: true
 
 # All Star Cleaning — Project Context
 
-Marketing website for an Ottawa exterior cleaning service. Goal: convert visitors to phone calls. 1000+ static pages (880 programmatic).
+Marketing website for an Ottawa exterior cleaning service. Goal: convert visitors to phone calls. 1000+ static pages (900 programmatic: 45 locations × 5 services × 2 locales × 2 route patterns).
 
 **Stack**: Astro 6.3 + React 19, Cloudflare Pages (`output: 'static'`), Tailwind CSS v4, Keystatic CMS (JSON in `src/content/`).
 
@@ -23,8 +23,8 @@ Marketing website for an Ottawa exterior cleaning service. Goal: convert visitor
 ```
 /[locale]/                                      → Homepage
 /[locale]/services/[serviceSlug]                → 5 service pages
-/[locale]/area/[locationSlug]/[serviceSlug]     → 440 programmatic (location-first, canonical)
-/[locale]/services/[serviceSlug]/[locationSlug] → 440 programmatic (service-first, mirrors above)
+/[locale]/area/[locationSlug]/[serviceSlug]     → 450 programmatic (location-first, canonical)
+/[locale]/services/[serviceSlug]/[locationSlug] → 450 programmatic (service-first, mirrors above)
 /[locale]/area/ | /about | /reviews | /contact | /privacy | /terms | /sitemap
 /keystatic/* | /api/keystatic/*                 → CMS, exempt from i18n middleware
 ```
@@ -38,7 +38,7 @@ Always use one of these — never inject `<head>` or JSON-LD manually:
 
 ## Adding Content
 
-- **New location**: Append to `src/data/locations.ts` — 880 programmatic pages auto-generate.
+- **New location**: Append to `src/data/locations.ts` — 900 programmatic pages auto-generate.
 - **New service**: Create `src/content/services/{slug}.json`, add import + array entry in `src/data/services.ts`.
 
 ## Build Obfuscation

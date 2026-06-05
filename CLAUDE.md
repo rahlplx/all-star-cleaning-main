@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Marketing website for All Star Cleaning, an Ottawa exterior cleaning service. Converts visitors to phone calls. ~600+ static pages.
+Marketing website for All Star Cleaning, an Ottawa exterior cleaning service. Converts visitors to phone calls. ~1000+ static pages.
 
 - **Framework**: Astro 6.3 + React 19
 - **Deployment**: Cloudflare Pages
@@ -60,11 +60,11 @@ Access to Cloudflare platform APIs (Workers, Pages, KV, etc.) — useful for dep
 | `keystatic.config.ts` | CMS schema — collections: reviews, services; singletons: settings, about, homepage |
 | `src/styles/global.css` | Tailwind `@theme` tokens (colors, typography, spacing, motion) |
 | `src/middleware.ts` | i18n routing middleware |
-| `src/data/locations.ts` | 44 Ottawa locations with coordinates, area, postal codes, neighbours |
+| `src/data/locations.ts` | 45 Ottawa locations with coordinates, area, postal codes, neighbours |
 | `src/data/services.ts` | Service data loader and helpers |
 | `src/types.ts` | TypeScript interfaces |
 | `src/lib/utils.ts` | `cn()`, `formatPhone()`, `hreflangUrl()` |
-| `src/seo/` | Schema.org generators (local-business, service, FAQ, breadcrumb, review, etc.) |
+| `src/seo/` | Schema.org generators (`getLocalBusinessSchema`, `getWebSiteSchema`, `getServiceSchema`, `getFAQSchema`, `getBreadcrumbSchema`, `getLocationServiceSchema`, `getHowToSchema`, `getReviewSchema`, `getFounderSchema`) |
 | `DESIGN.md` | Design system reference (colors, typography, elevation, motion, rules) |
 | `PRODUCT.md` | Product/UX strategy (brand voice, user profiles, conversion goals) |
 
@@ -96,11 +96,8 @@ Access to Cloudflare platform APIs (Workers, Pages, KV, etc.) — useful for dep
 - `TopBar.astro` — optional announcement bar
 - `StickyBottomCTA.astro` — fixed mobile call/quote CTA
 - `JsonLd.astro` — injects JSON-LD structured data
-- `FAQAccordion.astro` — accordion FAQ
+- `FAQAccordion.astro` — ARIA accordion (`button[aria-expanded]` + `role="region"`, JS toggle, keyboard accessible)
 - `ServiceBadge.astro` — service card with icon
-
-**React** (`src/components/ui/`):
-- `button.tsx` — CVA button with variants (default/destructive/outline/secondary/ghost/link) and sizes
 
 ## Content (Keystatic CMS)
 
@@ -160,7 +157,7 @@ Two inverse route patterns exist for the same content, serving different SEO ent
 Both use the same data (`services` × `locations` × locales). The area-first page (`src/pages/[locale]/area/[locationSlug]/[serviceSlug].astro`) is the canonical pattern. Its `getStaticPaths()` cross-joins all locales × locations × services. Each page:
 
 1. Computes breadcrumbs from locale/location/service slugs
-2. Builds a `schemas` array: `getLocationServiceSchema()` + `getBreadcrumbSchema()` + optional `getFAQSchema()`
+2. Builds a schema array: `getLocationServiceSchema()` + `getBreadcrumbSchema()` + optional `getFAQSchema()`
 3. Renders via `PageLayout` with hero title templated as "{Service} in {Location}"
 
 When adding a new service or location, no changes are needed here — `getStaticPaths()` picks them up automatically.

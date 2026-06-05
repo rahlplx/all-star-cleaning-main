@@ -43,7 +43,7 @@ const schema = [breadcrumbSchema, otherSchema];
 </PageLayout>
 ```
 
-## Programmatic Pages (880 combos)
+## Programmatic Pages (900 combos)
 
 Both patterns render the same content for different SEO entry points:
 - `src/pages/[locale]/area/[locationSlug]/[serviceSlug].astro` — canonical, location-first
@@ -64,7 +64,7 @@ const schema = [
 ];
 ```
 
-Available generators: `getLocalBusinessSchema`, `getServiceSchema`, `getFAQSchema`, `getBreadcrumbSchema`, `getLocationServiceSchema`, `getHowToSchema`, `getReviewSchema`, `getFounderSchema`.
+Available generators: `getLocalBusinessSchema`, `getWebSiteSchema`, `getServiceSchema`, `getFAQSchema`, `getBreadcrumbSchema`, `getLocationServiceSchema`, `getHowToSchema`, `getReviewSchema`, `getFounderSchema`.
 
 ## hreflang Alternate URLs
 

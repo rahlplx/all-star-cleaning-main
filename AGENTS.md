@@ -12,6 +12,7 @@ Marketing website for All Star Cleaning, an Ottawa exterior cleaning service. Go
 - **Styling**: Tailwind CSS v4 + OKLCH design tokens
 - **i18n**: English + French via `[locale]` param routing
 - **Services**: window-cleaning, gutter-cleaning, pressure-washing, siding-cleaning, snow-removal
+- **Pages**: ~1000+ (900 programmatic = 45 locations × 5 services × 2 locales × 2 route patterns)
 
 ## Commands
 
@@ -34,9 +35,9 @@ No test suite. No ESLint. No Prettier.
 /[locale]/services/
 /[locale]/services/[serviceSlug]                → 5 services × 2 locales = 10 pages
 /[locale]/area/
-/[locale]/area/[locationSlug]/                  → 44 locations × 2 locales = 88 pages
-/[locale]/area/[locationSlug]/[serviceSlug]     → 440 programmatic pages (location-first)
-/[locale]/services/[serviceSlug]/[locationSlug] → 440 programmatic pages (service-first, same content)
+/[locale]/area/[locationSlug]/                  → 45 locations × 2 locales = 90 pages
+/[locale]/area/[locationSlug]/[serviceSlug]     → 450 programmatic pages (location-first)
+/[locale]/services/[serviceSlug]/[locationSlug] → 450 programmatic pages (service-first, same content)
 /[locale]/privacy | /[locale]/terms | /[locale]/sitemap
 /keystatic/* | /api/keystatic/*                 → CMS (bypass i18n middleware)
 ```
@@ -49,12 +50,12 @@ No test suite. No ESLint. No Prettier.
 | `keystatic.config.ts` | CMS schema — collections: reviews, services; singletons: settings, about, homepage |
 | `src/styles/global.css` | Tailwind `@theme` tokens (colors, typography, spacing, motion) |
 | `src/middleware.ts` | i18n routing middleware (passes Keystatic routes through) |
-| `src/data/locations.ts` | 44 Ottawa locations with coordinates, area, postal codes, neighbours |
+| `src/data/locations.ts` | 45 Ottawa locations with coordinates, area, postal codes, neighbours |
 | `src/data/services.ts` | Service array + `getServiceBySlug()` helper |
 | `src/types.ts` | TypeScript interfaces (Service, Location, Review, FAQItem, etc.) |
 | `src/i18n/translations.ts` | All EN/FR UI strings — use `useTranslations(locale)` |
 | `src/lib/utils.ts` | `cn()`, `formatPhone()`, `hreflangUrl()` |
-| `src/seo/` | Schema.org generators — never hand-write JSON-LD |
+| `src/seo/` | Schema.org generators (`getLocalBusinessSchema`, `getWebSiteSchema`, `getServiceSchema`, `getFAQSchema`, `getBreadcrumbSchema`, `getLocationServiceSchema`, `getHowToSchema`, `getReviewSchema`, `getFounderSchema`) — never hand-write JSON-LD |
 | `DESIGN.md` | Full design system (colors, typography, elevation, motion, rules) |
 | `PRODUCT.md` | Brand voice, user profiles, conversion goals |
 
