@@ -1,5 +1,5 @@
 {
-  "heroImage": "/images/heroImage.jpg",
+  "heroImage": "/images/heroImage.webp",
   "heroHeadlineEn": "Ottawa's Trusted Exterior Cleaning Services",
   "heroHeadlineFr": "Services de Nettoyage Extérieur de Confiance à Ottawa",
   "heroSubtitleEn": "From window cleaning to gutters and pressure washing, we've got you covered.",
@@ -14,9 +14,9 @@
   "statsSatisfactionFr": "Satisfaction garantie",
   "statsDaysEn": "Open every day of the week",
   "statsDaysFr": "Ouvert chaque semaine",
-  "teamImage": "/images/teamImage.jpg",
+  "teamImage": "/images/teamImage.webp",
   "beforeAfterImage": "/images/beforeAfterImage.webp",
-  "ctaImage": "/images/ctaImage.jpg",
+  "ctaImage": "/images/ctaImage.webp",
   "ctaHeadlineEn": "Ready to Get Started?",
   "ctaHeadlineFr": "Prêt à Commencer?",
   "ctaSubtitleEn": "Contact us today for a free quote. We're open 7 days a week!",

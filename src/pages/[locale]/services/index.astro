@@ -87,7 +87,7 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
     {services.map((service, i) => {
       const delayClass = `delay-${Math.min(i + 1, 5)}`;
       const features = isFr ? service.frFeatures : service.features;
-      const imgSrc = service.image || `/images/${service.slug}.jpg`;
+      const imgSrc = service.image || `/images/${service.slug}.webp`;
       const isFeatured = i === 0;
       const badge = serviceBadgeMap[service.slug];
       const objPos = serviceObjectPosition[service.slug] ?? 'object-center';
