@@ -106,8 +106,9 @@ PUBLIC_KEYSTATIC_GITHUB_APP_SLUG
 
 **`.env.local`** — Local overrides:
 ```
-WEB3FORMS_ACCESS_KEY   # Contact form submissions
-PUBLIC_SITE_URL        # Canonical URL (https://www.allstarcleaning.ca)
+WEB3FORMS_ACCESS_KEY        # Contact form submissions
+PUBLIC_SITE_URL             # Canonical URL (https://www.allstarcleaning.ca)
+PUBLIC_CF_ANALYTICS_TOKEN   # Cloudflare Web Analytics beacon token (optional — analytics disabled if unset)
 ```
 
 ## Layouts

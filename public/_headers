@@ -15,11 +15,18 @@
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
 
+# Images — 30-day cache (content changes rarely; bust via filename if needed)
+/images/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+
 /*.jpg
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
 
 /*.png
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
 
 /*.svg
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+
+/*.webp
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400

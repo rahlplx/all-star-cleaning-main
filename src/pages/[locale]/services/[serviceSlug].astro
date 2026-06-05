@@ -40,6 +40,7 @@ const otherServices = services.filter((s) => s.slug !== service.slug);
   heroTitle={isFr ? service.frName : service.name}
   heroSubtitle={isFr ? service.frDescription : service.description}
   alternateUrls={[{ locale: altLocale, url: `https://allstarcleaning.ca/${altLocale}/services/${altSlug}/` }]}
+  ogImage={service.image ? `https://allstarcleaning.ca${service.image}` : undefined}
   schema={allSchemas}
 >
   <div class="grid gap-8 lg:grid-cols-3">

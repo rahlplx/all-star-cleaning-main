@@ -68,6 +68,8 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
         height="768"
         class="h-full w-full object-cover"
         loading="eager"
+        fetchpriority="high"
+        decoding="sync"
       />
       <div class="absolute inset-0 bg-gradient-to-b from-midnight-indigo-dark/95 via-midnight-indigo-dark/80 to-midnight-indigo-dark/95"></div>
     </div>
@@ -150,6 +152,7 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
               height="768"
               class="h-full w-full object-cover"
               loading="lazy"
+              decoding="async"
             />
           </div>
           <!-- Floating badge overlay -->
