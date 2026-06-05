@@ -6,23 +6,54 @@ interface Props {
 }
 const { faqs, locale, title } = Astro.props;
 const isFr = locale === 'fr';
+// Unique prefix per component instance so IDs don't collide when multiple accordions appear on a page
+const uid = Math.random().toString(36).slice(2, 8);
 ---
 
 {faqs.length > 0 && (
   <div class="mt-10 rounded-xl border border-border bg-card p-6">
     {title && <h2 class="font-heading text-2xl font-bold text-midnight-indigo">{title}</h2>}
     <div class="mt-4 space-y-4">
-      {faqs.map((faq) => (
-        <details class="group rounded-lg border border-border bg-off-white">
-          <summary class="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-semibold text-navy transition-colors group-open:text-midnight-indigo">
-            <span class="pr-4">{isFr && faq.frQuestion ? faq.frQuestion : faq.question}</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-          </summary>
-          <div class="px-4 pb-3 text-sm text-muted-foreground leading-relaxed">
+      {faqs.map((faq, i) => (
+        <div class="rounded-lg border border-border bg-off-white">
+          <h3 class="m-0">
+            <button
+              id={`faq-btn-${uid}-${i}`}
+              type="button"
+              class="faq-accordion-btn flex w-full cursor-pointer items-center justify-between px-4 py-3 text-left text-sm font-semibold text-navy transition-colors hover:text-midnight-indigo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-midnight-indigo focus-visible:ring-inset"
+              aria-expanded="false"
+              aria-controls={`faq-panel-${uid}-${i}`}
+            >
+              <span class="pr-4">{isFr && faq.frQuestion ? faq.frQuestion : faq.question}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="faq-chevron h-4 w-4 shrink-0 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+          </h3>
+          <div
+            id={`faq-panel-${uid}-${i}`}
+            role="region"
+            aria-labelledby={`faq-btn-${uid}-${i}`}
+            class="px-4 pb-3 text-sm text-muted-foreground leading-relaxed"
+            hidden
+          >
             {isFr && faq.frAnswer ? faq.frAnswer : faq.answer}
           </div>
-        </details>
+        </div>
       ))}
     </div>
   </div>
 )}
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.faq-accordion-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      const panelId = btn.getAttribute('aria-controls');
+      const panel = panelId ? document.getElementById(panelId) : null;
+      const chevron = btn.querySelector('.faq-chevron');
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.classList.toggle('text-midnight-indigo', !expanded);
+      if (panel) panel.hidden = expanded;
+      if (chevron) chevron.classList.toggle('rotate-180', !expanded);
+    });
+  });
+</script>

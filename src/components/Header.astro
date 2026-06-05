@@ -78,11 +78,11 @@ const navLinks = [
         <div>
           {link.children ? (
             <div class="mobile-nav-dropdown">
-              <button type="button" class="touch-target flex w-full items-center justify-between rounded-md px-3 py-2.5 text-sm font-medium text-navy transition-colors duration-200 hover:bg-off-white-dark focus-visible:ring-2 focus-visible:ring-midnight-indigo" aria-expanded="false" aria-haspopup="true">
+              <button type="button" class="touch-target flex w-full items-center justify-between rounded-md px-3 py-2.5 text-sm font-medium text-navy transition-colors duration-200 hover:bg-off-white-dark focus-visible:ring-2 focus-visible:ring-midnight-indigo" aria-expanded="false" aria-haspopup="true" aria-controls={`mobile-nav-${link.label.toLowerCase()}`}>
                 <span class="hover:text-midnight-indigo transition-colors">{link.label}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="mobile-dropdown-arrow h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
               </button>
-              <div class="mobile-dropdown-content ml-3 pl-3 hidden">
+              <div id={`mobile-nav-${link.label.toLowerCase()}`} class="mobile-dropdown-content ml-3 pl-3 hidden">
                 {link.children.map((child) => <a href={child.href} class="touch-target flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground transition-colors duration-200 hover:text-midnight-indigo focus-visible:ring-2 focus-visible:ring-midnight-indigo">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 shrink-0 text-midnight-indigo/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
                   {child.label}
