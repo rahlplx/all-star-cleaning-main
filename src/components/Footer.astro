@@ -10,7 +10,7 @@ const year = new Date().getFullYear();
 ---
 <footer class="brand-gradient text-text-on-dark">
   <div class="mx-auto max-w-7xl px-4 py-12 sm:py-16">
-    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
       <div>
         <a href={`/${locale}`} aria-label={locale === 'fr' ? 'All Star Cleaning — Accueil' : 'All Star Cleaning — Home'} class="group flex flex-col items-start gap-4 no-underline text-text-on-dark focus-visible:ring-2 focus-visible:ring-text-on-dark">
           <img 
@@ -18,7 +18,7 @@ const year = new Date().getFullYear();
             alt="" 
             width="120" 
             height="120" 
-            class="h-14 w-auto sm:h-20 lg:h-24 object-contain brightness-0 invert transition-transform duration-300 group-hover:scale-105" 
+            class="h-12 w-auto sm:h-16 lg:h-20 object-contain brightness-0 invert transition-transform duration-300 group-hover:scale-105"
             aria-hidden="true" 
           />
         </a>
@@ -68,9 +68,9 @@ const year = new Date().getFullYear();
         </p>
       </div>
     </div>
-    <div class="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-text-on-dark-muted sm:flex-row">
+    <div class="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-text-on-dark-muted md:flex-row">
       <p>&copy; {year} All Star Cleaning. {t.footer.copyright}</p>
-      <p class="text-text-on-dark/50">Built with ❤️ by TrendTok Social</p>
+      <p class="text-text-on-dark/50">Built with ❤️ by <a href="https://trendtoksocial.com" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-text-on-dark underline-offset-2 hover:underline">TrendTok Social</a></p>
       <div class="flex gap-4">
         <a href={`/${locale}/privacy`} class="text-text-on-dark/80 transition-colors duration-200 hover:text-text-on-dark focus-visible:ring-2 focus-visible:ring-text-on-dark">{t.footer.privacy}</a>
         <a href={`/${locale}/terms`} class="text-text-on-dark/80 transition-colors duration-200 hover:text-text-on-dark focus-visible:ring-2 focus-visible:ring-text-on-dark">{t.footer.terms}</a>
