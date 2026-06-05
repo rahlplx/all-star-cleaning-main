@@ -5,8 +5,6 @@ import pressureWashing from '@/content/services/pressure-washing.json';
 import sidingCleaning from '@/content/services/siding-cleaning.json';
 import snowRemoval from '@/content/services/snow-removal.json';
 
-// Services are now managed via Keystatic CMS at /keystatic
-// Edit content in src/content/services/*.json
 export const services: Service[] = [
   windowCleaning as unknown as Service,
   gutterCleaning as unknown as Service,

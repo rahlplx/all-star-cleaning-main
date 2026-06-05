@@ -33,6 +33,8 @@ npm-debug.log*
 skills/
 download/
 worklog.md
+scratch/
+.codex/
 
 skills-lock.json
 CLAUDE.md

@@ -118,7 +118,7 @@ Two layouts, always nested — choose the inner one:
 - **`BaseLayout.astro`** — head + topbar + header + footer + sticky CTA. Pass a `schemas` array (JSON-LD objects from `src/seo/`) and it injects them via `JsonLd.astro`. Use directly only for non-content pages (redirects, etc.).
 - **`PageLayout.astro`** — wraps `BaseLayout`, adds an optional branded hero (title/subtitle) and optional breadcrumb nav. Use for all content pages.
 
-Pass schemas up through `PageLayout` → `BaseLayout` via the `schemas` prop; never inject JSON-LD manually.
+Pass schemas up through `PageLayout` → `BaseLayout` via the `schema` prop; never inject JSON-LD manually.
 
 ## Bilingual Pattern
 
@@ -166,5 +166,4 @@ When adding a new service or location, no changes are needed here — `getStatic
 10. **Layouts**: Wrap pages in `BaseLayout.astro` (head + header + footer) or `PageLayout.astro` (adds breadcrumbs + hero).
 
 ## Impeccable (Design Anti-Slop)
-Skill installed at `.agents/skills/impeccable/SKILL.md`.  
-`DESIGN.md` + `PRODUCT.md` satisfy the `/teach` prerequisite — skip `/teach`, go straight to `/audit`, `/polish`, `/craft`.
+The `impeccable` skill is available in Claude Code. `DESIGN.md` + `PRODUCT.md` satisfy the `/teach` prerequisite — skip `/teach`, go straight to `/audit`, `/polish`, `/craft`.

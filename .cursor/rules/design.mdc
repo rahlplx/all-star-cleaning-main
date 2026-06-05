@@ -1,0 +1,81 @@
+---
+description: "Design system rules, color tokens, typography, spacing, component patterns. Active when editing styles or components."
+globs: ["src/styles/**/*.css", "src/components/**/*.astro", "src/components/**/*.tsx", "src/pages/**/*.astro"]
+alwaysApply: false
+---
+
+# Design System — Key Rules
+
+Full reference in `DESIGN.md`. Product/brand context in `PRODUCT.md`.
+
+## Hard Rules (never break)
+
+1. No pure `#000` or `#fff` for large areas — use tinted tokens
+2. No gradient text (`background-clip: text` + gradient)
+3. No side-stripe borders (border-left/right > 1px as decorative accent)
+4. No nested cards inside cards
+5. Cap body line length at 65ch
+6. Every interactive element needs hover, focus, active states (min 44×44px touch target)
+7. Always respect `prefers-reduced-motion` on animations
+
+## Color Token System
+
+Brand palette uses OKLCH. Key semantic aliases:
+
+| Use | Token |
+|-----|-------|
+| Primary CTA, headings | `midnight-indigo` = `--color-blue-800` |
+| Page background | `background` = `--color-gray-50` |
+| Body text | `foreground` = `--color-gray-800` |
+| Muted text | `muted-foreground` = `--color-gray-700` |
+| Card surface | `card` = white |
+| Text on dark bg | `text-on-dark`, `text-on-dark-muted` |
+
+Brand gradient (hero, footer): `brand-gradient` utility class.
+
+**Never hardcode hex**. Use tokens from `src/styles/global.css @theme`.
+
+## Typography
+
+- Headings: `font-heading` (DM Serif Display)
+- Body: `font-sans` (Outfit)
+- Display heading: `text-[var(--text-display)]` = `clamp(2.5rem, 5vw, 4.5rem)`
+- Headline: `text-[var(--text-headline)]` = `clamp(1.75rem, 4vw, 3rem)`
+
+## CTA Buttons
+
+```html
+<!-- Primary -->
+<a class="rounded-full bg-midnight-indigo text-white shadow-lg hover:bg-midnight-indigo-dark px-8 py-3">
+
+<!-- Secondary (on dark bg) -->
+<a class="rounded-full border-2 border-white/30 text-white hover:border-white/60 px-8 py-3">
+```
+
+## Cards
+
+- `rounded-xl` + hairline border, flat at rest
+- Hover: `hover:-translate-y-0.5 hover:shadow-md`
+- No nested cards
+
+## Motion
+
+Easing: `cubic-bezier(0.16, 1, 0.3, 1)` (ease-out-quart). Durations: 150ms (fast), 250ms (base), 350ms (slow), 600ms (entrance).
+
+Never animate layout properties (width, height, padding, margin).
+
+## Elevation (shadows only on state change)
+
+| State | Class |
+|-------|-------|
+| Card hover | `shadow-md` |
+| Sticky/floating | `shadow-lg` |
+| Hero/modal | `shadow-xl` |
+
+## Spacing
+
+Section rhythm: `py-16 md:py-20 lg:py-28`. Use `--space-section-*` and `--space-gap-*` tokens from global.css.
+
+## Mobile CTA
+
+`StickyBottomCTA.astro` is fixed at `bottom-0` on mobile (`md:hidden`). Main content needs `pb-20 md:pb-0` (already in BaseLayout `<main>`). Don't remove it.

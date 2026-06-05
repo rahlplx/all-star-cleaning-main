@@ -1,0 +1,46 @@
+---
+description: "All Star Cleaning — project architecture, conventions, and non-obvious patterns. Always active."
+alwaysApply: true
+---
+
+# All Star Cleaning — Project Context
+
+Marketing website for an Ottawa exterior cleaning service. Goal: convert visitors to phone calls. 1000+ static pages (880 programmatic).
+
+**Stack**: Astro 6.3 + React 19, Cloudflare Pages (`output: 'static'`), Tailwind CSS v4, Keystatic CMS (JSON in `src/content/`).
+
+## Critical Conventions
+
+1. **Path alias**: `@/*` → `src/*`. Never use `../` chains.
+2. **Prop name**: Layout `schema` prop (singular) — never `schemas`.
+3. **JSON-LD**: Use generators from `src/seo/` — never hand-write structured data.
+4. **Tailwind tokens**: Use CSS vars from `src/styles/global.css @theme`. Never hardcode hex. Never reference `--tw-*` (renamed to `--c-*` in prod by obfuscation plugin).
+5. **Static only**: No backend, no DB. Forms via Web3Forms. No server-side code.
+6. **No tests/lint**: Only `npm run typecheck` (astro check) available.
+
+## Routes
+
+```
+/[locale]/                                      → Homepage
+/[locale]/services/[serviceSlug]                → 5 service pages
+/[locale]/area/[locationSlug]/[serviceSlug]     → 440 programmatic (location-first, canonical)
+/[locale]/services/[serviceSlug]/[locationSlug] → 440 programmatic (service-first, mirrors above)
+/[locale]/area/ | /about | /reviews | /contact | /privacy | /terms | /sitemap
+/keystatic/* | /api/keystatic/*                 → CMS, exempt from i18n middleware
+```
+
+## Layouts
+
+Always use one of these — never inject `<head>` or JSON-LD manually:
+
+- **`PageLayout.astro`**: Use for all content pages. Props: `title`, `description`, `locale`, `schema`, `breadcrumbs`, `heroTitle`, `heroSubtitle`.
+- **`BaseLayout.astro`**: Lower-level wrapper (head + header + footer). `PageLayout` uses this internally.
+
+## Adding Content
+
+- **New location**: Append to `src/data/locations.ts` — 880 programmatic pages auto-generate.
+- **New service**: Create `src/content/services/{slug}.json`, add import + array entry in `src/data/services.ts`.
+
+## Build Obfuscation
+
+Production build renames `--tw-*` → `--c-*`, Tailwind layer names → generic names, `/_astro/` → `/static/`. HTML comments are stripped. No source maps. Do not reference internal Tailwind vars.

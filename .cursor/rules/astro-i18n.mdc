@@ -1,0 +1,79 @@
+---
+description: "Astro page patterns, bilingual i18n conventions, SEO schemas. Active for Astro source files."
+globs: ["src/pages/**/*.astro", "src/layouts/**/*.astro", "src/components/**/*.astro", "src/i18n/**/*.ts", "src/data/**/*.ts"]
+alwaysApply: false
+---
+
+# Astro + i18n Patterns
+
+## Bilingual Rule
+
+Every user-facing string needs EN and FR variants.
+
+```ts
+// Common UI strings — use translation hook
+import { useTranslations } from '@/i18n/translations';
+const t = useTranslations(locale); // locale: 'en' | 'fr'
+t.nav.services // returns the right language
+
+// Page-specific text — use isFr boolean
+const isFr = locale === 'fr';
+const title = isFr ? 'Titre Français' : 'English Title';
+```
+
+Bilingual data fields: `name`/`frName`, `slug`/`frSlug`, `features`/`frFeatures`, `faqs`/`frFaqs`, `description`/`frDescription`.
+
+## Page Structure Pattern
+
+```astro
+---
+export function getStaticPaths() {
+  return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
+}
+const { locale } = Astro.params as { locale: 'en' | 'fr' };
+const isFr = locale === 'fr';
+const altLocale = isFr ? 'en' : 'fr';
+
+// Build schema array using src/seo/ generators
+import { getBreadcrumbSchema } from '@/seo';
+const schema = [breadcrumbSchema, otherSchema];
+---
+<PageLayout title={...} locale={locale} schema={schema} heroTitle={...} alternateUrls={[...]}>
+  <!-- content -->
+</PageLayout>
+```
+
+## Programmatic Pages (880 combos)
+
+Both patterns render the same content for different SEO entry points:
+- `src/pages/[locale]/area/[locationSlug]/[serviceSlug].astro` — canonical, location-first
+- `src/pages/[locale]/services/[serviceSlug]/[locationSlug].astro` — service-first (alternate canonical)
+
+`getStaticPaths()` cross-joins all `locales × locations × services` — add location/service to their data files and pages appear automatically.
+
+## SEO Schemas
+
+```ts
+import { getBreadcrumbSchema, getLocationServiceSchema, getFAQSchema } from '@/seo';
+
+// Always pass via PageLayout's schema prop — never inject <script type="application/ld+json"> manually
+const schema = [
+  getLocationServiceSchema({ service, location, locale }),
+  getBreadcrumbSchema(breadcrumbs, locale),
+  ...(service.faqs.length ? [getFAQSchema(service.faqs, locale)] : []),
+];
+```
+
+Available generators: `getLocalBusinessSchema`, `getServiceSchema`, `getFAQSchema`, `getBreadcrumbSchema`, `getLocationServiceSchema`, `getHowToSchema`, `getReviewSchema`, `getFounderSchema`.
+
+## hreflang Alternate URLs
+
+```ts
+import { hreflangUrl } from '@/lib/utils';
+// Pass to PageLayout:
+alternateUrls={[{ locale: altLocale, url: `https://allstarcleaning.ca/${altLocale}/services/` }]}
+```
+
+## i18n Middleware
+
+`src/middleware.ts` exempts `/keystatic/*` and `/api/keystatic/*` from locale routing. All other routes get locale-prefixed. `/` → `/en/`. Add new API-like routes to the exemption list if they should bypass i18n.
