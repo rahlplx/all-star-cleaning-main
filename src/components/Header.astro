@@ -113,7 +113,7 @@ const navLinks = [
     closeIcon?.classList.remove('hidden');
     toggle?.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
-    const firstLink = menu?.querySelector('a, button');
+    const firstLink = menu?.querySelector<HTMLElement>('a, button');
     firstLink?.focus();
   }
 
@@ -195,7 +195,7 @@ const navLinks = [
     parent?.addEventListener('mouseleave', () => trigger.setAttribute('aria-expanded', 'false'));
     parent?.addEventListener('focusin', () => trigger.setAttribute('aria-expanded', 'true'));
     parent?.addEventListener('focusout', (e) => {
-      if (!parent?.contains(e.relatedTarget as Node)) {
+      if (!parent?.contains((e as FocusEvent).relatedTarget as Node)) {
         trigger.setAttribute('aria-expanded', 'false');
       }
     });

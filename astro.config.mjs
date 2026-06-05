@@ -30,13 +30,15 @@ function obfuscateTechStack() {
     'components': 'blocks',
   };
 
-  return {
+  /** @type {import('vite').Plugin} */
+  const plugin = {
     name: 'obfuscate-tech-stack',
-    enforce: 'post',
-    generateBundle(options, bundle) {
-      for (const [fileName, chunk] of Object.entries(bundle)) {
+    enforce: /** @type {'post'} */ ('post'),
+    /** @param {any} _options @param {import('rollup').OutputBundle} bundle */
+    generateBundle(_options, bundle) {
+      for (const [_fileName, chunk] of Object.entries(bundle)) {
         // CSS: custom props, layer names, Astro scoped-style selector prefix
-        if (chunk.type === 'asset' && chunk.fileName.endsWith('.css')) {
+        if (chunk.type === 'asset' && chunk.fileName.endsWith('.css') && typeof chunk.source === 'string') {
           let css = chunk.source;
           // Covers --tw-* declarations, var(--tw-*) references, and @property --tw-*
           css = css.replace(/--tw-/g, '--c-');
@@ -84,6 +86,7 @@ function obfuscateTechStack() {
       }
     },
   };
+  return plugin;
 }
 
 /**
@@ -94,11 +97,13 @@ function obfuscateTechStack() {
  * reveal the technology stack to detection tools.
  */
 function stripHtmlComments() {
-  return {
+  /** @type {import('vite').Plugin} */
+  const plugin = {
     name: 'strip-html-comments',
-    enforce: 'post',
-    generateBundle(options, bundle) {
-      for (const [fileName, chunk] of Object.entries(bundle)) {
+    enforce: /** @type {'post'} */ ('post'),
+    /** @param {any} _options @param {import('rollup').OutputBundle} bundle */
+    generateBundle(_options, bundle) {
+      for (const [_fileName, chunk] of Object.entries(bundle)) {
         if (chunk.type === 'asset' && chunk.fileName.endsWith('.html')) {
           if (typeof chunk.source === 'string') {
             // Remove HTML comments but preserve conditional comments
@@ -108,6 +113,7 @@ function stripHtmlComments() {
       }
     },
   };
+  return plugin;
 }
 
 export default defineConfig({
