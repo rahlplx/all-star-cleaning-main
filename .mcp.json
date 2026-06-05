@@ -4,6 +4,13 @@
       "type": "stdio",
       "command": "codegraph",
       "args": ["serve", "--mcp"]
+    },
+    "astro-docs": {
+      "url": "https://mcp.docs.astro.build/mcp",
+      "transport": "http"
+    },
+    "cloudflare": {
+      "url": "https://mcp.cloudflare.com/mcp"
     }
   }
 }
