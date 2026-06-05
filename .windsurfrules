@@ -1,0 +1,35 @@
+# All Star Cleaning — Windsurf Rules
+
+Astro 6.3 + Cloudflare Pages marketing site. 1000+ static pages, bilingual EN/FR. Full context in `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`.
+
+## Non-negotiable conventions
+
+- **Path alias**: `@/*` → `src/*`. Never use `../` chains.
+- **Layouts**: Use `PageLayout.astro` for all content pages. Prop is `schema` (singular) — never `schemas`.
+- **JSON-LD**: Use generators from `src/seo/` only. Never hand-write structured data.
+- **Tailwind tokens**: CSS vars from `src/styles/global.css`. Never hardcode hex. `--tw-*` vars are renamed to `--c-*` in production — never reference them directly.
+- **i18n**: Every string has EN + FR. Use `useTranslations(locale)` for common UI strings, `isFr` boolean for page-specific text.
+- **Static only**: No backend, no DB, no SSR. Forms via Web3Forms only.
+
+## Design hard rules (see DESIGN.md for full system)
+
+- No pure `#000` / `#fff` for large areas
+- No gradient text (`background-clip: text` + gradient)
+- No decorative side-stripe borders (> 1px border-left/right as accent)
+- No nested cards
+- 44×44px minimum touch targets
+- Always add hover, focus, active states to interactive elements
+
+## Extending the project
+
+- **New location**: append to `src/data/locations.ts` → 880 programmatic pages auto-generate
+- **New service**: create `src/content/services/{slug}.json`, add to `src/data/services.ts`
+- **New page**: wrap in `PageLayout.astro`, pass `schema` array from `src/seo/` generators
+
+## Commands
+
+```bash
+npm run dev       # http://localhost:4321
+npm run build     # ./dist/
+npm run typecheck # astro check (only lint available)
+```

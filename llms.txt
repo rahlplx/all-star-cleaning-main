@@ -1,0 +1,48 @@
+# All Star Cleaning
+
+> Bilingual (EN/FR) Astro 6.3 marketing website for an Ottawa exterior cleaning service. 1000+ static pages (880 programmatic: 44 locations × 5 services × 2 locales × 2 route patterns). Deployed to Cloudflare Pages as fully static output.
+
+## AI Agent Docs
+
+- [AGENTS.md](AGENTS.md): Multi-agent context — architecture, routes, key files, env vars, gotchas. Start here.
+- [CLAUDE.md](CLAUDE.md): Claude Code additions — MCP servers, CodeGraph, design anti-slop skill
+- [DESIGN.md](DESIGN.md): Full design system — OKLCH color palette, typography, elevation, motion, hard rules
+- [PRODUCT.md](PRODUCT.md): Brand voice, user profiles, conversion goals, anti-references
+
+## Architecture
+
+- [astro.config.mjs](astro.config.mjs): Cloudflare adapter (`output: 'static'`), i18n manual routing, build obfuscation plugins (renames `--tw-*` → `--c-*`, strips HTML comments, no source maps)
+- [src/middleware.ts](src/middleware.ts): i18n routing — redirects `/` → `/en/`, passes `/keystatic/*` through untouched
+- [keystatic.config.ts](keystatic.config.ts): CMS schema — collections: `reviews`, `services`; singletons: `settings`, `about`, `homepage`
+
+## Data & Content
+
+- [src/data/locations.ts](src/data/locations.ts): 44 Ottawa locations with coordinates, area, postal codes, neighbours — append here to add a location
+- [src/data/services.ts](src/data/services.ts): 5-service array + `getServiceBySlug()` — add import + entry here to add a service
+- [src/content/services/](src/content/services/): JSON files for each service (managed via Keystatic CMS at `/keystatic`)
+- [src/content/homepage.json](src/content/homepage.json): Homepage CMS content (hero, stats, CTAs)
+- [src/content/settings.json](src/content/settings.json): Business info — phone, email, address, social URLs, hours
+
+## i18n
+
+- [src/i18n/translations.ts](src/i18n/translations.ts): All EN/FR UI strings — `useTranslations(locale)` hook
+- [src/types.ts](src/types.ts): Bilingual field convention — `name`/`frName`, `slug`/`frSlug`, `features`/`frFeatures`, `faqs`/`frFaqs`
+
+## Layouts & Components
+
+- [src/layouts/PageLayout.astro](src/layouts/PageLayout.astro): Use for all content pages — `schema` prop (singular), `heroTitle`, `breadcrumbs`
+- [src/layouts/BaseLayout.astro](src/layouts/BaseLayout.astro): Lower-level wrapper used by PageLayout
+- [src/components/StickyBottomCTA.astro](src/components/StickyBottomCTA.astro): Fixed mobile CTA bar (`md:hidden`) — requires `pb-20 md:pb-0` on main content
+
+## SEO
+
+- [src/seo/index.ts](src/seo/index.ts): Schema.org generators — `getLocationServiceSchema`, `getBreadcrumbSchema`, `getFAQSchema`, `getServiceSchema`, `getLocalBusinessSchema`, `getHowToSchema`, `getReviewSchema`, `getFounderSchema`. Never hand-write JSON-LD.
+
+## Styles
+
+- [src/styles/global.css](src/styles/global.css): Tailwind `@theme` tokens — OKLCH color scales (blue, teal, gold, gray), semantic aliases (`midnight-indigo`, `navy`), typography scale (`--text-display` through `--text-xs`), spacing, motion, elevation
+
+## MCP Servers
+
+- [.mcp.json](.mcp.json): `astro-docs` (search_astro_docs tool), `cloudflare`, `codegraph`
+- [opencode.json](opencode.json): OpenCode project config — same MCP servers, `"type": "remote"`
