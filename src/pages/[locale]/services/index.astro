@@ -67,7 +67,7 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
       target="_blank" 
       rel="noopener noreferrer" 
       class="flex items-center gap-2 rounded-full bg-midnight-indigo/10 px-4 py-2 border border-midnight-indigo/20 transition-all hover:bg-midnight-indigo/20 hover:scale-105 active:scale-95"
-      aria-label={isFr ? 'Voir nos avis Google (ouvre une nouvelle fenêtre)' : 'See our Google Reviews (opens in new window)'}
+      aria-label={isFr ? `${cms.googleRating} ${cms.googleReviewCount} avis Google (ouvre une nouvelle fenêtre)` : `${cms.googleRating} ${cms.googleReviewCount} Google reviews (opens in new window)`}
     >
       <span class="text-midnight-indigo text-sm" aria-label={isFr ? '5 sur 5 étoiles' : '5 out of 5 stars'}>★★★★★</span>
       <span class="text-sm font-bold text-navy">{cms.googleRating}</span>
