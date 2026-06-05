@@ -81,8 +81,10 @@ Access to Cloudflare platform APIs (Workers, Pages, KV, etc.) — useful for dep
 /[locale]/area/[locationSlug]/              → 45 locations × 2 locales = 90 pages
 /[locale]/area/[locationSlug]/[serviceSlug]         → 450 programmatic pages
 /[locale]/services/[serviceSlug]/[locationSlug]     → 450 inverse programmatic pages
+/[locale]/contact
 /[locale]/privacy
 /[locale]/terms
+/[locale]/sitemap
 /keystatic/*                                → CMS admin UI
 /api/keystatic/*                            → CMS API
 ```

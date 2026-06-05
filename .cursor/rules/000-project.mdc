@@ -26,6 +26,11 @@ Marketing website for an Ottawa exterior cleaning service. Goal: convert visitor
 /[locale]/area/[locationSlug]/[serviceSlug]     → 450 programmatic (location-first, canonical)
 /[locale]/services/[serviceSlug]/[locationSlug] → 450 programmatic (service-first, mirrors above)
 /[locale]/area/ | /about | /reviews | /contact | /privacy | /terms | /sitemap
+```
+
+Total: **1,022 pages** (2 static + 20 simple locale pages + 10 service pages + 90 location pages + 900 programmatic)
+
+```
 /keystatic/* | /api/keystatic/*                 → CMS, exempt from i18n middleware
 ```
 

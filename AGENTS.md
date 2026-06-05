@@ -38,6 +38,7 @@ No test suite. No ESLint. No Prettier.
 /[locale]/area/[locationSlug]/                  → 45 locations × 2 locales = 90 pages
 /[locale]/area/[locationSlug]/[serviceSlug]     → 450 programmatic pages (location-first)
 /[locale]/services/[serviceSlug]/[locationSlug] → 450 programmatic pages (service-first, same content)
+/[locale]/contact
 /[locale]/privacy | /[locale]/terms | /[locale]/sitemap
 /keystatic/* | /api/keystatic/*                 → CMS (bypass i18n middleware)
 ```
