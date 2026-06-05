@@ -16,9 +16,7 @@ export function getLocalBusinessSchema({ locale, url }: LocalBusinessSchemaOptio
     url,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://allstarcleaning.ca/images/og-default.jpg',
-      width: 1200,
-      height: 630,
+      url: 'https://allstarcleaning.ca/images/logo.webp',
     },
     image: 'https://allstarcleaning.ca/images/og-default.jpg',
     description: locale === 'fr'
@@ -63,7 +61,7 @@ export function getLocalBusinessSchema({ locale, url }: LocalBusinessSchemaOptio
         latitude: 45.4215,
         longitude: -75.6972,
       },
-      geoRadius: '30000',
+      geoRadius: 30000,
     },
     hasMap: 'https://g.page/allstarcleaningottawa',
     priceRange: '$$',
@@ -72,6 +70,7 @@ export function getLocalBusinessSchema({ locale, url }: LocalBusinessSchemaOptio
       ratingValue: '5',
       reviewCount: '16',
       bestRating: '5',
+      worstRating: '1',
     },
     sameAs: [
       'https://facebook.com/allstarcleaningottawa',

@@ -9,6 +9,7 @@ export interface ReviewData {
 
 export function getReviewSchema(reviews: ReviewData[], locale: 'en' | 'fr') {
   return reviews.map((review) => ({
+    '@context': 'https://schema.org',
     '@type': 'Review' as const,
     author: {
       '@type': 'Person',
@@ -19,6 +20,7 @@ export function getReviewSchema(reviews: ReviewData[], locale: 'en' | 'fr') {
       '@type': 'Rating',
       ratingValue: String(review.rating),
       bestRating: '5',
+      worstRating: '1',
     },
     reviewBody: review.text,
     itemReviewed: {

@@ -11,7 +11,7 @@ Marketing website for All Star Cleaning, an Ottawa exterior cleaning service. Co
 - **CMS**: Keystatic (headless, cloud-backed JSON)
 - **Styling**: Tailwind CSS v4 + custom design tokens
 - **i18n**: English + French, manual routing via `[locale]` param
-- **Pages**: ~1000+ (880 programmatic = 44 locations × 5 services × 2 locales × 2 route patterns)
+- **Pages**: ~1000+ (900 programmatic = 45 locations × 5 services × 2 locales × 2 route patterns)
 - **Services**: Window cleaning, gutter cleaning, pressure washing, siding cleaning, snow removal
 
 ## Commands
@@ -78,9 +78,9 @@ Access to Cloudflare platform APIs (Workers, Pages, KV, etc.) — useful for dep
 /[locale]/services/
 /[locale]/services/[serviceSlug]            → 5 services × 2 locales = 10 pages
 /[locale]/area/
-/[locale]/area/[locationSlug]/              → 44 locations × 2 locales = 88 pages
-/[locale]/area/[locationSlug]/[serviceSlug]         → 440 programmatic pages
-/[locale]/services/[serviceSlug]/[locationSlug]     → 440 inverse programmatic pages
+/[locale]/area/[locationSlug]/              → 45 locations × 2 locales = 90 pages
+/[locale]/area/[locationSlug]/[serviceSlug]         → 450 programmatic pages
+/[locale]/services/[serviceSlug]/[locationSlug]     → 450 inverse programmatic pages
 /[locale]/privacy
 /[locale]/terms
 /keystatic/*                                → CMS admin UI
@@ -151,7 +151,7 @@ t('nav.services')                  // returns English or French string
 
 Page-specific bilingual text is handled inline with an `isFr` boolean: `const isFr = locale === 'fr'`.
 
-## Programmatic Pages (880 location×service combos)
+## Programmatic Pages (900 location×service combos)
 
 Two inverse route patterns exist for the same content, serving different SEO entry points:
 - `/[locale]/area/[locationSlug]/[serviceSlug]` — location-first

@@ -8,20 +8,7 @@ export function getServiceSchema(service: Service, locale: 'en' | 'fr', url: str
     name: locale === 'fr' ? service.frName : service.name,
     description: locale === 'fr' ? service.frDescription : service.description,
     url,
-    provider: {
-      '@type': 'HomeAndConstructionBusiness',
-      name: 'All Star Cleaning',
-      url: 'https://allstarcleaning.ca',
-      telephone: '+1-613-314-3300',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: '800 Hunt Club Rd',
-        addressLocality: 'Ottawa',
-        addressRegion: 'ON',
-        postalCode: 'K1V 1C3',
-        addressCountry: 'CA',
-      },
-    },
+    provider: { '@id': 'https://allstarcleaning.ca/#business' },
     areaServed: {
       '@type': 'City',
       name: 'Ottawa',

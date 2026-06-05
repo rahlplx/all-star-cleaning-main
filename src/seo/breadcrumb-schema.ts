@@ -9,7 +9,7 @@ export function getBreadcrumbSchema(breadcrumbs: BreadcrumbItem[], locale: 'en' 
       '@type': 'ListItem',
       position: i + 1,
       name: locale === 'fr' ? crumb.frLabel : crumb.label,
-      item: `https://allstarcleaning.ca${crumb.href}`,
+      item: `https://allstarcleaning.ca${crumb.href}${crumb.href.endsWith('/') ? '' : '/'}`,
     })),
   };
 }

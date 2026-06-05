@@ -10,14 +10,6 @@ export function getWebSiteSchema(locale: 'en' | 'fr') {
       ? "Service de nettoyage extérieur de confiance à Ottawa. Devis gratuits."
       : "Ottawa's trusted exterior cleaning service. Free quotes.",
     publisher: { '@id': 'https://allstarcleaning.ca/#business' },
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `https://allstarcleaning.ca/${locale}/area/?q={search_term_string}`,
-      },
-      'query-input': 'required name=search_term_string',
-    },
     inLanguage: ['en-CA', 'fr-CA'],
   };
 }

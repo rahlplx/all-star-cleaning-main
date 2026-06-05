@@ -19,7 +19,6 @@ const { title, description, locale, canonicalUrl, ogImage, alternateUrls, noinde
 // This value drives canonical URLs and all JSON-LD schema output.
 // astro.config.mjs `site` drives sitemap generation. Both must be non-www.
 const siteUrl = 'https://allstarcleaning.ca';
-const pageUrl = canonicalUrl || `${siteUrl}${Astro.url.pathname}`;
 const localBusinessSchema = getLocalBusinessSchema({ locale, url: `${siteUrl}/${locale}/` });
 const allSchemas = schema ? [localBusinessSchema, ...(Array.isArray(schema) ? schema : [schema])] : [localBusinessSchema];
 const themeColor = '#1e40af';

@@ -1,19 +1,16 @@
 // Schema.org Person JSON-LD — All Star Cleaning — Astro v6
+// NOTE: Only use this if the real founder's name is known.
+// Passing a business name as Person.name is invalid Schema.org and hurts SEO.
+// This function is intentionally NOT called from any page until a real name is available.
 export function getFounderSchema(locale: 'en' | 'fr') {
   return {
+    '@context': 'https://schema.org',
     '@type': 'Person',
-    name: 'All Star Cleaning',
+    name: 'All Star Cleaning Owner',
     jobTitle: locale === 'fr' ? 'Fondateur et Propriétaire' : 'Founder & Owner',
     description: locale === 'fr'
-      ? "Fondateur d'All Star Cleaning, offrant des services de nettoyage extérieur de confiance à Ottawa. Expert en nettoyage de vitres, gouttières, lavage sous pression et déneigement résidentiel et commercial."
-      : 'Founder of All Star Cleaning, providing trusted exterior cleaning services in Ottawa. Expert in window cleaning, gutter cleaning, pressure washing, and residential and commercial snow removal.',
-    knowsAbout: locale === 'fr'
-      ? ['Nettoyage de vitres', 'Nettoyage de gouttières', 'Lavage sous pression', 'Nettoyage de revêtement', 'Déneigement', 'Services résidentiels Ottawa']
-      : ['Window Cleaning', 'Gutter Cleaning', 'Pressure Washing', 'Siding Cleaning', 'Snow Removal', 'Residential Services Ottawa'],
-    worksFor: {
-      '@type': 'HomeAndConstructionBusiness',
-      name: 'All Star Cleaning',
-      url: 'https://allstarcleaning.ca',
-    },
+      ? "Fondateur d'All Star Cleaning, offrant des services de nettoyage extérieur de confiance à Ottawa."
+      : 'Founder of All Star Cleaning, providing trusted exterior cleaning services in Ottawa.',
+    worksFor: { '@id': 'https://allstarcleaning.ca/#business' },
   };
 }

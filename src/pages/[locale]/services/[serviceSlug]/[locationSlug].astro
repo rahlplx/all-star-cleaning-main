@@ -1,6 +1,6 @@
 ---
 // Service + Location combo page — inverse of area/[location]/[service]
-// Generates 5 services × 44 locations × 2 langs = 440 pages
+// Generates 5 services × 45 locations × 2 langs = 450 pages
 // Route: /en/services/window-cleaning/ottawa/
 import PageLayout from '@/layouts/PageLayout.astro';
 import ServiceBadge from '@/components/ServiceBadge.astro';
@@ -88,7 +88,7 @@ const altSlug = service.slug;  // Both locales use EN slugs in URLs
         </p>
         <p class="mt-2 measure text-muted-foreground leading-relaxed">
           {isFr
-            ? `Contactez-nous dès aujourd'hui pour un devis gratuit pour le ${service.name.toLowerCase()} dans ${location.name} et les environs.`
+            ? `Contactez-nous dès aujourd'hui pour un devis gratuit pour le ${service.frName.toLowerCase()} dans ${location.frName} et les environs.`
             : `Contact us today for a free quote on ${service.name.toLowerCase()} in ${location.name} and surrounding areas.`}
         </p>
         <a 

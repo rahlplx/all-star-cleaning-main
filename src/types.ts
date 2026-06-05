@@ -31,13 +31,13 @@ export interface Location {
 }
 
 export interface Review {
-  id: string;
   author: string;
   rating: number;
-  text: string;
   service: string;
-  location: string;
+  frService: string;
   date: string;
+  textEn: string;
+  textFr: string;
 }
 
 export interface TeamMember {
@@ -52,11 +52,20 @@ export interface TeamMember {
 export interface SiteSettings {
   businessName: string;
   phone: string;
+  phoneLink: string;
   email: string;
-  address: string;
-  frAddress: string;
-  googleMapsUrl: string;
-  socialLinks: { facebook: string; instagram: string; tiktok: string; google: string };
+  taglineEn: string;
+  taglineFr: string;
+  addressEn: string;
+  addressFr: string;
+  hoursEn: string;
+  hoursFr: string;
+  facebookUrl: string;
+  instagramUrl: string;
+  tiktokUrl: string;
+  googleUrl: string;
+  headerLogo: string | null;
+  footerLogo: string | null;
 }
 
 export interface NavItem {

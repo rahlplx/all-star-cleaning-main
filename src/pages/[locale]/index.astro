@@ -77,7 +77,7 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
 
     <!-- Centered hero content -->
     <div class="relative z-10 mx-auto max-w-5xl px-4 py-10 text-center sm:px-6 sm:py-16">
-      <img src="/images/logo.webp" alt="All Star Cleaning" width="180" height="60" class="slide-up mx-auto mb-8 h-20 w-auto sm:h-24 brightness-0 invert object-contain" />
+      <img src="/images/logo.webp" alt="All Star Cleaning" width="180" height="60" loading="eager" fetchpriority="high" class="slide-up mx-auto mb-8 h-20 w-auto sm:h-24 brightness-0 invert object-contain" />
       <h1 class="slide-up font-heading text-3xl font-extrabold uppercase tracking-tight text-text-on-dark sm:text-5xl md:text-6xl lg:text-8xl">
         {isFr ? cms.heroHeadlineFr : cms.heroHeadlineEn}
       </h1>
