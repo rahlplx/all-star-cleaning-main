@@ -72,7 +72,7 @@ const navLinks = [
   </div>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden border-t border-border bg-card lg:hidden">
+  <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation" class="hidden border-t border-border bg-card lg:hidden">
     <nav class="mx-auto max-w-7xl px-4 py-4" aria-label="Mobile navigation">
       {navLinks.map((link) => (
         <div>
@@ -195,8 +195,17 @@ const navLinks = [
     parent?.addEventListener('mouseleave', () => trigger.setAttribute('aria-expanded', 'false'));
     parent?.addEventListener('focusin', () => trigger.setAttribute('aria-expanded', 'true'));
     parent?.addEventListener('focusout', (e) => {
-      if (!parent?.contains(e.relatedTarget as Node)) {
+      const focusEvent = e as FocusEvent;
+      if (!parent?.contains(focusEvent.relatedTarget as Node)) {
         trigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Escape key closes desktop dropdown
+    trigger.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.focus();
       }
     });
   });

@@ -11,39 +11,63 @@
   /* Neutrals tinted toward blue (hue 255) with chroma 0.005-0.015 */
 
   /* Brand: Midnight Indigo (Refined) */
+  --color-midnight-indigo: #1e2a4a;
   --color-midnight-indigo: oklch(28% 0.08 265);
+  --color-midnight-indigo-light: #2d3d66;
   --color-midnight-indigo-light: oklch(38% 0.07 265);
+  --color-midnight-indigo-dark: #141d35;
   --color-midnight-indigo-dark: oklch(20% 0.06 265);
+  --color-midnight-indigo-surface: #f5f6fa;
   --color-midnight-indigo-surface: oklch(97.5% 0.015 265);
 
   /* Anchor: Navy — warm-tinted indigo, never pure black */
+  --color-navy: #1a1d2e;
   --color-navy: oklch(17.5% 0.030 265);
+  --color-navy-light: #2d3148;
   --color-navy-light: oklch(25.5% 0.035 265);
+  --color-navy-dark: #12141f;
   --color-navy-dark: oklch(12.0% 0.025 265);
 
   /* Accent: Gold reserved for ratings and rare emphasis */
+  --color-gold: #c9a84c;
   --color-gold: oklch(75% 0.15 85);
+  --color-gold-light: #d4b96e;
   --color-gold-light: oklch(80% 0.14 85);
+  --color-gold-dark: #a88a2e;
   --color-gold-dark: oklch(65% 0.16 85);
 
   /* Semantic colors */
-  --color-green: #1a9a4a; --color-green: oklch(63.0% 0.190 145);
-  --color-green-light: #3dba6a; --color-green-light: oklch(78.0% 0.180 150);
-  --color-green-dark: #157a3a; --color-green-dark: oklch(52.0% 0.175 140);
-  --color-green-surface: #f0fdf4; --color-green-surface: oklch(98% 0.015 145);
+  --color-green: #1a9a4a;
+  --color-green: oklch(63.0% 0.190 145);
+  --color-green-light: #3dba6a;
+  --color-green-light: oklch(78.0% 0.180 150);
+  --color-green-dark: #157a3a;
+  --color-green-dark: oklch(52.0% 0.175 140);
+  --color-green-surface: #f0fdf4;
+  --color-green-surface: oklch(98% 0.015 145);
 
-  --color-sky: #0ea5e9; --color-sky: oklch(70% 0.16 235);
-  --color-sky-light: #38bdf8; --color-sky-light: oklch(78% 0.14 235);
-  --color-sky-dark: #0284c7; --color-sky-dark: oklch(60% 0.18 235);
-  --color-sky-surface: #f0f9ff; --color-sky-surface: oklch(98% 0.015 235);
+  --color-sky: #0ea5e9;
+  --color-sky: oklch(70% 0.16 235);
+  --color-sky-light: #38bdf8;
+  --color-sky-light: oklch(78% 0.14 235);
+  --color-sky-dark: #0284c7;
+  --color-sky-dark: oklch(60% 0.18 235);
+  --color-sky-surface: #f0f9ff;
+  --color-sky-surface: oklch(98% 0.015 235);
 
-  --color-amber: #f59e0b; --color-amber: oklch(78% 0.17 75);
-  --color-amber-light: #fbbf24; --color-amber-light: oklch(84% 0.16 75);
-  --color-amber-dark: #d97706; --color-amber-dark: oklch(68% 0.18 75);
-  --color-amber-surface: #fffbeb; --color-amber-surface: oklch(98.5% 0.015 75);
+  --color-amber: #f59e0b;
+  --color-amber: oklch(78% 0.17 75);
+  --color-amber-light: #fbbf24;
+  --color-amber-light: oklch(84% 0.16 75);
+  --color-amber-dark: #d97706;
+  --color-amber-dark: oklch(68% 0.18 75);
+  --color-amber-surface: #fffbeb;
+  --color-amber-surface: oklch(98.5% 0.015 75);
 
   /* Neutrals — indigo-tinted (hue 265), hex fallbacks + OKLCH */
+  --color-off-white: #fafafc;
   --color-off-white: oklch(98.0% 0.005 265);       /* Page background */
+  --color-off-white-dark: #eeeff3;
   --color-off-white-dark: oklch(93.5% 0.006 265);
   --color-background: var(--color-off-white);
   --color-foreground: var(--color-navy);
@@ -52,15 +76,21 @@
   --color-destructive-foreground: var(--color-text-on-dark);
   --color-input: var(--color-border);
   --color-secondary: var(--color-navy);
+  --color-secondary-foreground: #fafafc;
   --color-secondary-foreground: oklch(98.5% 0.004 265);
   --color-accent: var(--color-gold);
   --color-accent-foreground: var(--color-navy);
+  --color-muted: #464860;
   --color-muted: oklch(35.0% 0.03 265);              /* Deeper secondary text for better authority */
+  --color-muted-foreground: #5c5f7a;
   --color-muted-foreground: oklch(42.0% 0.025 265);   /* WCAG AA: 5.22:1 on off-white */
+  --color-border: #e4e5ed;
   --color-border: oklch(92.0% 0.008 265);              /* Tinted toward brand, not pure gray */
   --color-ring: var(--color-midnight-indigo);                 /* Indigo focus rings */
-  --color-destructive: #b91c1c; --color-destructive: oklch(55.0% 0.200 25);
-  --color-card: #ffffff; --color-card: oklch(100% 0 0);                       /* Card surfaces — white to contrast off-white bg */
+  --color-destructive: #b91c1c;
+  --color-destructive: oklch(55.0% 0.200 25);
+  --color-card: #ffffff;
+  --color-card: oklch(100% 0 0);                       /* Card surfaces — white to contrast off-white bg */
   --color-card-foreground: var(--color-navy);
 
   /* === TYPOGRAPHY TEST: "White" Text on Dark === */
@@ -71,7 +101,9 @@
   /* --color-text-on-dark-muted: oklch(90.0% 0.01 265); */
 
   /* TEST 2: Indigo-Wash (Subtle Brand Glow) - ACTIVE */
+  --color-text-on-dark: #e8e9f5;
   --color-text-on-dark: oklch(94.5% 0.025 265);
+  --color-text-on-dark-muted: #c8cae0;
   --color-text-on-dark-muted: oklch(88.0% 0.03 265);
 
   /* Safe areas */
@@ -125,11 +157,17 @@
 
   /* === ELEVATION === */
   /* Impeccable: Tinted shadows using brand hue for premium depth */
+  --shadow-sm: 0 1px 3px 0 rgba(26, 29, 46, 0.07), 0 1px 2px -1px rgba(26, 29, 46, 0.04);
   --shadow-sm: 0 1px 3px 0 oklch(15% 0.05 265 / 0.07), 0 1px 2px -1px oklch(15% 0.05 265 / 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(26, 29, 46, 0.08), 0 2px 4px -2px rgba(26, 29, 46, 0.08);
   --shadow-md: 0 4px 6px -1px oklch(15% 0.05 265 / 0.08), 0 2px 4px -2px oklch(15% 0.05 265 / 0.08);
+  --shadow-lg: 0 10px 15px -3px rgba(26, 29, 46, 0.08), 0 4px 6px -4px rgba(26, 29, 46, 0.08);
   --shadow-lg: 0 10px 15px -3px oklch(15% 0.05 265 / 0.08), 0 4px 6px -4px oklch(15% 0.05 265 / 0.08);
+  --shadow-xl: 0 20px 25px -5px rgba(26, 29, 46, 0.08), 0 8px 10px -6px rgba(26, 29, 46, 0.08);
   --shadow-xl: 0 20px 25px -5px oklch(15% 0.05 265 / 0.08), 0 8px 10px -6px oklch(15% 0.05 265 / 0.08);
+  --shadow-hover: 0 4px 24px -4px rgba(26, 29, 46, 0.12), 0 1px 3px rgba(26, 29, 46, 0.06);
   --shadow-hover: 0 4px 24px -4px oklch(15% 0.05 265 / 0.12), 0 1px 3px oklch(15% 0.05 265 / 0.06);
+  --shadow-blue-glow: 0 8px 32px -8px rgba(30, 42, 74, 0.25);
   --shadow-blue-glow: 0 8px 32px -8px oklch(28% 0.08 265 / 0.25);
 
   /* === Z-INDEX === */
@@ -242,7 +280,7 @@
   /* Impeccable typeset: heading size variety for visual rhythm */
   .heading-display { font-size: var(--text-display); }
   .heading-section { font-size: var(--text-headline); }
-  .heading-subsection { font-size: var(--text-2xl); }
+  .heading-subsection { font-size: var(--text-subheading); }
   .heading-card { font-size: var(--text-xl); }
 
   /* Tabular numbers for data alignment */
@@ -299,6 +337,7 @@
   .section-full-bleed {
     width: 100vw;
     margin-left: calc(-50vw + 50%);
+    overflow-x: clip;
   }
 
   /* Impeccable harden: text overflow handling */

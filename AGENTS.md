@@ -111,3 +111,33 @@ PUBLIC_SITE_URL        # Canonical URL (https://www.allstarcleaning.ca)
 ## Impeccable (Design Anti-Slop)
 Skill installed at `.agents/skills/impeccable/SKILL.md`.  
 `DESIGN.md` + `PRODUCT.md` satisfy the `/teach` prerequisite — skip `/teach`, go straight to `/audit`, `/polish`, `/craft`.
+
+## Accessibility Rules (Post-Audit)
+
+### Forms
+- Every `<input>` needs `<label for="id">`
+- `autocomplete` on name/email/phone/address fields
+- `inputmode="tel"` on phone, `inputmode="email"` on email
+- `aria-required="true"` on required fields
+- Error messages linked via `aria-describedby`
+
+### Mobile Menu
+- Hamburger: `<button aria-label="Open menu" aria-expanded="false" aria-controls="menu-id">`
+- Panel: `<div id="menu-id" role="dialog" aria-modal="true" aria-label="Mobile navigation">`
+- Focus trap, Escape-to-close, restore focus on dismiss
+
+### Star Ratings
+```html
+<div role="img" aria-label="5 out of 5 stars">
+  <span aria-hidden="true">★★★★★</span>
+</div>
+```
+
+### CTA Consistency
+All CTA text imports from `src/data/cta.ts`. No hardcoded strings.
+
+### Color Convention
+```css
+--color-example: #hexvalue;        /* fallback */
+--color-example: oklch(L C H);    /* modern */
+```

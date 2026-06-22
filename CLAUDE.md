@@ -107,6 +107,12 @@ PUBLIC_SITE_URL        # Canonical URL (https://www.allstarcleaning.ca)
 8. **Add location**: Append to `src/data/locations.ts` — programmatic pages auto-generate at build time.
 9. **Add service**: Create JSON in `src/content/services/`, update `src/data/services.ts` loader array.
 10. **Layouts**: Wrap pages in `BaseLayout.astro` (head + header + footer) or `PageLayout.astro` (adds breadcrumbs + hero).
+11. **oklch fallback**: Every CSS variable using oklch MUST have a hex fallback declared first: `--color-x: #hex; --color-x: oklch(...);`
+12. **CTA consistency**: All CTA text imports from `src/data/cta.ts`. No hardcoded CTA strings in components.
+13. **Form accessibility**: Every form input needs `<label>`, `autocomplete`, `aria-required`, and `inputmode` (tel/email) where applicable.
+14. **Mobile menu ARIA**: Hamburger menus MUST use `role="dialog"`, `aria-modal="true"`, focus trap, and Escape-to-close.
+15. **Star ratings**: Use `role="img"` + `aria-label` on rating containers. Stars get `aria-hidden="true"`.
+16. **Fluid headings**: All heading utility classes must use `clamp()` via CSS tokens, never fixed `rem` above body size.
 
 ## Impeccable (Design Anti-Slop)
 Skill installed at `.agents/skills/impeccable/SKILL.md`.  
