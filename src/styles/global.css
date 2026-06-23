@@ -156,17 +156,11 @@
 
   /* === ELEVATION === */
   /* Impeccable: Tinted shadows using brand hue for premium depth */
-  --shadow-sm: 0 1px 3px 0 rgba(26, 29, 46, 0.07), 0 1px 2px -1px rgba(26, 29, 46, 0.04);
   --shadow-sm: 0 1px 3px 0 oklch(15% 0.05 265 / 0.07), 0 1px 2px -1px oklch(15% 0.05 265 / 0.04);
-  --shadow-md: 0 4px 6px -1px rgba(26, 29, 46, 0.08), 0 2px 4px -2px rgba(26, 29, 46, 0.08);
   --shadow-md: 0 4px 6px -1px oklch(15% 0.05 265 / 0.08), 0 2px 4px -2px oklch(15% 0.05 265 / 0.08);
-  --shadow-lg: 0 10px 15px -3px rgba(26, 29, 46, 0.08), 0 4px 6px -4px rgba(26, 29, 46, 0.08);
   --shadow-lg: 0 10px 15px -3px oklch(15% 0.05 265 / 0.08), 0 4px 6px -4px oklch(15% 0.05 265 / 0.08);
-  --shadow-xl: 0 20px 25px -5px rgba(26, 29, 46, 0.08), 0 8px 10px -6px rgba(26, 29, 46, 0.08);
   --shadow-xl: 0 20px 25px -5px oklch(15% 0.05 265 / 0.08), 0 8px 10px -6px oklch(15% 0.05 265 / 0.08);
-  --shadow-hover: 0 4px 24px -4px rgba(26, 29, 46, 0.12), 0 1px 3px rgba(26, 29, 46, 0.06);
   --shadow-hover: 0 4px 24px -4px oklch(15% 0.05 265 / 0.12), 0 1px 3px oklch(15% 0.05 265 / 0.06);
-  --shadow-blue-glow: 0 8px 32px -8px rgba(30, 42, 74, 0.25);
   --shadow-blue-glow: 0 8px 32px -8px oklch(28% 0.08 265 / 0.25);
 
   /* === Z-INDEX === */
@@ -277,8 +271,8 @@
   .measure { max-width: 65ch; }
 
   /* Text shadow for readability over images */
-  .text-shadow { text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6); }
-  .text-shadow-lg { text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7); }
+  .text-shadow { text-shadow: 0 1px 4px oklch(15% 0.05 265 / 0.6); }
+  .text-shadow-lg { text-shadow: 0 2px 8px oklch(15% 0.05 265 / 0.7); }
 
   /* Impeccable typeset: heading size variety for visual rhythm */
   .heading-display { font-size: var(--text-display); }
@@ -295,9 +289,11 @@
     button, a[role="button"], .btn { min-height: 44px; min-width: 44px; }
   }
 
-  /* Impeccable delight: hover lift with soft shadow — Flat-By-Default compliant */
-  .hover-lift { transition: transform var(--transition-base), box-shadow var(--transition-base); will-change: transform; }
-  .hover-lift:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+  /* Impeccable delight: hover lift with soft shadow — GPU-composited */
+  .hover-lift { position: relative; transition: transform var(--transition-base); will-change: transform; }
+  .hover-lift::after { content: ''; position: absolute; inset: 0; border-radius: inherit; box-shadow: var(--shadow-hover); opacity: 0; transition: opacity var(--transition-base); pointer-events: none; }
+  .hover-lift:hover { transform: translateY(-2px); }
+  .hover-lift:hover::after { opacity: 1; }
 
   /* Impeccable delight: entrance animations */
   .fade-in { animation: fadeIn var(--transition-entrance) cubic-bezier(0.16, 1, 0.3, 1) both; }
@@ -362,7 +358,7 @@
   /* Form validation states */
   .field-error {
     border-color: var(--color-destructive) !important;
-    box-shadow: 0 0 0 2px rgba(185,28,28,0.15);
+    box-shadow: 0 0 0 2px oklch(55% 0.200 25 / 0.15);
   }
   .field-error-message {
     color: var(--color-destructive);
