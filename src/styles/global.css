@@ -89,8 +89,7 @@
   --color-ring: var(--color-midnight-indigo);                 /* Indigo focus rings */
   --color-destructive: #b91c1c;
   --color-destructive: oklch(55.0% 0.200 25);
-  --color-card: #ffffff;
-  --color-card: oklch(100% 0 0);                       /* Card surfaces — white to contrast off-white bg */
+  --color-card: oklch(99.2% 0.004 265);                /* Card surfaces — tinted white, not pure #fff */
   --color-card-foreground: var(--color-navy);
 
   /* === TYPOGRAPHY TEST: "White" Text on Dark === */
@@ -276,6 +275,10 @@
 
   /* Readability measure cap — impeccable typeset */
   .measure { max-width: 65ch; }
+
+  /* Text shadow for readability over images */
+  .text-shadow { text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6); }
+  .text-shadow-lg { text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7); }
 
   /* Impeccable typeset: heading size variety for visual rhythm */
   .heading-display { font-size: var(--text-display); }
