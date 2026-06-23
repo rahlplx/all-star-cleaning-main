@@ -113,7 +113,7 @@ const navLinks = [
     closeIcon?.classList.remove('hidden');
     toggle?.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
-    const firstLink = menu?.querySelector('a, button');
+    const firstLink = menu?.querySelector('a, button') as HTMLElement | null;
     firstLink?.focus();
   }
 

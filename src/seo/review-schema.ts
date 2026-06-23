@@ -7,7 +7,7 @@ export interface ReviewData {
   date: string;
 }
 
-export function getReviewSchema(reviews: ReviewData[], locale: 'en' | 'fr') {
+export function getReviewSchema(reviews: ReviewData[], _locale: 'en' | 'fr') {
   return reviews.map((review) => ({
     '@type': 'Review' as const,
     author: {

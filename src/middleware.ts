@@ -1,8 +1,6 @@
 import { defineMiddleware } from 'astro:middleware';
 import { middleware } from 'astro:i18n';
 
-const locales = ['en', 'fr'];
-
 // Astro's built-in i18n middleware with prefixDefaultLocale behavior
 const astroI18nMiddleware = middleware({
   redirectToDefaultLocale: true,

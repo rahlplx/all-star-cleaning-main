@@ -16,7 +16,6 @@ interface Props {
 }
 const { title, description, locale, canonicalUrl, ogImage, alternateUrls, noindex, schema } = Astro.props;
 const siteUrl = 'https://allstarcleaning.ca';
-const pageUrl = canonicalUrl || `${siteUrl}${Astro.url.pathname}`;
 const localBusinessSchema = getLocalBusinessSchema({ locale, url: `${siteUrl}/${locale}/` });
 const allSchemas = schema ? [localBusinessSchema, ...(Array.isArray(schema) ? schema : [schema])] : [localBusinessSchema];
 ---

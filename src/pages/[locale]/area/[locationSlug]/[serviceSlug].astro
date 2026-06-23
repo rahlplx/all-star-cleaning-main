@@ -45,8 +45,6 @@ const heroSubtitle = isFr
   ? `${service.frDescription} Desservant ${location.frName} et les environs d'Ottawa.`
   : `${service.description} Serving ${location.name} and surrounding Ottawa areas.`;
 const altSlug = service.slug;  // Both locales use EN slugs in URLs
-
-const mapQuery = encodeURIComponent(`${location.name}, Ottawa, ON, Canada`);
 ---
 
 <PageLayout
