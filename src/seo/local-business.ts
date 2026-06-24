@@ -1,18 +1,21 @@
 // Schema.org LocalBusiness JSON-LD — All Star Cleaning — Astro v6
 
+import siteSettings from '@/content/settings.json';
+
 export interface LocalBusinessSchemaOptions {
   locale: 'en' | 'fr';
   url: string;
 }
 
 export function getLocalBusinessSchema({ locale, url }: LocalBusinessSchemaOptions) {
+  const s = siteSettings;
   return {
     '@context': 'https://schema.org',
     '@type': 'HomeAndConstructionBusiness',
     name: 'All Star Cleaning',
     alternateName: locale === 'fr' ? 'Nettoyage All Star' : 'All Star Cleaning Ottawa',
     url,
-    logo: 'https://allstarcleaning.ca/logo.svg',
+    logo: 'https://allstarcleaning.ca/favicon.svg',
     image: 'https://allstarcleaning.ca/images/og-default.jpg',
     description: locale === 'fr'
       ? "Service de nettoyage extérieur de confiance à Ottawa. Vitres, gouttières, lavage sous pression, revêtement et déneigement. Devis gratuits."
@@ -54,7 +57,7 @@ export function getLocalBusinessSchema({ locale, url }: LocalBusinessSchemaOptio
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '5',
-      reviewCount: '16',
+      reviewCount: String(s.googleReviewCount || 16),
       bestRating: '5',
     },
     sameAs: [

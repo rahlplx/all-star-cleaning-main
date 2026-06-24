@@ -4,6 +4,8 @@ const en = {
   services: { windowCleaning: 'Window Cleaning', gutterCleaning: 'Gutter Cleaning', pressureWashing: 'Pressure Washing', sidingCleaning: 'Siding Cleaning', snowRemoval: 'Snow Removal' },
   footer: { serviceArea: 'Service Area', contactUs: 'Contact Us', followUs: 'Follow Us', hours: 'Hours', weekdayHours: 'Mon–Sun: 9am–7pm', weekendHours: 'Open 7 Days a Week', closed: '', copyright: 'All rights reserved.', privacy: 'Privacy Policy', terms: 'Terms of Service', sitemap: 'Sitemap' },
   cta: { freeQuote: 'Get a Free Quote', callNow: 'Call Now', bookOnline: 'Book Online' },
+  trust: { insured: 'Insured & Bonded' },
+  ui: { learnMore: 'Learn more', followUs: 'Follow Us' },
   locations: { servingArea: 'Serving the Ottawa Region', findService: 'Find services near you' },
   meta: { defaultTitle: 'All Star Cleaning Ottawa | Exterior Cleaning Services', defaultDescription: "Ottawa's trusted exterior cleaning service. Window, gutter, pressure washing, siding & snow removal. Free quotes." },
   usps: {
@@ -26,6 +28,8 @@ const fr = {
   services: { windowCleaning: 'Nettoyage de Vitres', gutterCleaning: 'Nettoyage de Gouttières', pressureWashing: 'Lavage sous Pression', sidingCleaning: 'Nettoyage de Revêtement', snowRemoval: 'Déneigement' },
   footer: { serviceArea: 'Zone de Service', contactUs: 'Contactez-Nous', followUs: 'Suivez-Nous', hours: 'Heures', weekdayHours: 'Lun–Dim : 9h–19h', weekendHours: 'Ouvert 7 Jours par Semaine', closed: '', copyright: 'Tous droits réservés.', privacy: 'Politique de Confidentialité', terms: "Conditions d'Utilisation", sitemap: 'Plan du Site' },
   cta: { freeQuote: 'Obtenez un Devis Gratuit', callNow: 'Appelez', bookOnline: 'Réservez en Ligne' },
+  trust: { insured: 'Assuré & Cautionné' },
+  ui: { learnMore: 'En savoir plus', followUs: 'Suivez-nous' },
   locations: { servingArea: "Desservant la Région d'Ottawa", findService: 'Trouvez des services près de chez vous' },
   meta: { defaultTitle: 'All Star Cleaning Ottawa | Services de Nettoyage Extérieur', defaultDescription: 'Service de nettoyage extérieur de confiance à Ottawa. Vitres, gouttières, lavage sous pression, revêtement et déneigement. Devis gratuits.' },
   usps: {
@@ -48,6 +52,8 @@ export interface Translation {
   services: { windowCleaning: string; gutterCleaning: string; pressureWashing: string; sidingCleaning: string; snowRemoval: string };
   footer: { serviceArea: string; contactUs: string; followUs: string; hours: string; weekdayHours: string; weekendHours: string; closed: string; copyright: string; privacy: string; terms: string; sitemap: string };
   cta: { freeQuote: string; callNow: string; bookOnline: string };
+  trust: { insured: string };
+  ui: { learnMore: string; followUs: string };
   locations: { servingArea: string; findService: string };
   meta: { defaultTitle: string; defaultDescription: string };
   usps: {
