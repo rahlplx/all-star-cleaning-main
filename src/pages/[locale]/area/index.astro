@@ -56,7 +56,7 @@ const zoneNames: Record<string, { en: string; fr: string }> = {
             {zoneLocs.map((loc) => (
               <a
                 href={`/${locale}/area/${loc.slug}`}
-                class="group rounded-lg border border-border bg-card p-4 transition-all hover:border-midnight-indigo/30 hover:shadow-md hover-lift"
+                class="group rounded-lg border border-border bg-card p-4 transition-colors duration-200 hover:border-midnight-indigo/30 hover:shadow-md hover-lift"
               >
                 <h3 class="font-medium text-navy group-hover:text-midnight-indigo">{isFr ? loc.frName : loc.name}</h3>
                 <p class="mt-1 text-xs text-muted-foreground">{loc.postalCode}</p>

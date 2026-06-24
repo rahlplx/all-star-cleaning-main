@@ -26,6 +26,7 @@ export function getServiceSchema(service: Service, locale: 'en' | 'fr', url: str
       '@type': 'City',
       name: 'Ottawa',
     },
+    image: service.image ? `https://allstarcleaning.ca${service.image}` : undefined,
     serviceType: locale === 'fr' ? service.frName : service.name,
     hasOfferCatalog: {
       '@type': 'OfferCatalog',

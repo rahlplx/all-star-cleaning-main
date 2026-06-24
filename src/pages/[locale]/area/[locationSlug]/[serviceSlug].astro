@@ -65,7 +65,7 @@ const altSlug = service.slug;  // Both locales use EN slugs in URLs
           href={siteSettings.googleUrl} 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="flex items-center gap-2 rounded-full bg-midnight-indigo/10 px-4 py-2 border border-midnight-indigo/20 transition-all hover:bg-midnight-indigo/20 hover:scale-105 active:scale-95"
+          class="flex items-center gap-2 rounded-full bg-midnight-indigo/10 px-4 py-2.5 border border-midnight-indigo/20 transition-transform duration-200 hover:bg-midnight-indigo/20 hover:scale-105 active:scale-95"
           aria-label={isFr ? 'Voir nos avis Google (ouvre une nouvelle fenêtre)' : 'See our Google Reviews (opens in new window)'}
         >
           <span class="text-midnight-indigo text-sm" role="img" aria-label="5 out of 5 stars"><svg xmlns="http://www.w3.org/2000/svg" class="inline h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="inline h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="inline h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="inline h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="inline h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
@@ -93,7 +93,7 @@ const altSlug = service.slug;  // Both locales use EN slugs in URLs
 
       <!-- Mobile-only inline CTA -->
       <div class="mt-6 lg:hidden">
-        <a href={`/${locale}/contact?service=${service.slug}&area=${location.slug}`} class="touch-target inline-flex items-center gap-2 rounded-full uppercase tracking-wider bg-midnight-indigo px-6 py-4 text-base font-bold text-text-on-dark shadow-lg transition-all hover:bg-midnight-indigo-dark hover:shadow-xl w-full justify-center">
+        <a href={`/${locale}/contact?service=${service.slug}&area=${location.slug}`} class="touch-target inline-flex items-center gap-2 rounded-full uppercase tracking-wider bg-midnight-indigo px-6 py-4 text-base font-bold text-text-on-dark shadow-lg transition-colors duration-200 hover:bg-midnight-indigo-dark hover:shadow-xl w-full justify-center">
           {isFr ? 'Obtenez un Devis Gratuit' : 'Get a Free Quote'}
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
         </a>
@@ -146,7 +146,7 @@ const altSlug = service.slug;  // Both locales use EN slugs in URLs
         </h2>
         <div class="mt-4 grid gap-4 sm:grid-cols-2">
           {services.filter((s) => s.slug !== service.slug).map((otherService, i) => (
-            <a href={`/${locale}/area/${location.slug}/${otherService.slug}`} class={`group rounded-xl border border-border bg-card p-4 transition-all hover:border-midnight-indigo/30 hover:shadow-md hover-lift ${i === 0 ? 'sm:col-span-2 border-midnight-indigo/20 bg-midnight-indigo/5' : ''}`}>
+            <a href={`/${locale}/area/${location.slug}/${otherService.slug}`} class={`group rounded-xl border border-border bg-card p-4 transition-colors duration-200 hover:border-midnight-indigo/30 hover:shadow-md hover-lift ${i === 0 ? 'sm:col-span-2 border-midnight-indigo/20 bg-midnight-indigo/5' : ''}`}>
               <h3 class="font-medium text-navy group-hover:text-midnight-indigo">{isFr ? otherService.frName : otherService.name}</h3>
               <p class="mt-1 text-sm text-muted-foreground line-clamp-2">{isFr ? otherService.frDescription : otherService.description}</p>
             </a>
@@ -167,7 +167,7 @@ const altSlug = service.slug;  // Both locales use EN slugs in URLs
       <div class="sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto rounded-xl border border-border bg-card p-6">
         <h3 class="font-heading text-xl font-bold text-midnight-indigo">{isFr ? 'Obtenez un Devis Gratuit' : 'Get a Free Quote'}</h3>
         <p class="mt-2 text-sm text-muted-foreground">{isFr ? service.frCta : service.cta}</p>
-        <a href={`/${locale}/contact?service=${service.slug}&area=${location.slug}`} class="mt-4 block rounded-full uppercase tracking-wider bg-midnight-indigo px-6 py-4 text-center text-base font-bold text-text-on-dark shadow-lg transition-all hover:bg-midnight-indigo-dark hover:shadow-xl active:scale-[0.98] touch-target">
+        <a href={`/${locale}/contact?service=${service.slug}&area=${location.slug}`} class="mt-4 block rounded-full uppercase tracking-wider bg-midnight-indigo px-6 py-4 text-center text-base font-bold text-text-on-dark shadow-lg transition-colors duration-200 hover:bg-midnight-indigo-dark hover:shadow-xl active:scale-[0.98] touch-target">
           {isFr ? 'Obtenez un Devis Gratuit' : 'Get a Free Quote'}
         </a>
         <p class="mt-2 text-center text-sm text-muted-foreground">{isFr ? 'Sans engagement · Réponse sous 24h' : 'No obligation · 24hr response'}</p>

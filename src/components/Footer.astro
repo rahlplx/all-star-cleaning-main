@@ -41,7 +41,7 @@ const year = new Date().getFullYear();
       <div>
         <h3 class="mb-4 text-sm font-semibold uppercase tracking-wider text-text-on-dark">{t.nav.services}</h3>
         <ul class="space-y-2">
-          {services.map((s) => <li><a href={`/${locale}/services/${s.slug}`} class="text-sm text-text-on-dark-muted transition-colors duration-200 hover:text-text-on-dark focus-visible:ring-2 focus-visible:ring-text-on-dark">{locale === 'fr' ? s.frName : s.name}</a></li>)}
+          {services.map((s) => <li><a href={`/${locale}/services/${s.slug}`} class="touch-target inline-flex items-center text-sm text-text-on-dark-muted transition-colors duration-200 hover:text-text-on-dark focus-visible:ring-2 focus-visible:ring-text-on-dark">{locale === 'fr' ? s.frName : s.name}</a></li>)}
         </ul>
       </div>
       <div>
@@ -53,11 +53,11 @@ const year = new Date().getFullYear();
           </li>
           <li class="flex items-center gap-3">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0 text-text-on-dark/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <a href={`tel:${s.phoneLink}`} class="text-text-on-dark/90 no-underline transition-colors duration-200 hover:text-text-on-dark focus-visible:ring-2 focus-visible:ring-text-on-dark">{s.phone}</a>
+            <a href={`tel:${s.phoneLink}`} class="touch-target inline-flex items-center text-text-on-dark/90 no-underline transition-colors duration-200 hover:text-text-on-dark focus-visible:ring-2 focus-visible:ring-text-on-dark">{s.phone}</a>
           </li>
           <li class="flex items-center gap-3">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0 text-text-on-dark/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            <a href={`mailto:${s.email}`} class="text-text-on-dark/90 no-underline transition-colors duration-200 hover:text-text-on-dark focus-visible:ring-2 focus-visible:ring-text-on-dark">{s.email}</a>
+            <a href={`mailto:${s.email}`} class="touch-target inline-flex items-center text-text-on-dark/90 no-underline transition-colors duration-200 hover:text-text-on-dark focus-visible:ring-2 focus-visible:ring-text-on-dark">{s.email}</a>
           </li>
         </ul>
       </div>
@@ -72,9 +72,9 @@ const year = new Date().getFullYear();
       <p>&copy; {year} All Star Cleaning. {t.footer.copyright}</p>
       <p class="text-text-on-dark/50">Built by TrendTok Social</p>
       <div class="flex gap-4">
-        <a href={`/${locale}/privacy`} class="text-text-on-dark/80 transition-colors duration-200 hover:text-text-on-dark focus-visible:ring-2 focus-visible:ring-text-on-dark">{t.footer.privacy}</a>
-        <a href={`/${locale}/terms`} class="text-text-on-dark/80 transition-colors duration-200 hover:text-text-on-dark focus-visible:ring-2 focus-visible:ring-text-on-dark">{t.footer.terms}</a>
-        <a href={`/${locale}/sitemap`} class="text-text-on-dark/80 transition-colors duration-200 hover:text-text-on-dark focus-visible:ring-2 focus-visible:ring-text-on-dark">{t.footer.sitemap}</a>
+        <a href={`/${locale}/privacy`} class="touch-target inline-flex items-center text-text-on-dark/80 transition-colors duration-200 hover:text-text-on-dark focus-visible:ring-2 focus-visible:ring-text-on-dark">{t.footer.privacy}</a>
+        <a href={`/${locale}/terms`} class="touch-target inline-flex items-center text-text-on-dark/80 transition-colors duration-200 hover:text-text-on-dark focus-visible:ring-2 focus-visible:ring-text-on-dark">{t.footer.terms}</a>
+        <a href={`/${locale}/sitemap`} class="touch-target inline-flex items-center text-text-on-dark/80 transition-colors duration-200 hover:text-text-on-dark focus-visible:ring-2 focus-visible:ring-text-on-dark">{t.footer.sitemap}</a>
       </div>
     </div>
   </div>
