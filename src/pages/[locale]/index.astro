@@ -93,7 +93,7 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
             <!-- Free Estimates -->
             <div class="flex min-w-[150px] items-center justify-center gap-2 rounded-full bg-amber-500/10 px-4 py-2.5 backdrop-blur-md border border-amber-500/20">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
-              <span class="text-[10px] font-bold uppercase tracking-widest text-text-on-dark sm:text-xs">{isFr ? 'Devis Gratuits' : 'Free Estimates'}</span>
+              <span class="text-[11px] font-bold uppercase tracking-widest text-text-on-dark sm:text-xs">{isFr ? 'Devis Gratuits' : 'Free Estimates'}</span>
             </div>
 
             <!-- Google Rating -->
@@ -117,7 +117,7 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
           <!-- Primary Trust -->
           <div class="flex min-w-[200px] items-center justify-center gap-2 rounded-full bg-emerald-500/10 px-6 py-2.5 backdrop-blur-md border border-emerald-500/20">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-            <span class="text-[10px] font-bold uppercase tracking-widest text-text-on-dark sm:text-xs">{isFr ? 'Assuré & Cautionné' : 'Insured & Bonded'}</span>
+            <span class="text-[11px] font-bold uppercase tracking-widest text-text-on-dark sm:text-xs">{isFr ? 'Assuré & Cautionné' : 'Insured & Bonded'}</span>
           </div>
         </div>
       </div>
@@ -146,11 +146,6 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
               class="h-full w-full object-cover"
               loading="lazy"
             />
-          </div>
-          <!-- Floating badge overlay -->
-          <div class="absolute -bottom-4 -right-2 sm:right-4 flex items-center gap-2 rounded-xl bg-midnight-indigo px-4 py-3 shadow-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-text-on-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-            <span class="text-sm font-bold text-text-on-dark">{isFr ? 'Assuré & Cautionné' : 'Insured & Bonded'}</span>
           </div>
         </div>
 
@@ -215,7 +210,7 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
   <!-- ============================================================ -->
   <!-- SERVICES SECTION — Varied grid with featured first card -->
   <!-- ============================================================ -->
-  <section aria-label={isFr ? 'Nos services' : 'Our services'} class="border-t border-midnight-indigo/10 bg-card pt-8 pb-16 md:pt-10 md:pb-20 lg:pt-12 lg:pb-24">
+  <section aria-label={isFr ? 'Nos services' : 'Our services'} class="border-t border-midnight-indigo/10 bg-background pt-8 pb-16 md:pt-10 md:pb-20 lg:pt-12 lg:pb-24">
     <div class="mx-auto max-w-7xl px-4 md:px-6">
       <div class="text-center">
         <h2 class="heading-subsection slide-up font-heading font-bold text-midnight-indigo">{isFr ? 'Nos Services' : 'Our Services'}</h2>
@@ -258,14 +253,14 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
                   const badge = serviceBadgeMap[service.slug];
                   return (
                     <div class="flex flex-wrap gap-1.5">
-                      <span class:list={['w-fit rounded-md px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-text-on-dark backdrop-blur-sm', badge?.color ?? 'bg-midnight-indigo/35']}>
+                      <span class:list={['w-fit rounded-md px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-text-on-dark', badge?.color ?? 'bg-midnight-indigo/35']}>
                         {badge ? (isFr ? badge.fr : badge.en) : service.name}
                       </span>
                     </div>
                   );
                 })()}
 
-                <h3 class:list={['font-heading font-bold text-text-on-dark text-shadow', isFeatured ? 'text-2xl lg:text-3xl' : 'text-xl']}>
+                <h3 class:list={['font-heading font-bold text-text-on-dark text-shadow', isFeatured ? 'text-lg lg:text-xl' : 'text-lg']}>
                   {isFr ? service.frName : service.name}
                 </h3>
                 <p class="line-clamp-2 text-sm leading-relaxed text-text-on-dark-muted text-shadow">
@@ -305,7 +300,7 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
   <!-- ============================================================ -->
   <!-- TRUST / TESTIMONIAL SECTION — Real customer quote -->
   <!-- ============================================================ -->
-  <section class="bg-midnight-indigo py-12 text-text-on-dark md:py-16" aria-label={isFr ? 'Témoignage client' : 'Customer testimonial'}>
+  <section class="bg-midnight-indigo py-16 text-text-on-dark md:py-20" aria-label={isFr ? 'Témoignage client' : 'Customer testimonial'}>
     <div class="mx-auto max-w-3xl px-4 text-center">
       <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-8 w-8 text-text-on-dark/30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
       <blockquote class="mt-6 text-xl font-medium leading-relaxed text-text-on-dark sm:text-2xl">
@@ -321,7 +316,7 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         ))}
       </div>
-      <p class="mt-2 text-xs text-text-on-dark-muted">{isFr ? `${cms.googleReviewCount} avis Google vérifiés` : `${cms.googleReviewCount} verified Google reviews`}</p>
+      <p class="mt-2 text-[11px] text-text-on-dark-muted sm:text-xs">{isFr ? `${cms.googleReviewCount} avis Google vérifiés` : `${cms.googleReviewCount} verified Google reviews`}</p>
     </div>
   </section>
 
