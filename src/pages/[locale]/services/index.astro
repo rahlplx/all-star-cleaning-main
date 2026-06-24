@@ -66,7 +66,7 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
       href={siteSettings.googleUrl} 
       target="_blank" 
       rel="noopener noreferrer" 
-      class="flex items-center gap-2 rounded-full bg-midnight-indigo/10 px-4 py-2 border border-midnight-indigo/20 transition-all hover:bg-midnight-indigo/20 hover:scale-105 active:scale-95"
+      class="flex items-center gap-2 rounded-full bg-midnight-indigo/10 px-4 py-2.5 border border-midnight-indigo/20 transition-transform duration-200 hover:bg-midnight-indigo/20 hover:scale-105 active:scale-95"
       aria-label={isFr ? 'Voir nos avis Google (ouvre une nouvelle fenêtre)' : 'See our Google Reviews (opens in new window)'}
     >
       <span class="text-midnight-indigo text-sm" role="img" aria-label="5 out of 5 stars">★★★★★</span>
@@ -95,7 +95,7 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
         <a
           href={`/${locale}/services/${service.slug}`}
           class:list={[
-            `fade-in ${delayClass} group relative overflow-hidden rounded-2xl transition-all duration-300 hover:scale-[1.01] hover:shadow-2xl`,
+            `fade-in ${delayClass} group relative overflow-hidden rounded-2xl transition-transform duration-300 hover:scale-[1.01] hover:shadow-2xl`,
             isFeatured
               ? 'md:col-span-2 lg:col-span-2 aspect-[4/3] md:aspect-[16/9] lg:aspect-[8/3]'
               : i === 1
@@ -113,11 +113,11 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
           />
 
           {/* Gradient — branded indigo wash for maximum text safety */}
-          <div class="absolute inset-0 bg-gradient-to-t from-midnight-indigo-dark/98 via-midnight-indigo-dark/80 to-transparent" />
+          <div class="absolute inset-0 bg-gradient-to-t from-midnight-indigo-dark/90 via-midnight-indigo-dark/70 to-transparent" />
 
           {/* All content overlaid at bottom */}
           <div class="absolute bottom-0 left-0 right-0 flex flex-col gap-2 p-4 md:p-5">
-            <span class:list={['w-fit rounded-md px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-text-on-dark backdrop-blur-sm', badge?.color ?? 'bg-midnight-indigo/35']}>
+            <span class:list={['w-fit rounded-md px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-text-on-dark', badge?.color ?? 'bg-midnight-indigo/35']}>
               {badge ? (isFr ? badge.fr : badge.en) : ''}
             </span>
             <h2 class:list={['font-heading font-bold text-text-on-dark drop-shadow', isFeatured ? 'text-2xl lg:text-3xl' : 'text-xl']}>
@@ -136,7 +136,7 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
                 ))}
               </ul>
             )}
-            <div class="mt-1 flex w-fit items-center gap-2 rounded-xl border border-white/30 bg-white/15 py-1.5 pl-3 pr-1.5 backdrop-blur-md transition-all duration-300 group-hover:bg-white/25">
+            <div class="mt-1 flex w-fit items-center gap-2 rounded-xl border border-text-on-dark/30 bg-text-on-dark/15 py-1.5 pl-3 pr-1.5 transition-colors duration-300 group-hover:bg-text-on-dark/25">
               <span class="text-xs font-semibold text-text-on-dark">{isFr ? 'En savoir plus' : 'Learn more'}</span>
               <div class="flex h-5 w-5 shrink-0 items-center justify-center rounded-lg border border-white/30 transition-transform duration-300 group-hover:translate-x-0.5">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-text-on-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
@@ -153,10 +153,10 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
     <h2 class="font-heading heading-card font-bold">{isFr ? 'Prêt à commencer?' : 'Ready to Get Started?'}</h2>
     <p class="mt-2 text-text-on-dark-muted">{isFr ? 'Contactez-nous pour un devis gratuit. Nous sommes ouverts 7 jours par semaine!' : 'Contact us for a free quote. We\'re open 7 days a week!'}</p>
     <div class="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-      <a href={`/${locale}/contact`} class="touch-target inline-flex items-center rounded-full bg-white px-8 py-3 text-lg font-semibold uppercase tracking-wider text-midnight-indigo shadow-lg transition-all hover:bg-white/90 hover:shadow-xl">
+      <a href={`/${locale}/contact`} class="touch-target inline-flex items-center rounded-full bg-text-on-dark px-8 py-3 text-lg font-semibold uppercase tracking-wider text-midnight-indigo shadow-lg transition-colors duration-200 hover:bg-text-on-dark/90 hover:shadow-xl">
         {isFr ? 'Obtenez un Devis Gratuit' : 'Get a Free Quote'}
       </a>
-      <a href={`tel:${cms.phoneLink}`} class="touch-target inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-8 py-3 text-lg font-semibold uppercase tracking-wider text-text-on-dark transition-all hover:border-white/60 hover:bg-white/10">
+      <a href={`tel:${cms.phoneLink}`} class="touch-target inline-flex items-center gap-2 rounded-full border-2 border-text-on-dark/30 px-8 py-3 text-lg font-semibold uppercase tracking-wider text-text-on-dark transition-colors duration-200 hover:border-text-on-dark/60 hover:bg-text-on-dark/10">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         {cms.phone}
       </a>

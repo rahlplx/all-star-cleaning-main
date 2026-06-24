@@ -87,7 +87,7 @@ const heroSubtitle = isFr
           <a
             href={`/${locale}/area/${location.slug}/${service.slug}`}
             class:list={[
-              'group rounded-xl border border-border bg-card p-5 transition-all hover:border-midnight-indigo/30 hover:shadow-md hover-lift',
+              'group rounded-xl border border-border bg-card p-5 transition-colors duration-200 hover:border-midnight-indigo/30 hover:shadow-md hover-lift',
               i === 0 ? 'sm:col-span-2 border-midnight-indigo/20 bg-midnight-indigo/5' : '',
             ]}
           >
@@ -132,7 +132,7 @@ const heroSubtitle = isFr
             ? `Besoin de services de nettoyage à ${location.frName}? Contactez-nous pour un devis gratuit.`
             : `Need cleaning services in ${location.name}? Contact us for a free quote.`}
         </p>
-        <a href={`/${locale}/contact?area=${location.slug}`} class="mt-4 block rounded-full uppercase tracking-wider bg-midnight-indigo px-6 py-4 text-center text-base font-bold text-text-on-dark shadow-lg transition-all hover:bg-midnight-indigo-dark hover:shadow-xl active:scale-[0.98] touch-target">
+        <a href={`/${locale}/contact?area=${location.slug}`} class="mt-4 block rounded-full uppercase tracking-wider bg-midnight-indigo px-6 py-4 text-center text-base font-bold text-text-on-dark shadow-lg transition-colors duration-200 hover:bg-midnight-indigo-dark hover:shadow-xl active:scale-[0.98] touch-target">
           {isFr ? 'Obtenez un Devis Gratuit' : 'Get a Free Quote'}
         </a>
         <p class="mt-2 text-center text-sm text-muted-foreground">{isFr ? 'Sans engagement · Réponse sous 24h' : 'No obligation · 24hr response'}</p>
