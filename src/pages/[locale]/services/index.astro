@@ -44,11 +44,11 @@ const serviceObjectPosition: Record<string, string> = {
 };
 
 const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }> = {
-  'window-cleaning':  { en: 'Streak-Free',      fr: 'Sans Traces',        color: 'bg-sky-500/35' },
-  'gutter-cleaning':  { en: 'Clog Prevention',  fr: 'Anti-Obstruction',   color: 'bg-amber-600/35' },
-  'pressure-washing': { en: 'Deep Clean',       fr: 'Nettoyage Intensif', color: 'bg-emerald-600/35' },
-  'siding-cleaning':  { en: 'Curb Appeal',      fr: 'Façade Propre',      color: 'bg-violet-600/35' },
-  'snow-removal':     { en: 'Winter Ready',     fr: 'Prêt Hiver',         color: 'bg-blue-600/35' },
+  'window-cleaning':  { en: 'Streak-Free',      fr: 'Sans Traces',        color: 'bg-sky-light/20' },
+  'gutter-cleaning':  { en: 'Clog Prevention',  fr: 'Anti-Obstruction',   color: 'bg-midnight-indigo/15' },
+  'pressure-washing': { en: 'Deep Clean',       fr: 'Nettoyage Intensif', color: 'bg-mint-fresh/20' },
+  'siding-cleaning':  { en: 'Curb Appeal',      fr: 'Façade Propre',      color: 'bg-lavender-blend/20' },
+  'snow-removal':     { en: 'Winter Ready',     fr: 'Prêt Hiver',         color: 'bg-sky-light/15' },
 };
 ---
 
@@ -57,8 +57,8 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
   description={isFr ? 'Services de nettoyage extérieur professionnels à Ottawa. Nettoyage de vitres, gouttières, lavage sous pression, revêtement et déneigement.' : 'Professional exterior cleaning services in Ottawa. Window cleaning, gutter cleaning, pressure washing, siding cleaning, and snow removal.'}
   locale={locale}
   breadcrumbs={breadcrumbs}
-  heroTitle={isFr ? 'Nos Services' : 'Our Services'}
-  heroSubtitle={isFr ? "Des fenêtres étincelantes aux allées déneigées, nous couvrons tout Ottawa." : "From sparkling windows to snow-free driveways, we've got Ottawa covered."}
+  heroTitle={t.servicesPage.heroTitle}
+  heroSubtitle={t.servicesPage.heroSubtitle}
   alternateUrls={[{ locale: altLocale, url: `https://allstarcleaning.ca/${altLocale}/services/` }]}
   schema={[breadcrumbSchema, itemListSchema]}
 >
@@ -71,7 +71,7 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
     </div>
     <div class="flex items-center gap-2 rounded-full bg-midnight-indigo/10 px-4 py-2 border border-midnight-indigo/20">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-midnight-indigo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-      <span class="text-sm font-semibold text-navy">{isFr ? 'Satisfaction garantie à 100%' : '100% Satisfaction Guaranteed'}</span>
+      <span class="text-sm font-semibold text-navy">{t.servicesPage.trustGuarantee}</span>
     </div>
   </div>
 
@@ -87,7 +87,7 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
         <a
           href={`/${locale}/services/${service.slug}`}
           class:list={[
-            `fade-in ${delayClass} group relative overflow-hidden rounded-2xl transition-transform duration-300 hover:scale-[1.01] hover:shadow-2xl`,
+            `touch-target fade-in ${delayClass} group relative overflow-hidden rounded-2xl transition-transform duration-300 hover:scale-[1.01] hover:shadow-2xl focus-visible:ring-2 focus-visible:ring-midnight-indigo focus-visible:ring-offset-2`,
             isFeatured
               ? 'md:col-span-2 lg:col-span-2 aspect-[4/3] md:aspect-[16/9] lg:aspect-[8/3]'
               : i === 1
@@ -142,11 +142,11 @@ const serviceBadgeMap: Record<string, { en: string; fr: string; color: string }>
 
   <!-- Bottom CTA Section -->
   <div class="mt-12 rounded-xl bg-midnight-indigo px-6 py-8 text-center text-text-on-dark sm:px-10">
-    <h2 class="font-heading heading-card font-bold">{isFr ? 'Prêt à commencer?' : 'Ready to Get Started?'}</h2>
-    <p class="mt-2 text-text-on-dark-muted">{isFr ? 'Contactez-nous pour un devis gratuit. Nous sommes ouverts 7 jours par semaine!' : 'Contact us for a free quote. We\'re open 7 days a week!'}</p>
+    <h2 class="font-heading heading-card font-bold">{t.servicesPage.ctaReady}</h2>
+    <p class="mt-2 text-text-on-dark-muted">{t.servicesPage.ctaDescription}</p>
     <div class="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-      <a href={`/${locale}/contact`} class="touch-target inline-flex items-center rounded-full bg-text-on-dark px-8 py-3 text-lg font-semibold uppercase tracking-wider text-midnight-indigo shadow-lg transition-colors duration-200 hover:bg-text-on-dark/90 hover:shadow-xl">
-        {isFr ? 'Obtenez un Devis Gratuit' : 'Get a Free Quote'}
+      <a href={`/${locale}/contact`} class="touch-target inline-flex items-center rounded-full bg-text-on-dark px-8 py-3 text-lg font-semibold uppercase tracking-wider text-midnight-indigo shadow-lg transition-colors duration-200 hover:bg-text-on-dark/90 hover:shadow-xl focus-visible:ring-2 focus-visible:ring-midnight-indigo focus-visible:ring-offset-2">
+        {t.cta.freeQuote}
       </a>
       <a href={`tel:${cms.phoneLink}`} class="touch-target inline-flex items-center gap-2 rounded-full border-2 border-text-on-dark/30 px-8 py-3 text-lg font-semibold uppercase tracking-wider text-text-on-dark transition-colors duration-200 hover:border-text-on-dark/60 hover:bg-text-on-dark/10">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>

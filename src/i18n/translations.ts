@@ -20,6 +20,26 @@ const en = {
   },
   terms: { services: 'Services', guarantee: 'Guarantee', contact: 'Contact' },
   meta: { defaultTitle: 'All Star Cleaning Ottawa | Exterior Cleaning Services', defaultDescription: "Ottawa's trusted exterior cleaning service. Window, gutter, pressure washing, siding & snow removal. Free quotes." },
+  servicesPage: {
+    heroTitle: 'Our Services',
+    heroSubtitle: "From sparkling windows to snow-free driveways, we've got Ottawa covered.",
+    trustGuarantee: '100% Satisfaction Guaranteed',
+    sectionIncluded: "What's Included",
+    sectionWhyChoose: 'Why Choose All Star Cleaning?',
+    sectionOther: 'Our other services',
+    uspGuaranteedResults: 'Guaranteed Results',
+    uspGuaranteedResultsDesc: '100% satisfaction guaranteed on every job.',
+    uspProfessionalEquipment: 'Professional Equipment',
+    uspProfessionalEquipmentDesc: 'Proven technology for consistent results.',
+    uspExperiencedTeam: 'Experienced Team',
+    uspExperiencedTeamDesc: 'Trained and insured technicians.',
+    uspFreeQuotes: 'Free Quotes',
+    uspFreeQuotesDesc: 'Transparent estimates with no obligation.',
+    ctaReady: 'Ready to Get Started?',
+    ctaDescription: "Contact us for a free quote. We're open 7 days a week!",
+    noObligation24h: 'No obligation · 24hr response',
+    noObligation4h: 'No obligation · Response within 4 hours during storms',
+  },
   usps: {
     expertise: { title: 'Local Expertise', description: 'Serving Ottawa homes means we master harsh winters, gutters, and siding. We deliver customized, reliable results competitors can\'t match.' },
     equipment: { title: 'Premium, Damage-Free Equipment', description: 'We use specialized vacuums, gutter cameras, and safe pressure washers. They ensure thorough cleans without home damage, harsh chemicals, or risks.' },
@@ -56,6 +76,26 @@ const fr = {
   },
   terms: { services: 'Services', guarantee: 'Garantie', contact: 'Contact' },
   meta: { defaultTitle: 'All Star Cleaning Ottawa | Services de Nettoyage Extérieur', defaultDescription: 'Service de nettoyage extérieur de confiance à Ottawa. Vitres, gouttières, lavage sous pression, revêtement et déneigement. Devis gratuits.' },
+  servicesPage: {
+    heroTitle: 'Nos Services',
+    heroSubtitle: "Des fenêtres étincelantes aux allées déneigées, nous couvrons tout Ottawa.",
+    trustGuarantee: 'Satisfaction garantie à 100%',
+    sectionIncluded: 'Ce qui est inclus',
+    sectionWhyChoose: 'Pourquoi choisir All Star Cleaning?',
+    sectionOther: 'Nos autres services',
+    uspGuaranteedResults: 'Résultats Garantis',
+    uspGuaranteedResultsDesc: 'Satisfaction garantie à 100% sur chaque travail.',
+    uspProfessionalEquipment: 'Équipement Professionnel',
+    uspProfessionalEquipmentDesc: 'Technologie éprouvée pour des résultats constants.',
+    uspExperiencedTeam: 'Équipe Expérimentée',
+    uspExperiencedTeamDesc: 'Techniciens formés et assurés.',
+    uspFreeQuotes: 'Devis Gratuit',
+    uspFreeQuotesDesc: 'Estimations transparentes sans obligation.',
+    ctaReady: 'Prêt à commencer?',
+    ctaDescription: 'Contactez-nous pour un devis gratuit. Nous sommes ouverts 7 jours par semaine!',
+    noObligation24h: 'Sans engagement · Réponse sous 24h',
+    noObligation4h: 'Sans engagement · Réponse sous 4h lors des tempêtes',
+  },
   usps: {
     expertise: { title: "Expertise Locale", description: "Servir les foyers d'Ottawa signifie que nous maîtrisons les hivers rigoureux, les gouttières et les revêtements. Nous offrons des résultats personnalisés et fiables que nos concurrents ne peuvent égaler." },
     equipment: { title: 'Équipement Premium sans Dommage', description: 'Nous utilisons des aspirateurs spécialisés, des caméras de gouttière et des laveuses sous pression sécuritaires. Ils assurent un nettoyage approfondi sans dommage à la maison, produits chimiques agressifs ou risques.' },
@@ -82,6 +122,16 @@ export interface Translation {
   area: { zones: { central: string; east: string; west: string; south: string; southWest: string; eastCentral: string; southEast: string } };
   terms: { services: string; guarantee: string; contact: string };
   meta: { defaultTitle: string; defaultDescription: string };
+  servicesPage: {
+    heroTitle: string; heroSubtitle: string; trustGuarantee: string;
+    sectionIncluded: string; sectionWhyChoose: string; sectionOther: string;
+    uspGuaranteedResults: string; uspGuaranteedResultsDesc: string;
+    uspProfessionalEquipment: string; uspProfessionalEquipmentDesc: string;
+    uspExperiencedTeam: string; uspExperiencedTeamDesc: string;
+    uspFreeQuotes: string; uspFreeQuotesDesc: string;
+    ctaReady: string; ctaDescription: string;
+    noObligation24h: string; noObligation4h: string;
+  };
   usps: {
     expertise: { title: string; description: string };
     equipment: { title: string; description: string };
