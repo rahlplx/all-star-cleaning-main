@@ -58,12 +58,16 @@ const year = new Date().getFullYear();
         </p>
       </div>
     </div>
-    <div class="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-text-on-dark-muted sm:flex-row">
-      <p>&copy; {year} All Star Cleaning. {t.footer.copyright}</p>
-      <p class="text-text-on-dark/50">Built by TrendTok Social</p>
-      <div class="flex gap-4">
+    <div class="mt-10 border-t border-white/10 pt-6 text-xs text-text-on-dark-muted">
+      <div class="flex flex-col items-center gap-2 text-center sm:flex-row sm:flex-wrap sm:justify-between sm:text-left">
+        <p>&copy; {year} All Star Cleaning. {t.footer.copyright}</p>
+        <p class="text-text-on-dark/50">Built by TrendTok Social</p>
+      </div>
+      <div class="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
         <a href={`/${locale}/privacy`} class="touch-target inline-flex items-center text-text-on-dark/80 transition-colors duration-200 hover:text-text-on-dark focus-visible:ring-2 focus-visible:ring-text-on-dark">{t.footer.privacy}</a>
+        <span class="text-text-on-dark/30" aria-hidden="true">|</span>
         <a href={`/${locale}/terms`} class="touch-target inline-flex items-center text-text-on-dark/80 transition-colors duration-200 hover:text-text-on-dark focus-visible:ring-2 focus-visible:ring-text-on-dark">{t.footer.terms}</a>
+        <span class="text-text-on-dark/30" aria-hidden="true">|</span>
         <a href={`/${locale}/sitemap`} class="touch-target inline-flex items-center text-text-on-dark/80 transition-colors duration-200 hover:text-text-on-dark focus-visible:ring-2 focus-visible:ring-text-on-dark">{t.footer.sitemap}</a>
       </div>
     </div>
